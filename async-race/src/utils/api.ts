@@ -5,6 +5,7 @@ import {
   QueryParams,
   REQUEST_TYPES,
   SortBy,
+  WinnerPayload,
   WinnersQueryParams,
 } from '../types/models';
 
@@ -23,7 +24,7 @@ const carsApi = {
     }
   },
 
-  async getCars(params: QueryParams = { _page: 1, _limit: 7 }) {
+  async getCars(params: QueryParams = { _page: 1, _limit: 600 }) {
     const paramsFormated = new URLSearchParams({
       _page: params._page.toString(),
       _limit: params._limit.toString(),
@@ -93,6 +94,20 @@ const carsApi = {
   async getWinner(id: number) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
     return this.helper(endpoint, REQUEST_TYPES.GET);
+  },
+
+  async createWinner(payload: WinnerPayload) {
+    return this.helper(ENDPOINTS.WINNERS, REQUEST_TYPES.POST, payload);
+  },
+
+  async deleteWinner(id: number) {
+    const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
+    return this.helper(endpoint, REQUEST_TYPES.DELETE);
+  },
+
+  async editWinner(id: number, payload: WinnerPayload) {
+    const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
+    return this.helper(endpoint, REQUEST_TYPES.POST, payload);
   },
 };
 

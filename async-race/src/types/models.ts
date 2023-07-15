@@ -52,7 +52,7 @@ export interface WinnersQueryParams extends QueryParams {
 }
 
 export type WinnerPayload = {
-  id: number;
+  id?: number;
   time: number;
   wins: number;
 };
