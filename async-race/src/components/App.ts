@@ -7,9 +7,9 @@ class App {
   }
 
   initiate = () => {
-    this.container.innerHTML = `
-		<p>App is running</p>
-		`;
+    // this.container.innerHTML = `
+    // <p>App is running</p>
+    // `;
   };
 }
 
