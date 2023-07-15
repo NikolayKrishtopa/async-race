@@ -1,0 +1,35 @@
+$white: #fff;
+
+$dark: #221e18;
+$lighter: #3e392f;
+$light: #ddd;
+$background-white: #efefef;
+$font-color-white: rgba(255, 255, 255, 0.3);
+$background-table: rgb(201, 148, 62);
+
+$font-size: 1.4rem;
+
+$fruit-size: 50px;
+
+$font-content: 'Arial', serif;
+
+$max-width: 1200px;
+
+$breakpoint-extra-big: 1200px;
+$breakpoint-tablet: 800px;
+$breakpoint-extra-m: 1000px;
+$breakpoint-mobile-big: 650px;
+$breakpoint-mobile: 480px;
+
+$transition-duration: 0.5s;
+
+@mixin clickable {
+  cursor: pointer;
+  transition: opacity $transition-duration ease;
+  &:hover {
+    opacity: 70%;
+    @media screen and (hover: none) {
+      opacity: 100%;
+    }
+  }
+}
