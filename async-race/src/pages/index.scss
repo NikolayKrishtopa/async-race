@@ -26,9 +26,11 @@
   gap: 20px;
 }
 .header__link {
+  @include clickable;
   color: white;
 }
 .header__link_state_active {
+  color: gold;
   text-decoration: underline;
 }
 .main {
@@ -69,12 +71,16 @@
   gap: 30px;
 }
 .section__title {
-  font-size: 28px;
+  font-size: 2rem;
 }
 
 .section__content {
   display: flex;
   flex-direction: column;
+}
+
+.section__page {
+  font-size: 1.5rem;
 }
 .car {
   display: flex;
