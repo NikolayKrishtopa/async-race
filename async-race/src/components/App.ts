@@ -7,6 +7,8 @@ class App {
   }
 
   initiate = () => {
+    console.log('I work');
+
     // this.container.innerHTML = `
     // <p>App is running</p>
     // `;

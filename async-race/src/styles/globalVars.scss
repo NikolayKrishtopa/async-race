@@ -1,5 +1,6 @@
 $white: #fff;
 
+$page-bkgnd: #000;
 $dark: #221e18;
 $lighter: #3e392f;
 $light: #ddd;
@@ -32,4 +33,14 @@ $transition-duration: 0.5s;
       opacity: 100%;
     }
   }
+}
+
+@mixin button {
+  @include clickable;
+  padding: 5px 10px;
+  background-color: yellowgreen;
+  border-radius: 5px;
+  font-size: 14px;
+  color: blueviolet;
+  text-transform: uppercase;
 }

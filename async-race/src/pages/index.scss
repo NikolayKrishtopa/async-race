@@ -1,3 +1,123 @@
 @import '../styles/reset.scss';
 @import '../styles/globalVars.scss';
 @import '../vendor/fonts.css';
+
+.root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $page-bkgnd;
+  color: white;
+  padding: 0 50px;
+}
+.header {
+  border-bottom: 2px solid yellow;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+}
+.header__title {
+}
+.header__btn-wrapper {
+  display: flex;
+  gap: 20px;
+}
+.header__link {
+  color: white;
+}
+.header__link_state_active {
+  text-decoration: underline;
+}
+.main {
+  width: 100%;
+}
+.control {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.control__edit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.control__input {
+  background-color: white;
+  height: 100%;
+}
+.btn {
+  @include button;
+}
+.control__btns {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+}
+.control__race-btn {
+}
+.control__reset-btn {
+}
+.control__generate-btn {
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.section__title {
+  font-size: 28px;
+}
+
+.section__content {
+  display: flex;
+  flex-direction: column;
+}
+.car {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px dashed white;
+  gap: 20px;
+}
+.car__heading {
+  display: flex;
+  gap: 10px;
+}
+.car__title {
+  font-size: 1rem;
+}
+.car__main {
+  display: flex;
+  gap: 10px;
+}
+.car__nav {
+  display: flex;
+  gap: 5px;
+}
+.car__btn {
+  @include clickable;
+  width: 32px;
+  height: 32px;
+  font-size: 1.5rem;
+  color: green;
+  border: 2px solid green;
+  border-radius: 3px;
+}
+.car__track {
+  width: 100%;
+  position: relative;
+}
+.car__car {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(191, 222, 52);
+}
+.car__finish-flag {
+  transform: scale(2);
+  position: absolute;
+  right: 150px;
+  bottom: 25px;
+}
