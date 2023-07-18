@@ -5,7 +5,7 @@ import {
   QueryParams,
   REQUEST_TYPES,
   SortBy,
-  WinnerPayload,
+  WinnerType,
   WinnersQueryParams,
 } from '../types/models';
 
@@ -96,7 +96,7 @@ const carsApi = {
     return this.helper(endpoint, REQUEST_TYPES.GET);
   },
 
-  async createWinner(payload: WinnerPayload) {
+  async createWinner(payload: WinnerType) {
     return this.helper(ENDPOINTS.WINNERS, REQUEST_TYPES.POST, payload);
   },
 
@@ -105,7 +105,7 @@ const carsApi = {
     return this.helper(endpoint, REQUEST_TYPES.DELETE);
   },
 
-  async editWinner(id: number, payload: WinnerPayload) {
+  async editWinner(id: number, payload: WinnerType) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
     return this.helper(endpoint, REQUEST_TYPES.POST, payload);
   },

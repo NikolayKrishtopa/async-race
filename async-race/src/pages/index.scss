@@ -59,12 +59,7 @@
   width: 100%;
   gap: 5px;
 }
-.control__race-btn {
-}
-.control__reset-btn {
-}
-.control__generate-btn {
-}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -77,6 +72,7 @@
 .section__content {
   display: flex;
   flex-direction: column;
+  gap: 30px;
 }
 
 .section__page {
@@ -126,4 +122,12 @@
   position: absolute;
   right: 150px;
   bottom: 25px;
+}
+
+.winner {
+  display: flex;
+  gap: 15px;
+}
+.winner__text {
+  font-size: 1rem;
 }

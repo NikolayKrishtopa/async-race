@@ -51,7 +51,7 @@ export interface WinnersQueryParams extends QueryParams {
   _order: OrderType;
 }
 
-export type WinnerPayload = {
+export type WinnerType = {
   id?: number;
   time: number;
   wins: number;

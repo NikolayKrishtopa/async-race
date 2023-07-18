@@ -22,32 +22,47 @@
         </div>
       </div>
       <div class="section">
-        <h2 class="section__title">Garage(104)</h2>
-        <p class="section__page">Page 1 of 4</p>
-        <div class="section__content">
-          <div class="car">
-            <div class="car__heading">
-              <button class="btn">edit</button>
-              <button class="btn">remove</button>
-              <h3 class="car__title">Tesla model s</h3>
-            </div>
-            <div class="car__main">
-              <div class="car__nav">
-                <button class="car__btn car__btn_type_start">A</button>
-                <button class="car__btn car__btn_type_stop">B</button>
-              </div>
-              <div class="car__track">
-                <div class="car__car"></div>
-                <img
-                  src="./assets/img/flag_finish_fill.svg"
-                  alt="finish flag"
-                  class="car__finish-flag"
-                />
-              </div>
-            </div>
+        <h2 class="section__title">
+          Garage(<span class="section__page-num">104</span>)
+        </h2>
+        <p class="section__page">
+          Page <span class="section__page-num">1</span> of
+          <span class="section__page-qty">1</span>
+        </p>
+        <div class="section__content"></div>
+      </div>
+    </main>
+    <template id="carTemplate">
+      <div class="car">
+        <div class="car__heading">
+          <button class="btn">edit</button>
+          <button class="btn">remove</button>
+          <h3 class="car__title">Tesla model s</h3>
+        </div>
+        <div class="car__main">
+          <div class="car__nav">
+            <button class="car__btn car__btn_type_start">A</button>
+            <button class="car__btn car__btn_type_stop">B</button>
+          </div>
+          <div class="car__track">
+            <div class="car__car"></div>
+            <img
+              src="./assets/img/flag_finish_fill.svg"
+              alt="finish flag"
+              class="car__finish-flag"
+            />
           </div>
         </div>
       </div>
-    </main>
+    </template>
+    <template id="winnerTemplate">
+      <div class="winner">
+        <p class="winner__text winner__text_type_number"></p>
+        <!-- <img src="#" alt="car icon" class="winner__icon" /> -->
+        <p class="winner__text winner__text_type_name"></p>
+        <p class="winner__text winner__text_type_wins"></p>
+        <p class="winner__text winner__text_type_best-time"></p>
+      </div>
+    </template>
   </body>
 </html>
