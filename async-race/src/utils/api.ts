@@ -1,5 +1,6 @@
 import { BASE_URL, ENDPOINTS } from './urlConstants';
 import {
+  Car,
   ENGINE_STATUS,
   OrderType,
   QueryParams,
@@ -17,8 +18,9 @@ const carsApi = {
         headers: { 'Content-Type': 'application/json' },
         body: payload ? JSON.stringify(payload) : null,
       });
+
       const parsed = await res.json();
-      return parsed;
+      return { payload: parsed, totalQty: res.headers.get('X-Total-Count') };
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +32,10 @@ const carsApi = {
       _limit: params._limit.toString(),
     });
     const endpoint = `${ENDPOINTS.GARAGE}?${paramsFormated}`;
-    return this.helper(endpoint, REQUEST_TYPES.GET);
+    const res = await this.helper(endpoint, REQUEST_TYPES.GET);
+    const items = res?.payload as Array<Car>;
+    const totalQty = res?.totalQty as string;
+    return { items, totalQty };
   },
 
   async getCar(id: number) {
@@ -88,7 +93,10 @@ const carsApi = {
       _order: params._order,
     });
     const endpoint = `${ENDPOINTS.WINNERS}?${paramsFormated}`;
-    return this.helper(endpoint, REQUEST_TYPES.GET);
+    const res = await this.helper(endpoint, REQUEST_TYPES.GET);
+    const items = res?.payload as Array<WinnerType>;
+    const totalQty = res?.totalQty as string;
+    return { items, totalQty };
   },
 
   async getWinner(id: number) {

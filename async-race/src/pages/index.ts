@@ -4,18 +4,25 @@ import App from '../components/App';
 // import getRandomColor from '../utils/getRandomColor';
 import carsApi from '../utils/api';
 import { Section } from '../components/Section';
-import { Car, WinnerType } from '../types/models';
+import {
+  Car,
+  QueryParams,
+  WinnerType,
+  WinnersQueryParams,
+} from '../types/models';
 
-const getCars = async () => {
-  const cars = await carsApi.getCars();
+const getCars = async (params: QueryParams) => {
+  const res: { items: Car[]; totalQty: string } = await carsApi.getCars(params);
 
-  return cars;
+  return res;
 };
 
-const getWinners = async () => {
-  const winners = await carsApi.getWinners();
+const getWinners = async (params: QueryParams | WinnersQueryParams) => {
+  const paramsCast = params as WinnersQueryParams;
+  const res: { items: WinnerType[]; totalQty: string } =
+    await carsApi.getWinners(paramsCast);
 
-  return winners;
+  return res;
 };
 
 const generateCarLayout = (item: Car | WinnerType) => {
