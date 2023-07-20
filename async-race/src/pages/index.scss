@@ -76,7 +76,10 @@
   flex-direction: column;
   gap: 30px;
 }
-
+.section__row {
+  display: flex;
+  gap: 20px;
+}
 .section__page {
   font-size: 1.5rem;
 }

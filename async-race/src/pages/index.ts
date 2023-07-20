@@ -1,18 +1,21 @@
 import './index.scss';
 import App from '../components/App';
+import Car from '../components/Car';
 // import generateCarName from '../utils/generateCarName';
 // import getRandomColor from '../utils/getRandomColor';
 import carsApi from '../utils/api';
 import { Section } from '../components/Section';
 import {
-  Car,
+  CarType,
   QueryParams,
   WinnerType,
   WinnersQueryParams,
 } from '../types/models';
 
 const getCars = async (params: QueryParams) => {
-  const res: { items: Car[]; totalQty: string } = await carsApi.getCars(params);
+  const res: { items: CarType[]; totalQty: string } = await carsApi.getCarTypes(
+    params
+  );
 
   return res;
 };
@@ -25,20 +28,12 @@ const getWinners = async (params: QueryParams | WinnersQueryParams) => {
   return res;
 };
 
-const generateCarLayout = (item: Car | WinnerType) => {
-  const car = item as Car;
-  const template = document.querySelector(
-    '#carTemplate'
-  ) as HTMLTemplateElement;
-  const element = template.content.cloneNode(true) as HTMLElement;
-  const title = element.querySelector('.car__title');
-  if (title) {
-    title.textContent = car.name;
-  }
-  return element;
+const generateCarLayout = (item: CarType | WinnerType) => {
+  const car = item as CarType;
+  return new Car(car).element as HTMLElement;
 };
 
-const generateWinnerLayout = (item: Car | WinnerType) => {
+const generateWinnerLayout = (item: CarType | WinnerType) => {
   const winner = item as WinnerType;
   const template = document.querySelector(
     '#winnerTemplate'

@@ -1,5 +1,5 @@
 import {
-  Car,
+  CarType,
   QueryParams,
   WinnerType,
   WinnersQueryParams,
@@ -8,8 +8,8 @@ import {
 export class Section {
   getItems: (
     params: QueryParams | WinnersQueryParams
-  ) => Promise<{ items: Array<Car | WinnerType>; totalQty: string }>;
-  generateItem: (item: Car | WinnerType) => HTMLElement;
+  ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>;
+  generateItem: (item: CarType | WinnerType) => HTMLElement;
   container: HTMLDivElement;
   queryParams: QueryParams | WinnersQueryParams;
   itemsPerPage: number;
@@ -19,13 +19,15 @@ export class Section {
   curPage: number;
   pagesQty: number;
   totalItemsQty: number;
-  items: Array<Car | WinnerType>;
+  items: Array<CarType | WinnerType>;
+  nextPageBtn: HTMLButtonElement;
+  prevPageBtn: HTMLButtonElement;
 
   constructor(
     getItems: (
       params: QueryParams | WinnersQueryParams
-    ) => Promise<{ items: Array<Car | WinnerType>; totalQty: string }>,
-    generateItem: (item: Car | WinnerType) => HTMLElement
+    ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>,
+    generateItem: (item: CarType | WinnerType) => HTMLElement
   ) {
     this.getItems = getItems;
     this.items = [];
@@ -37,10 +39,7 @@ export class Section {
     this.curPage = 1;
     this.pagesQty = 1;
     this.totalItemsQty = 0;
-    this.queryParams = {
-      _page: this.curPage,
-      _limit: this.itemsPerPage,
-    };
+
     this.curPageNumField = document.querySelector(
       '.section__page-num'
     ) as HTMLElement;
@@ -50,9 +49,26 @@ export class Section {
     this.itemsQtyField = document.querySelector(
       '.section__items-qty'
     ) as HTMLElement;
+    this.queryParams = {
+      _page: this.curPage,
+      _limit: this.itemsPerPage,
+    };
+    this.prevPageBtn = document.querySelector(
+      '.section__prev-btn'
+    ) as HTMLButtonElement;
+    this.nextPageBtn = document.querySelector(
+      '.section__next-btn'
+    ) as HTMLButtonElement;
 
     this.initiate();
   }
+
+  updateQueryParams = () => {
+    this.queryParams = {
+      _page: this.curPage,
+      _limit: this.itemsPerPage,
+    };
+  };
 
   fetchItemsList = async () => {
     this.container.innerHTML = '';
@@ -64,7 +80,7 @@ export class Section {
     this.renderPage();
   };
   renderItems = async () => {
-    this.items.forEach((e: Car | WinnerType) => {
+    this.items.forEach((e: CarType | WinnerType) => {
       const item = this.generateItem(e);
       this.container.append(item);
     });
@@ -82,7 +98,21 @@ export class Section {
   };
 
   setListeners = () => {
-    return;
+    this.nextPageBtn.addEventListener('click', this.incPage);
+    this.prevPageBtn.addEventListener('click', this.decPage);
+    this.updateQueryParams();
+  };
+
+  incPage = () => {
+    this.curPage < this.pagesQty ? (this.curPage += 1) : this.curPage;
+    this.updateQueryParams();
+    this.fetchItemsList();
+  };
+
+  decPage = () => {
+    this.curPage > 1 ? (this.curPage -= 1) : this.curPage;
+    this.updateQueryParams();
+    this.fetchItemsList();
   };
 
   initiate = () => {

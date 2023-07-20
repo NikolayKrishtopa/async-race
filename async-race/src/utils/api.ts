@@ -1,6 +1,6 @@
 import { BASE_URL, ENDPOINTS } from './urlConstants';
 import {
-  Car,
+  CarType,
   ENGINE_STATUS,
   OrderType,
   QueryParams,
@@ -26,33 +26,33 @@ const carsApi = {
     }
   },
 
-  async getCars(params: QueryParams = { _page: 1, _limit: 600 }) {
+  async getCarTypes(params: QueryParams = { _page: 1, _limit: 600 }) {
     const paramsFormated = new URLSearchParams({
       _page: params._page.toString(),
       _limit: params._limit.toString(),
     });
     const endpoint = `${ENDPOINTS.GARAGE}?${paramsFormated}`;
     const res = await this.helper(endpoint, REQUEST_TYPES.GET);
-    const items = res?.payload as Array<Car>;
+    const items = res?.payload as Array<CarType>;
     const totalQty = res?.totalQty as string;
     return { items, totalQty };
   },
 
-  async getCar(id: number) {
+  async getCarType(id: number) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.GET);
   },
 
-  async createCar(payload: object) {
+  async createCarType(payload: object) {
     return this.helper(ENDPOINTS.GARAGE, REQUEST_TYPES.POST, payload);
   },
 
-  async deleteCar(id: number) {
+  async deleteCarType(id: number) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.DELETE);
   },
 
-  async updateCar(id: number, payload: object) {
+  async updateCarType(id: number, payload: object) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.PUT, payload);
   },

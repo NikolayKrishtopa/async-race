@@ -1,9 +1,9 @@
-import { Car } from '../types/models';
+import { CarType } from '../types/models';
 
 // The json with cars was taken from the following repository
 // https://github.com/blanzh/carsBase
 
-const CARS: Array<Car> = [
+const CARS: Array<CarType> = [
   {
     id: 'AC',
     name: 'AC',

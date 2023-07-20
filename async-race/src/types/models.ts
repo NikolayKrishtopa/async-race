@@ -7,7 +7,7 @@ export interface CarModel {
   yearTo: number | null;
 }
 
-export interface Car {
+export interface CarType {
   id: string;
   name: string;
   cyrillicName: string;

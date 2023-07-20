@@ -25,24 +25,30 @@
         <h2 class="section__title">
           Garage(<span class="section__items-qty">104</span>)
         </h2>
-        <p class="section__page">
-          Page <span class="section__page-num">1</span> of
-          <span class="section__page-qty">1</span>
-        </p>
+        <div class="section__row">
+          <p class="section__page">
+            Page <span class="section__page-num">1</span> of
+            <span class="section__page-qty">1</span>
+          </p>
+          <div class="section__pagination">
+            <button class="btn section__prev-btn">prev</button>
+            <button class="btn section__next-btn">next</button>
+          </div>
+        </div>
         <div class="section__content"></div>
       </div>
     </main>
     <template id="carTemplate">
       <div class="car">
         <div class="car__heading">
-          <button class="btn">edit</button>
-          <button class="btn">remove</button>
+          <button class="btn car__edit-btn">edit</button>
+          <button class="btn car__remove-btn">remove</button>
           <h3 class="car__title">Tesla model s</h3>
         </div>
         <div class="car__main">
           <div class="car__nav">
-            <button class="car__btn car__btn_type_start">A</button>
-            <button class="car__btn car__btn_type_stop">B</button>
+            <button class="car__btn car__start-btn">A</button>
+            <button class="car__btn car__stop-btn">B</button>
           </div>
           <div class="car__track">
             <div class="car__car"></div>
