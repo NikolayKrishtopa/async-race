@@ -6,17 +6,16 @@ import { CarType, WinnerType } from '../types/models';
 import Garage from '../components/Garage';
 import Winners from '../components/Winners';
 
-const generateCarLayout = (item: CarType | WinnerType) => {
-  const car = item as CarType;
-  return new Car(car).element as HTMLElement;
-};
-
-const generateWinnerLayout = (item: CarType | WinnerType) => {
-  const winner = item as WinnerType;
-  const template = document.querySelector(
-    '#winnerTemplate'
-  ) as HTMLTemplateElement;
-  const element = template.content.cloneNode(true) as HTMLElement;
+const generateWinnerLayout = (winner: WinnerType) => {
+  const element = document.createElement('div');
+  element.classList.add('winner');
+  element.innerHTML = `
+   <p class="winner__text winner__text_type_number"></p>
+        <!-- <img src="#" alt="car icon" class="winner__icon" /> -->
+        <p class="winner__text winner__text_type_name"></p>
+        <p class="winner__text winner__text_type_wins"></p>
+        <p class="winner__text winner__text_type_best-time"></p>
+  `;
   const number = element.querySelector('.winner__text_type_number');
   const wins = element.querySelector('.winner__text_type_wins');
   const bestTime = element.querySelector('.winner__text_type_best-time');
@@ -32,7 +31,7 @@ const app = new App(
   () =>
     new Garage(
       carsApi.getCars,
-      generateCarLayout,
+      (car: CarType) => new Car(car).element as HTMLElement,
       carsApi.createCar,
       carsApi.deleteCar,
       carsApi.editCar

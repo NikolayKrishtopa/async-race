@@ -1,4 +1,5 @@
 import { CarType } from '../types/models';
+import flagImg from '../assets/img/flag_finish_fill.svg';
 
 export default class Car {
   element: HTMLElement | null;
@@ -18,22 +19,42 @@ export default class Car {
     this.removeBtn = this.element.querySelector('.car__remove-btn');
     this.carPict = this.element.querySelector('.car__car');
     this.initiate();
-    console.log(this.carData);
   }
 
   createLayout = () => {
-    const template = document.querySelector(
-      '#carTemplate'
-    ) as HTMLTemplateElement;
-    const element = template.content.cloneNode(true) as HTMLElement;
+    const element = document.createElement('div');
+    element.classList.add('car');
+    element.innerHTML = `
+    <div class="car__heading">
+          <button class="btn car__edit-btn">edit</button>
+          <button class="btn car__remove-btn">remove</button>
+          <h3 class="car__title">Tesla model s</h3>
+        </div>
+        <div class="car__main">
+          <div class="car__nav">
+            <button class="car__btn car__start-btn">A</button>
+            <button class="car__btn car__stop-btn">B</button>
+          </div>
+          <div class="car__track">
+            <div class="car__car"></div>
+            <img
+              src="./assets/img/flag_finish_fill.svg"
+              alt="finish flag"
+              class="car__finish-flag"
+            />
+          </div>
+        </div>
+    `;
+    const img = element.querySelector('.car__finish-flag');
+    if (img instanceof HTMLImageElement) {
+      img.src = flagImg;
+    }
     const title = element.querySelector('.car__title');
     if (title) {
       title.textContent = this.carData.name;
     }
     this.carPict = element.querySelector('.car__car');
     if (this.carPict) {
-      console.log(this.carPict.style.backgroundColor);
-
       this.carPict.style.backgroundColor = this.carData.color;
     }
     return element;
