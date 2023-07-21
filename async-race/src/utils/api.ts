@@ -26,7 +26,7 @@ const carsApi = {
     }
   },
 
-  async getCarTypes(params: QueryParams = { _page: 1, _limit: 600 }) {
+  async getCars(params: QueryParams = { _page: 1, _limit: 600 }) {
     const paramsFormated = new URLSearchParams({
       _page: params._page.toString(),
       _limit: params._limit.toString(),
@@ -38,21 +38,21 @@ const carsApi = {
     return { items, totalQty };
   },
 
-  async getCarType(id: number) {
+  async getCar(id: number) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.GET);
   },
 
-  async createCarType(payload: object) {
+  async createCar(payload: object) {
     return this.helper(ENDPOINTS.GARAGE, REQUEST_TYPES.POST, payload);
   },
 
-  async deleteCarType(id: number) {
+  async deleteCar(id: number) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.DELETE);
   },
 
-  async updateCarType(id: number, payload: object) {
+  async updateCar(id: number, payload: object) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.PUT, payload);
   },

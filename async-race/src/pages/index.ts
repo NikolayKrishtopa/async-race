@@ -11,9 +11,11 @@ import {
   WinnerType,
   WinnersQueryParams,
 } from '../types/models';
+import Garage from '../components/Garage';
+import Winners from '../components/Winners';
 
 const getCars = async (params: QueryParams) => {
-  const res: { items: CarType[]; totalQty: string } = await carsApi.getCarTypes(
+  const res: { items: CarType[]; totalQty: string } = await carsApi.getCars(
     params
   );
 
@@ -40,7 +42,6 @@ const generateWinnerLayout = (item: CarType | WinnerType) => {
   ) as HTMLTemplateElement;
   const element = template.content.cloneNode(true) as HTMLElement;
   const number = element.querySelector('.winner__text_type_number');
-  // const name = element.querySelector('.winner__text_type_name');
   const wins = element.querySelector('.winner__text_type_wins');
   const bestTime = element.querySelector('.winner__text_type_best-time');
   if (number && wins && bestTime && winner.id) {
@@ -51,9 +52,33 @@ const generateWinnerLayout = (item: CarType | WinnerType) => {
   return element;
 };
 
+const createWinner = async (item: CarType | WinnerType) => {
+  const winner = item as WinnerType;
+  const res = (await carsApi.createWinner(winner))?.payload as WinnerType;
+  return res;
+};
+
+const createCar = async (item: CarType | WinnerType) => {
+  const car = item as CarType;
+  const res = (await carsApi.createCar(car))?.payload as CarType;
+  return res;
+};
+
+const deleteWinner = async (id: number) => {
+  const res = (await carsApi.deleteWinner(id))?.payload as WinnerType;
+  return res;
+  return res;
+};
+
+const deleteCar = async (id: number) => {
+  const res = (await carsApi.deleteCar(id))?.payload as CarType;
+  return res;
+};
+
 const app = new App(
-  () => new Section(getCars, generateCarLayout),
-  () => new Section(getWinners, generateWinnerLayout)
+  () => new Garage(getCars, generateCarLayout, createCar, deleteCar),
+  () =>
+    new Winners(getWinners, generateWinnerLayout, createWinner, deleteWinner)
 );
 
 export default app;

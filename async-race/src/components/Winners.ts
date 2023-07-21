@@ -7,7 +7,7 @@ import {
 
 import { Section } from './Section';
 
-export default class Garage extends Section {
+export default class Winners extends Section {
   constructor(
     getItems: (
       params: QueryParams | WinnersQueryParams

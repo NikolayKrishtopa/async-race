@@ -23,13 +23,19 @@ export class Section {
   nextPageBtn: HTMLButtonElement | null;
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
+  createItem: (item: CarType | WinnerType) => Promise<CarType | WinnerType>;
+  fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>;
 
   constructor(
     getItems: (
       params: QueryParams | WinnersQueryParams
     ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>,
-    generateItem: (item: CarType | WinnerType) => HTMLElement
+    generateItem: (item: CarType | WinnerType) => HTMLElement,
+    createItem: (item: CarType | WinnerType) => Promise<CarType | WinnerType>,
+    fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>
   ) {
+    this.createItem = createItem;
+    this.fetchDeleteItem = fetchDeleteItem;
     this.mainContainer = document.querySelector('.section') as HTMLDivElement;
     this.prevPageBtn = null;
     this.nextPageBtn = null;
