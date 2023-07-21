@@ -14,8 +14,12 @@ export default class Winners extends Section {
     ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>,
     generateItem: (item: CarType | WinnerType) => HTMLElement,
     createItem: (item: CarType | WinnerType) => Promise<CarType | WinnerType>,
-    fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>
+    fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>,
+    fetchEditItem: (
+      id: number,
+      payload: CarType | WinnerType
+    ) => Promise<CarType | WinnerType>
   ) {
-    super(getItems, generateItem, createItem, fetchDeleteItem);
+    super(getItems, generateItem, createItem, fetchDeleteItem, fetchEditItem);
   }
 }

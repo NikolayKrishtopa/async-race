@@ -75,10 +75,28 @@ const deleteCar = async (id: number) => {
   return res;
 };
 
+const editWinner = async (id: number, payload: CarType | WinnerType) => {
+  const winner = payload as WinnerType;
+  const res = (await carsApi.editWinner(id, winner))?.payload as WinnerType;
+  return res;
+};
+
+const editCar = async (id: number, payload: CarType | WinnerType) => {
+  const car = payload as CarType;
+  const res = (await carsApi.editCar(id, car))?.payload as CarType;
+  return res;
+};
+
 const app = new App(
-  () => new Garage(getCars, generateCarLayout, createCar, deleteCar),
+  () => new Garage(getCars, generateCarLayout, createCar, deleteCar, editCar),
   () =>
-    new Winners(getWinners, generateWinnerLayout, createWinner, deleteWinner)
+    new Winners(
+      getWinners,
+      generateWinnerLayout,
+      createWinner,
+      deleteWinner,
+      editWinner
+    )
 );
 
 export default app;

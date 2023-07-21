@@ -52,7 +52,7 @@ const carsApi = {
     return this.helper(endpoint, REQUEST_TYPES.DELETE);
   },
 
-  async updateCar(id: number, payload: object) {
+  async editCar(id: number, payload: object) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     return this.helper(endpoint, REQUEST_TYPES.PUT, payload);
   },
