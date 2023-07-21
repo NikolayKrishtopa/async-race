@@ -31,7 +31,7 @@ const carsApi = {
       _limit: params._limit.toString(),
     });
     const endpoint = `${ENDPOINTS.GARAGE}?${paramsFormated}`;
-    const res = await this.helper(endpoint, REQUEST_TYPES.GET);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
     const items = res?.payload as Array<CarType>;
     const totalQty = res?.totalQty as string;
     return { items, totalQty };
@@ -39,21 +39,29 @@ const carsApi = {
 
   async getCar(id: number) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
-    return this.helper(endpoint, REQUEST_TYPES.GET);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
+    return res?.payload;
   },
 
   async createCar(payload: object) {
-    return this.helper(ENDPOINTS.GARAGE, REQUEST_TYPES.POST, payload);
+    const res = await carsApi.helper(
+      ENDPOINTS.GARAGE,
+      REQUEST_TYPES.POST,
+      payload
+    );
+    return res?.payload;
   },
 
   async deleteCar(id: number) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
-    return this.helper(endpoint, REQUEST_TYPES.DELETE);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.DELETE);
+    if (res) return res.payload;
   },
 
   async editCar(id: number, payload: object) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
-    return this.helper(endpoint, REQUEST_TYPES.PUT, payload);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.PUT, payload);
+    return res?.payload;
   },
 
   async changeEngineStatus(id: number, status: ENGINE_STATUS) {
@@ -62,19 +70,20 @@ const carsApi = {
       status,
     });
     const endpoint = `${ENDPOINTS.ENGINE}?${params}`;
-    return this.helper(endpoint, REQUEST_TYPES.PATCH);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.PATCH);
+    return res?.payload;
   },
 
   async startEngine(id: number) {
-    return this.changeEngineStatus(id, ENGINE_STATUS.STARTED);
+    return carsApi.changeEngineStatus(id, ENGINE_STATUS.STARTED);
   },
 
   async stopEngine(id: number) {
-    return this.changeEngineStatus(id, ENGINE_STATUS.STOPPED);
+    return carsApi.changeEngineStatus(id, ENGINE_STATUS.STOPPED);
   },
 
   async drive(id: number) {
-    return this.changeEngineStatus(id, ENGINE_STATUS.DRIVE);
+    return carsApi.changeEngineStatus(id, ENGINE_STATUS.DRIVE);
   },
 
   async getWinners(
@@ -92,7 +101,7 @@ const carsApi = {
       _order: params._order || '',
     });
     const endpoint = `${ENDPOINTS.WINNERS}?${paramsFormated}`;
-    const res = await this.helper(endpoint, REQUEST_TYPES.GET);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
     const items = res?.payload as Array<WinnerType>;
     const totalQty = res?.totalQty as string;
     return { items, totalQty };
@@ -100,21 +109,29 @@ const carsApi = {
 
   async getWinner(id: number) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
-    return this.helper(endpoint, REQUEST_TYPES.GET);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
+    return res?.payload;
   },
 
   async createWinner(payload: WinnerType) {
-    return this.helper(ENDPOINTS.WINNERS, REQUEST_TYPES.POST, payload);
+    const res = await carsApi.helper(
+      ENDPOINTS.WINNERS,
+      REQUEST_TYPES.POST,
+      payload
+    );
+    return res?.payload;
   },
 
   async deleteWinner(id: number) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
-    return this.helper(endpoint, REQUEST_TYPES.DELETE);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.DELETE);
+    if (res) return res.payload;
   },
 
   async editWinner(id: number, payload: WinnerType) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
-    return this.helper(endpoint, REQUEST_TYPES.POST, payload);
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.POST, payload);
+    return res?.payload;
   },
 };
 
