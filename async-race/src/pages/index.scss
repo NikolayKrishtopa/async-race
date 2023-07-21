@@ -56,6 +56,10 @@
 .btn {
   @include button;
 }
+.btn_inactive {
+  pointer-events: none;
+  background-color: rgb(186, 186, 186);
+}
 .control__btns {
   display: flex;
   width: 100%;

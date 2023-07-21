@@ -1,17 +1,23 @@
+import { Section } from './Section';
+
 class App {
   container: HTMLElement;
   mode: 'garage' | 'winners';
   garageBtn: HTMLButtonElement | null;
   winnersBtn: HTMLButtonElement | null;
-  createGarage: () => object;
-  createWinners: () => object;
+  createGarage: () => Section;
+  createWinners: () => Section;
   content: HTMLElement;
+  garage: Section | null;
+  winners: Section | null;
 
-  constructor(createGarage: () => object, createWinners: () => object) {
+  constructor(createGarage: () => Section, createWinners: () => Section) {
     this.container = document.querySelector('.root') as HTMLElement;
     this.mode = 'garage';
     this.garageBtn = null;
     this.winnersBtn = null;
+    this.garage = null;
+    this.winners = null;
     this.createGarage = createGarage;
     this.createWinners = createWinners;
     this.content = document.querySelector('.main') as HTMLElement;
@@ -51,24 +57,19 @@ class App {
   renderContent = () => {
     // this.content.innerHTML = '';
     if (this.mode === 'garage') {
-      this.createGarage();
+      if (!this.garage) {
+        this.garage = this.createGarage();
+      } else {
+        this.garage.renderPage();
+      }
     } else if (this.mode === 'winners') {
-      this.createWinners();
+      if (!this.winners) {
+        this.winners = this.createWinners();
+      } else {
+        this.winners.renderPage();
+      }
     }
   };
-
-  // renderContent = () => {
-  //   switch (this.mode) {
-  //     case 'garage':
-  //       this.renderGarage();
-  //       break;
-  //     case 'winners':
-  //       this.renderWinners();
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
 
   setMode = (mode: typeof this.mode) => {
     this.mode = mode;
