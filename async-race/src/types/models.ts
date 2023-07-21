@@ -44,11 +44,8 @@ export enum OrderType {
 export interface QueryParams {
   _page: number;
   _limit: number;
-}
-
-export interface WinnersQueryParams extends QueryParams {
-  _sort: SortBy;
-  _order: OrderType;
+  _sort?: SortBy;
+  _order?: OrderType;
 }
 
 export type WinnerType = {
@@ -56,3 +53,26 @@ export type WinnerType = {
   time: number;
   wins: number;
 };
+
+export default interface ISection<T> {
+  getItems: (
+    params: QueryParams
+  ) => Promise<{ items: Array<T>; totalQty: string }>;
+  generateItem: (item: T) => HTMLElement;
+  itemsContainer: HTMLDivElement | null;
+  queryParams: QueryParams;
+  itemsPerPage: number;
+  curPageNumField: HTMLElement | null;
+  pagesQtyField: HTMLElement | null;
+  itemsQtyField: HTMLElement | null;
+  curPage: number;
+  pagesQty: number;
+  totalItemsQty: number;
+  items: Array<T>;
+  nextPageBtn: HTMLButtonElement | null;
+  prevPageBtn: HTMLButtonElement | null;
+  mainContainer: HTMLDivElement;
+  createItem: (item: T) => Promise<T>;
+  fetchDeleteItem: (id: number) => Promise<T>;
+  fetchEditItem: (id: number, payload: T) => Promise<T>;
+}

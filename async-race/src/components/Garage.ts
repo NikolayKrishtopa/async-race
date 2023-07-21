@@ -1,24 +1,16 @@
-import {
-  CarType,
-  QueryParams,
-  WinnerType,
-  WinnersQueryParams,
-} from '../types/models';
+import { CarType, QueryParams } from '../types/models';
 
 import { Section } from './Section';
 
-export default class Garage extends Section {
+export default class Garage extends Section<CarType> {
   constructor(
     getItems: (
-      params: QueryParams | WinnersQueryParams
-    ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>,
-    generateItem: (item: CarType | WinnerType) => HTMLElement,
-    createItem: (item: CarType | WinnerType) => Promise<CarType | WinnerType>,
-    fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>,
-    fetchEditItem: (
-      id: number,
-      payload: CarType | WinnerType
-    ) => Promise<CarType | WinnerType>
+      params: QueryParams | QueryParams
+    ) => Promise<{ items: Array<CarType>; totalQty: string }>,
+    generateItem: (item: CarType) => HTMLElement,
+    createItem: (item: CarType) => Promise<CarType>,
+    fetchDeleteItem: (id: number) => Promise<CarType>,
+    fetchEditItem: (id: number, payload: CarType) => Promise<CarType>
   ) {
     super(getItems, generateItem, createItem, fetchDeleteItem, fetchEditItem);
   }

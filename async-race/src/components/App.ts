@@ -1,3 +1,4 @@
+import { CarType, WinnerType } from '../types/models';
 import { Section } from './Section';
 
 class App {
@@ -5,13 +6,16 @@ class App {
   mode: 'garage' | 'winners';
   garageBtn: HTMLButtonElement | null;
   winnersBtn: HTMLButtonElement | null;
-  createGarage: () => Section;
-  createWinners: () => Section;
+  createGarage: () => Section<CarType>;
+  createWinners: () => Section<WinnerType>;
   content: HTMLElement;
-  garage: Section | null;
-  winners: Section | null;
+  garage: Section<CarType> | null;
+  winners: Section<WinnerType> | null;
 
-  constructor(createGarage: () => Section, createWinners: () => Section) {
+  constructor(
+    createGarage: () => Section<CarType>,
+    createWinners: () => Section<WinnerType>
+  ) {
     this.container = document.querySelector('.root') as HTMLElement;
     this.mode = 'garage';
     this.garageBtn = null;

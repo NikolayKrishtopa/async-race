@@ -7,7 +7,6 @@ import {
   REQUEST_TYPES,
   SortBy,
   WinnerType,
-  WinnersQueryParams,
 } from '../types/models';
 
 const carsApi = {
@@ -79,7 +78,7 @@ const carsApi = {
   },
 
   async getWinners(
-    params: WinnersQueryParams = {
+    params: QueryParams = {
       _page: 1,
       _limit: 7,
       _sort: SortBy.time,
@@ -89,8 +88,8 @@ const carsApi = {
     const paramsFormated = new URLSearchParams({
       _page: params._page.toString(),
       _limit: params._limit.toString(),
-      _sort: params._sort,
-      _order: params._order,
+      _sort: params._sort || '',
+      _order: params._order || '',
     });
     const endpoint = `${ENDPOINTS.WINNERS}?${paramsFormated}`;
     const res = await this.helper(endpoint, REQUEST_TYPES.GET);

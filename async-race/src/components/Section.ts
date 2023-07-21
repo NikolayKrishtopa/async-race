@@ -1,17 +1,12 @@
-import {
-  CarType,
-  QueryParams,
-  WinnerType,
-  WinnersQueryParams,
-} from '../types/models';
+import ISection, { QueryParams } from '../types/models';
 
-export class Section {
+export class Section<T> implements ISection<T> {
   getItems: (
-    params: QueryParams | WinnersQueryParams
-  ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>;
-  generateItem: (item: CarType | WinnerType) => HTMLElement;
+    params: QueryParams
+  ) => Promise<{ items: Array<T>; totalQty: string }>;
+  generateItem: (item: T) => HTMLElement;
   itemsContainer: HTMLDivElement | null;
-  queryParams: QueryParams | WinnersQueryParams;
+  queryParams: QueryParams;
   itemsPerPage: number;
   curPageNumField: HTMLElement | null;
   pagesQtyField: HTMLElement | null;
@@ -19,28 +14,21 @@ export class Section {
   curPage: number;
   pagesQty: number;
   totalItemsQty: number;
-  items: Array<CarType | WinnerType>;
+  items: Array<T>;
   nextPageBtn: HTMLButtonElement | null;
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
-  createItem: (item: CarType | WinnerType) => Promise<CarType | WinnerType>;
-  fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>;
-  fetchEditItem: (
-    id: number,
-    payload: CarType | WinnerType
-  ) => Promise<CarType | WinnerType>;
-
+  createItem: (item: T) => Promise<T>;
+  fetchDeleteItem: (id: number) => Promise<T>;
+  fetchEditItem: (id: number, payload: T) => Promise<T>;
   constructor(
     getItems: (
-      params: QueryParams | WinnersQueryParams
-    ) => Promise<{ items: Array<CarType | WinnerType>; totalQty: string }>,
-    generateItem: (item: CarType | WinnerType) => HTMLElement,
-    createItem: (item: CarType | WinnerType) => Promise<CarType | WinnerType>,
-    fetchDeleteItem: (id: number) => Promise<CarType | WinnerType>,
-    fetchEditItem: (
-      id: number,
-      payload: CarType | WinnerType
-    ) => Promise<CarType | WinnerType>
+      params: QueryParams
+    ) => Promise<{ items: Array<T>; totalQty: string }>,
+    generateItem: (item: T) => HTMLElement,
+    createItem: (item: T) => Promise<T>,
+    fetchDeleteItem: (id: number) => Promise<T>,
+    fetchEditItem: (id: number, payload: T) => Promise<T>
   ) {
     this.createItem = createItem;
     this.fetchDeleteItem = fetchDeleteItem;
@@ -122,7 +110,7 @@ export class Section {
   renderItems = async () => {
     if (!this.itemsContainer) return;
     this.itemsContainer.innerHTML = '';
-    this.items.forEach((e: CarType | WinnerType) => {
+    this.items.forEach((e: T) => {
       const item = this.generateItem(e);
       if (!this.itemsContainer) return;
       this.itemsContainer.append(item);

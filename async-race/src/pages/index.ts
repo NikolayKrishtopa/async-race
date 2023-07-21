@@ -4,13 +4,7 @@ import Car from '../components/Car';
 // import generateCarName from '../utils/generateCarName';
 // import getRandomColor from '../utils/getRandomColor';
 import carsApi from '../utils/api';
-import { Section } from '../components/Section';
-import {
-  CarType,
-  QueryParams,
-  WinnerType,
-  WinnersQueryParams,
-} from '../types/models';
+import { CarType, WinnerType, QueryParams } from '../types/models';
 import Garage from '../components/Garage';
 import Winners from '../components/Winners';
 
@@ -22,10 +16,9 @@ const getCars = async (params: QueryParams) => {
   return res;
 };
 
-const getWinners = async (params: QueryParams | WinnersQueryParams) => {
-  const paramsCast = params as WinnersQueryParams;
+const getWinners = async (params: QueryParams) => {
   const res: { items: WinnerType[]; totalQty: string } =
-    await carsApi.getWinners(paramsCast);
+    await carsApi.getWinners(params);
 
   return res;
 };
@@ -88,7 +81,14 @@ const editCar = async (id: number, payload: CarType | WinnerType) => {
 };
 
 const app = new App(
-  () => new Garage(getCars, generateCarLayout, createCar, deleteCar, editCar),
+  () =>
+    new Garage(
+      carsApi.getCars,
+      generateCarLayout,
+      createCar,
+      deleteCar,
+      editCar
+    ),
   () =>
     new Winners(
       getWinners,
