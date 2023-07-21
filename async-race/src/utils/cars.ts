@@ -1,15 +1,15 @@
-import { CarType } from '../types/models';
+import { CarTypeData } from '../types/models';
 
 // The json with cars was taken from the following repository
 // https://github.com/blanzh/carsBase
 
-const CARS: Array<CarType> = [
+const CARS: Array<CarTypeData> = [
   {
     id: 'AC',
     name: 'AC',
     cyrillicName: 'АС',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '378_GT',
@@ -50,7 +50,7 @@ const CARS: Array<CarType> = [
     name: 'Acura',
     cyrillicName: 'Акура',
     popular: false,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: 'CL',
@@ -195,7 +195,7 @@ const CARS: Array<CarType> = [
     name: 'Adler',
     cyrillicName: 'Адлер',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'DIPLOMAT',
@@ -220,7 +220,7 @@ const CARS: Array<CarType> = [
     name: 'GAC Aion',
     cyrillicName: 'ГАК Аион',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'LX',
@@ -277,7 +277,7 @@ const CARS: Array<CarType> = [
     name: 'Aito',
     cyrillicName: 'Аито',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'M5',
@@ -302,7 +302,7 @@ const CARS: Array<CarType> = [
     name: 'Alfa Romeo',
     cyrillicName: 'Альфа Ромео',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: '105_115',
@@ -599,7 +599,7 @@ const CARS: Array<CarType> = [
     name: 'Alpina',
     cyrillicName: 'Альпина',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'B10',
@@ -768,7 +768,7 @@ const CARS: Array<CarType> = [
     name: 'Alpine',
     cyrillicName: 'Альпин',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'A110',
@@ -809,7 +809,7 @@ const CARS: Array<CarType> = [
     name: 'AMC',
     cyrillicName: 'АМС',
     popular: false,
-    country: 'Северная Америка',
+    color: '', country: 'Северная Америка',
     models: [
       {
         id: 'EAGLE',
@@ -858,7 +858,7 @@ const CARS: Array<CarType> = [
     name: 'AM General',
     cyrillicName: 'АМ Дженерал',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'HUMVEE',
@@ -875,7 +875,7 @@ const CARS: Array<CarType> = [
     name: 'Apal',
     cyrillicName: 'Апал',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '21541',
@@ -892,7 +892,7 @@ const CARS: Array<CarType> = [
     name: 'Arcfox',
     cyrillicName: 'Аркфокс',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ALPHA_S',
@@ -917,7 +917,7 @@ const CARS: Array<CarType> = [
     name: 'Ariel',
     cyrillicName: 'Ариэль',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'ATOM',
@@ -942,7 +942,7 @@ const CARS: Array<CarType> = [
     name: 'Aro',
     cyrillicName: 'Аро',
     popular: false,
-    country: 'Румыния',
+    color: '', country: 'Румыния',
     models: [
       {
         id: '10',
@@ -967,7 +967,7 @@ const CARS: Array<CarType> = [
     name: 'Asia',
     cyrillicName: 'Эйша',
     popular: false,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'RETONA',
@@ -1008,7 +1008,7 @@ const CARS: Array<CarType> = [
     name: 'Aston Martin',
     cyrillicName: 'Астон Мартин',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'BULLDOG',
@@ -1185,7 +1185,7 @@ const CARS: Array<CarType> = [
     name: 'Auburn',
     cyrillicName: 'Оберн',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'SPEEDSTER',
@@ -1202,7 +1202,7 @@ const CARS: Array<CarType> = [
     name: 'Audi',
     cyrillicName: 'Ауди',
     popular: true,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '100',
@@ -1771,7 +1771,7 @@ const CARS: Array<CarType> = [
     name: 'Aurus',
     cyrillicName: 'Аурус',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'KOMENDANT',
@@ -1796,7 +1796,7 @@ const CARS: Array<CarType> = [
     name: 'Austin',
     cyrillicName: 'Остин',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'ALLEGRO',
@@ -1893,7 +1893,7 @@ const CARS: Array<CarType> = [
     name: 'Austin Healey',
     cyrillicName: 'Остин Хэйли',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '100',
@@ -1918,7 +1918,7 @@ const CARS: Array<CarType> = [
     name: 'Autobianchi',
     cyrillicName: 'Аутобьянки',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'A_112',
@@ -1935,7 +1935,7 @@ const CARS: Array<CarType> = [
     name: 'Auto Union',
     cyrillicName: 'Авто Юнион',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '1000_SP',
@@ -1952,7 +1952,7 @@ const CARS: Array<CarType> = [
     name: 'Avatr',
     cyrillicName: 'Аватр',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '11',
@@ -1969,7 +1969,7 @@ const CARS: Array<CarType> = [
     name: 'Автокам',
     cyrillicName: 'Автокам',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '2160',
@@ -2002,7 +2002,7 @@ const CARS: Array<CarType> = [
     name: 'BAIC',
     cyrillicName: 'БАИК',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'A1',
@@ -2203,7 +2203,7 @@ const CARS: Array<CarType> = [
     name: 'Bajaj',
     cyrillicName: 'Баджадж',
     popular: false,
-    country: 'Индия',
+    color: '', country: 'Индия',
     models: [
       {
         id: 'QUTE',
@@ -2220,7 +2220,7 @@ const CARS: Array<CarType> = [
     name: 'Baltijas Dzips',
     cyrillicName: 'Балтиас Джипс',
     popular: false,
-    country: 'Латвия',
+    color: '', country: 'Латвия',
     models: [
       {
         id: 'BD_1322',
@@ -2237,7 +2237,7 @@ const CARS: Array<CarType> = [
     name: 'Baojun',
     cyrillicName: 'Баоджун',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'E300',
@@ -2262,7 +2262,7 @@ const CARS: Array<CarType> = [
     name: 'Batmobile',
     cyrillicName: 'Бэтмобиль',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '1989',
@@ -2287,7 +2287,7 @@ const CARS: Array<CarType> = [
     name: 'Bentley',
     cyrillicName: 'Бентли',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'ARNAGE',
@@ -2416,7 +2416,7 @@ const CARS: Array<CarType> = [
     name: 'Bertone',
     cyrillicName: 'Бертоне',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'FREECLIMBER',
@@ -2433,7 +2433,7 @@ const CARS: Array<CarType> = [
     name: 'Bilenkin',
     cyrillicName: 'Биленкин',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'VINTAGE',
@@ -2450,7 +2450,7 @@ const CARS: Array<CarType> = [
     name: 'Bio auto',
     cyrillicName: 'Био авто',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'EVA_4',
@@ -2467,7 +2467,7 @@ const CARS: Array<CarType> = [
     name: 'Bitter',
     cyrillicName: 'Биттер',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'CD',
@@ -2492,7 +2492,7 @@ const CARS: Array<CarType> = [
     name: 'Blaval',
     cyrillicName: 'блавал',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'FH_EQ',
@@ -2509,7 +2509,7 @@ const CARS: Array<CarType> = [
     name: 'BMW',
     cyrillicName: 'БМВ',
     popular: true,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '02',
@@ -3014,7 +3014,7 @@ const CARS: Array<CarType> = [
     name: 'Borgward',
     cyrillicName: 'Боргвард',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '2000',
@@ -3039,7 +3039,7 @@ const CARS: Array<CarType> = [
     name: 'Brabus',
     cyrillicName: 'Брабус',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '73_S',
@@ -3088,7 +3088,7 @@ const CARS: Array<CarType> = [
     name: 'Brilliance',
     cyrillicName: 'Бриллианс',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'FRV_BS2',
@@ -3161,7 +3161,7 @@ const CARS: Array<CarType> = [
     name: 'Bristol',
     cyrillicName: 'Бристоль',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'BLENHEIM',
@@ -3194,7 +3194,7 @@ const CARS: Array<CarType> = [
     name: 'Bufori',
     cyrillicName: 'Буфори',
     popular: false,
-    country: 'Малайзия',
+    color: '', country: 'Малайзия',
     models: [
       {
         id: 'GENEVA',
@@ -3219,7 +3219,7 @@ const CARS: Array<CarType> = [
     name: 'Bugatti',
     cyrillicName: 'Бугатти',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'CHIRON',
@@ -3276,7 +3276,7 @@ const CARS: Array<CarType> = [
     name: 'Buick',
     cyrillicName: 'Бьюик',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'CASCADA',
@@ -3541,7 +3541,7 @@ const CARS: Array<CarType> = [
     name: 'BYD',
     cyrillicName: 'БИД',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'DESTROYER_05',
@@ -3782,7 +3782,7 @@ const CARS: Array<CarType> = [
     name: 'Byvin',
     cyrillicName: 'Бивин',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'BD_132J',
@@ -3807,7 +3807,7 @@ const CARS: Array<CarType> = [
     name: 'Cadillac',
     cyrillicName: 'Кадиллак',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'ALLANTE',
@@ -4072,7 +4072,7 @@ const CARS: Array<CarType> = [
     name: 'Callaway',
     cyrillicName: 'Каллавей',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'C12',
@@ -4089,7 +4089,7 @@ const CARS: Array<CarType> = [
     name: 'Carbodies',
     cyrillicName: 'Карбодис',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'FX4',
@@ -4106,7 +4106,7 @@ const CARS: Array<CarType> = [
     name: 'Caterham',
     cyrillicName: 'Катерхем',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'C21',
@@ -4139,7 +4139,7 @@ const CARS: Array<CarType> = [
     name: 'Chana',
     cyrillicName: 'Чана',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'BENNI',
@@ -4164,7 +4164,7 @@ const CARS: Array<CarType> = [
     name: 'Changan',
     cyrillicName: 'Чанган',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ALSVIN',
@@ -4413,7 +4413,7 @@ const CARS: Array<CarType> = [
     name: 'ChangFeng',
     cyrillicName: 'Чанфэн',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'FLYING',
@@ -4446,7 +4446,7 @@ const CARS: Array<CarType> = [
     name: 'Changhe',
     cyrillicName: 'Чанхэ',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'IDEAL',
@@ -4463,7 +4463,7 @@ const CARS: Array<CarType> = [
     name: 'Chery',
     cyrillicName: 'Чери',
     popular: true,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'AMULET',
@@ -4792,7 +4792,7 @@ const CARS: Array<CarType> = [
     name: 'EXEED',
     cyrillicName: 'Эксид',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'LX',
@@ -4841,7 +4841,7 @@ const CARS: Array<CarType> = [
     name: 'Chevrolet',
     cyrillicName: 'Шевроле',
     popular: true,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '3000_SERIES',
@@ -5610,7 +5610,7 @@ const CARS: Array<CarType> = [
     name: 'Chrysler',
     cyrillicName: 'Крайслер',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '180',
@@ -5915,7 +5915,7 @@ const CARS: Array<CarType> = [
     name: 'Ciimo (DongFeng-Honda)',
     cyrillicName: 'Циимо',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'M_NV',
@@ -5940,7 +5940,7 @@ const CARS: Array<CarType> = [
     name: 'Citroen',
     cyrillicName: 'Ситроен',
     popular: true,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: '2CV',
@@ -6325,7 +6325,7 @@ const CARS: Array<CarType> = [
     name: 'Cizeta',
     cyrillicName: 'Чизета',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'V16T',
@@ -6342,7 +6342,7 @@ const CARS: Array<CarType> = [
     name: 'Coggiola',
     cyrillicName: 'Коджиола',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'T_REX',
@@ -6359,7 +6359,7 @@ const CARS: Array<CarType> = [
     name: 'Cord',
     cyrillicName: 'Корд',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'L_29',
@@ -6376,7 +6376,7 @@ const CARS: Array<CarType> = [
     name: 'Cupra',
     cyrillicName: 'Купра',
     popular: false,
-    country: 'Испания',
+    color: '', country: 'Испания',
     models: [
       {
         id: 'ATECA',
@@ -6417,7 +6417,7 @@ const CARS: Array<CarType> = [
     name: 'Dacia',
     cyrillicName: 'Дачия',
     popular: false,
-    country: 'Румыния',
+    color: '', country: 'Румыния',
     models: [
       {
         id: '1300',
@@ -6538,7 +6538,7 @@ const CARS: Array<CarType> = [
     name: 'Dadi',
     cyrillicName: 'Дади',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'CITY_LEADING',
@@ -6571,7 +6571,7 @@ const CARS: Array<CarType> = [
     name: 'Daewoo',
     cyrillicName: 'Дэу',
     popular: true,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'ALPHEON',
@@ -6820,7 +6820,7 @@ const CARS: Array<CarType> = [
     name: 'Daihatsu',
     cyrillicName: 'Дайхатсу',
     popular: false,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: 'ALTIS',
@@ -7253,7 +7253,7 @@ const CARS: Array<CarType> = [
     name: 'Daimler',
     cyrillicName: 'Даймлер',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'DS_420',
@@ -7326,7 +7326,7 @@ const CARS: Array<CarType> = [
     name: 'Dallara',
     cyrillicName: 'Даллара',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'STRADALE',
@@ -7343,7 +7343,7 @@ const CARS: Array<CarType> = [
     name: 'Datsun',
     cyrillicName: 'Датсун',
     popular: false,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '240Z',
@@ -7472,7 +7472,7 @@ const CARS: Array<CarType> = [
     name: 'Deco Rides',
     cyrillicName: 'Деко Райдс',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'ZEPHYR',
@@ -7489,7 +7489,7 @@ const CARS: Array<CarType> = [
     name: 'Delage',
     cyrillicName: 'Делаж',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'D12',
@@ -7514,7 +7514,7 @@ const CARS: Array<CarType> = [
     name: 'DeLorean',
     cyrillicName: 'ДеЛориан',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'DMC_12',
@@ -7531,7 +7531,7 @@ const CARS: Array<CarType> = [
     name: 'Denza',
     cyrillicName: 'Денза',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'D9',
@@ -7556,7 +7556,7 @@ const CARS: Array<CarType> = [
     name: 'Derways',
     cyrillicName: 'Дервейс',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'ANTELOPE',
@@ -7621,7 +7621,7 @@ const CARS: Array<CarType> = [
     name: 'DeSoto',
     cyrillicName: 'Десото',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'CUSTOM',
@@ -7654,7 +7654,7 @@ const CARS: Array<CarType> = [
     name: 'De Tomaso',
     cyrillicName: 'Де Томазо',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'BIGUA',
@@ -7711,7 +7711,7 @@ const CARS: Array<CarType> = [
     name: 'DKW',
     cyrillicName: 'ДКВ',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '3_6',
@@ -7728,7 +7728,7 @@ const CARS: Array<CarType> = [
     name: 'Dodge',
     cyrillicName: 'Додж',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '600',
@@ -8057,7 +8057,7 @@ const CARS: Array<CarType> = [
     name: 'DongFeng',
     cyrillicName: 'ДонгФенг',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '370',
@@ -8210,7 +8210,7 @@ const CARS: Array<CarType> = [
     name: 'Doninvest',
     cyrillicName: 'Донинвест',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'ASSOL',
@@ -8243,7 +8243,7 @@ const CARS: Array<CarType> = [
     name: 'Donkervoort',
     cyrillicName: 'Донкервурт',
     popular: false,
-    country: 'Нидерланды',
+    color: '', country: 'Нидерланды',
     models: [
       {
         id: 'D8',
@@ -8292,7 +8292,7 @@ const CARS: Array<CarType> = [
     name: 'DS',
     cyrillicName: 'ДС',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: '3',
@@ -8349,7 +8349,7 @@ const CARS: Array<CarType> = [
     name: 'DW Hower',
     cyrillicName: 'ДВ Ховер',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'H3',
@@ -8374,7 +8374,7 @@ const CARS: Array<CarType> = [
     name: 'Eagle',
     cyrillicName: 'Игл',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'PREMIER',
@@ -8423,7 +8423,7 @@ const CARS: Array<CarType> = [
     name: 'Eagle Cars',
     cyrillicName: 'Игл Карс',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'SS',
@@ -8440,7 +8440,7 @@ const CARS: Array<CarType> = [
     name: 'Everus',
     cyrillicName: 'Эверус',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'VE_1',
@@ -8457,7 +8457,7 @@ const CARS: Array<CarType> = [
     name: 'Evolute',
     cyrillicName: 'Эволют',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'I_JET',
@@ -8506,7 +8506,7 @@ const CARS: Array<CarType> = [
     name: 'Excalibur',
     cyrillicName: 'Экскалибур',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'SERIES_IV',
@@ -8531,7 +8531,7 @@ const CARS: Array<CarType> = [
     name: 'E-Car',
     cyrillicName: 'Е-Кар',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'GD04B',
@@ -8548,7 +8548,7 @@ const CARS: Array<CarType> = [
     name: 'Ё-мобиль',
     cyrillicName: 'Ё-мобиль',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'E_CROSSOVER',
@@ -8565,7 +8565,7 @@ const CARS: Array<CarType> = [
     name: 'Facel Vega',
     cyrillicName: 'Фэйсл Вега',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'FV',
@@ -8582,7 +8582,7 @@ const CARS: Array<CarType> = [
     name: 'FAW',
     cyrillicName: 'ФАВ',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'BESTUNE_B70',
@@ -8727,7 +8727,7 @@ const CARS: Array<CarType> = [
     name: 'Ferrari',
     cyrillicName: 'Феррари',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: '208_308',
@@ -9064,7 +9064,7 @@ const CARS: Array<CarType> = [
     name: 'Fiat',
     cyrillicName: 'Фиат',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: '124',
@@ -9497,7 +9497,7 @@ const CARS: Array<CarType> = [
     name: 'Fisker',
     cyrillicName: 'Фискер',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'KARMA',
@@ -9514,7 +9514,7 @@ const CARS: Array<CarType> = [
     name: 'Flanker',
     cyrillicName: 'Фланкер',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'F',
@@ -9531,7 +9531,7 @@ const CARS: Array<CarType> = [
     name: 'Ford',
     cyrillicName: 'Форд',
     popular: true,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'AEROSTAR',
@@ -10324,7 +10324,7 @@ const CARS: Array<CarType> = [
     name: 'Forthing',
     cyrillicName: 'Форфинг',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'LINGZHI_M5',
@@ -10365,7 +10365,7 @@ const CARS: Array<CarType> = [
     name: 'Foton',
     cyrillicName: 'Фотон',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'MIDI',
@@ -10398,7 +10398,7 @@ const CARS: Array<CarType> = [
     name: 'FSO',
     cyrillicName: 'ФСО',
     popular: false,
-    country: 'Польша',
+    color: '', country: 'Польша',
     models: [
       {
         id: '125_P',
@@ -10463,7 +10463,7 @@ const CARS: Array<CarType> = [
     name: 'Fuqi',
     cyrillicName: 'Фуки',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'LAND_KING',
@@ -10480,7 +10480,7 @@ const CARS: Array<CarType> = [
     name: 'GAC',
     cyrillicName: 'ГАК',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'GN8',
@@ -10521,7 +10521,7 @@ const CARS: Array<CarType> = [
     name: 'ГАЗ',
     cyrillicName: 'ГАЗ',
     popular: true,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '12',
@@ -10762,7 +10762,7 @@ const CARS: Array<CarType> = [
     name: 'Geely',
     cyrillicName: 'Джили',
     popular: true,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ATLAS',
@@ -11067,7 +11067,7 @@ const CARS: Array<CarType> = [
     name: 'Genesis',
     cyrillicName: 'Генезис',
     popular: false,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'G70',
@@ -11124,7 +11124,7 @@ const CARS: Array<CarType> = [
     name: 'Geo',
     cyrillicName: 'Гео',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'METRO',
@@ -11173,7 +11173,7 @@ const CARS: Array<CarType> = [
     name: 'GMC',
     cyrillicName: 'Джи-Эм-Си',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '100',
@@ -11310,7 +11310,7 @@ const CARS: Array<CarType> = [
     name: 'Goggomobil',
     cyrillicName: 'Гоггомобил',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'T',
@@ -11335,7 +11335,7 @@ const CARS: Array<CarType> = [
     name: 'Gonow',
     cyrillicName: 'Гонов',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'TROY',
@@ -11352,7 +11352,7 @@ const CARS: Array<CarType> = [
     name: 'Gordon',
     cyrillicName: 'Гордон',
     popular: false,
-    country: 'Чехия',
+    color: '', country: 'Чехия',
     models: [
       {
         id: 'ROADSTER',
@@ -11369,7 +11369,7 @@ const CARS: Array<CarType> = [
     name: 'GP',
     cyrillicName: 'ГП',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'MADISON',
@@ -11386,7 +11386,7 @@ const CARS: Array<CarType> = [
     name: 'Great Wall',
     cyrillicName: 'Грейт Вол',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'COOLBEAR',
@@ -11587,7 +11587,7 @@ const CARS: Array<CarType> = [
     name: 'Hafei',
     cyrillicName: 'Хафэй',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'BRIO',
@@ -11644,7 +11644,7 @@ const CARS: Array<CarType> = [
     name: 'Haima',
     cyrillicName: 'Хайма',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '2',
@@ -11765,7 +11765,7 @@ const CARS: Array<CarType> = [
     name: 'Hanomag',
     cyrillicName: 'Ханомаг',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'REKORD',
@@ -11790,7 +11790,7 @@ const CARS: Array<CarType> = [
     name: 'Haval',
     cyrillicName: 'Хавэйл',
     popular: true,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'CHITU',
@@ -11943,7 +11943,7 @@ const CARS: Array<CarType> = [
     name: 'Hawtai',
     cyrillicName: 'Хаутай',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'B_21',
@@ -11976,7 +11976,7 @@ const CARS: Array<CarType> = [
     name: 'Heinkel',
     cyrillicName: 'Хейнкель',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'TYP_154',
@@ -11993,7 +11993,7 @@ const CARS: Array<CarType> = [
     name: 'Hennessey',
     cyrillicName: 'Хеннесси',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'VENOM_F5',
@@ -12018,7 +12018,7 @@ const CARS: Array<CarType> = [
     name: 'Hindustan',
     cyrillicName: 'Хиндустан',
     popular: false,
-    country: 'Индия',
+    color: '', country: 'Индия',
     models: [
       {
         id: 'AMBASSADOR',
@@ -12043,7 +12043,7 @@ const CARS: Array<CarType> = [
     name: 'HiPhi',
     cyrillicName: 'Хипхи',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'X',
@@ -12068,7 +12068,7 @@ const CARS: Array<CarType> = [
     name: 'Hispano-Suiza',
     cyrillicName: 'Испано-Сюиза',
     popular: false,
-    country: 'Испания',
+    color: '', country: 'Испания',
     models: [
       {
         id: 'K6',
@@ -12085,7 +12085,7 @@ const CARS: Array<CarType> = [
     name: 'Holden',
     cyrillicName: 'Холден',
     popular: false,
-    country: 'Австралия',
+    color: '', country: 'Австралия',
     models: [
       {
         id: 'APOLLO',
@@ -12214,7 +12214,7 @@ const CARS: Array<CarType> = [
     name: 'Honda',
     cyrillicName: 'Хонда',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '145',
@@ -12951,7 +12951,7 @@ const CARS: Array<CarType> = [
     name: 'Hongqi',
     cyrillicName: 'Хонгки',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'E_HS3',
@@ -13056,7 +13056,7 @@ const CARS: Array<CarType> = [
     name: 'Horch',
     cyrillicName: 'Хорьх',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '830',
@@ -13081,7 +13081,7 @@ const CARS: Array<CarType> = [
     name: 'Hozon',
     cyrillicName: 'Хозон',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'NETA_GT',
@@ -13122,7 +13122,7 @@ const CARS: Array<CarType> = [
     name: 'HSV',
     cyrillicName: 'ХСВ',
     popular: false,
-    country: 'Австралия',
+    color: '', country: 'Австралия',
     models: [
       {
         id: 'MALOO',
@@ -13139,7 +13139,7 @@ const CARS: Array<CarType> = [
     name: 'HuangHai',
     cyrillicName: 'ХуангХай',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ANTELOPE',
@@ -13172,7 +13172,7 @@ const CARS: Array<CarType> = [
     name: 'Hudson',
     cyrillicName: 'Хадсон',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'DELUXE_EIGHT',
@@ -13197,7 +13197,7 @@ const CARS: Array<CarType> = [
     name: 'Hummer',
     cyrillicName: 'Хаммер',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'H1',
@@ -13230,7 +13230,7 @@ const CARS: Array<CarType> = [
     name: 'Hyundai',
     cyrillicName: 'Хендай',
     popular: true,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'ACCENT',
@@ -13831,7 +13831,7 @@ const CARS: Array<CarType> = [
     name: 'ИЖ',
     cyrillicName: 'ИЖ',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '2125',
@@ -13896,7 +13896,7 @@ const CARS: Array<CarType> = [
     name: 'IM Motors (Zhiji)',
     cyrillicName: 'ИмМоторс',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'L7',
@@ -13921,7 +13921,7 @@ const CARS: Array<CarType> = [
     name: 'Infiniti',
     cyrillicName: 'Инфинити',
     popular: false,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: 'EX',
@@ -14098,7 +14098,7 @@ const CARS: Array<CarType> = [
     name: 'Innocenti',
     cyrillicName: 'Инноченти',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'ELBA',
@@ -14131,7 +14131,7 @@ const CARS: Array<CarType> = [
     name: 'International',
     cyrillicName: 'Интернейшионал',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'TRAVELALL',
@@ -14148,7 +14148,7 @@ const CARS: Array<CarType> = [
     name: 'Invicta',
     cyrillicName: 'Инвикта',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'S1',
@@ -14165,7 +14165,7 @@ const CARS: Array<CarType> = [
     name: 'Iran Khodro',
     cyrillicName: 'Иран Ходро',
     popular: false,
-    country: 'Иран',
+    color: '', country: 'Иран',
     models: [
       {
         id: 'ARISUN',
@@ -14246,7 +14246,7 @@ const CARS: Array<CarType> = [
     name: 'Isdera',
     cyrillicName: 'Исдера',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'COMMENDATORE_112I',
@@ -14279,7 +14279,7 @@ const CARS: Array<CarType> = [
     name: 'Isuzu',
     cyrillicName: 'Исузу',
     popular: false,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '117',
@@ -14512,7 +14512,7 @@ const CARS: Array<CarType> = [
     name: 'IVECO',
     cyrillicName: 'Ивеко',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'MASSIF',
@@ -14529,7 +14529,7 @@ const CARS: Array<CarType> = [
     name: 'JAC',
     cyrillicName: 'Джак',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'IEV7L',
@@ -14746,7 +14746,7 @@ const CARS: Array<CarType> = [
     name: 'Jaguar',
     cyrillicName: 'Ягуар',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'E_PACE',
@@ -14899,7 +14899,7 @@ const CARS: Array<CarType> = [
     name: 'Jeep',
     cyrillicName: 'Джип',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'AVENGER',
@@ -15012,7 +15012,7 @@ const CARS: Array<CarType> = [
     name: 'Jensen',
     cyrillicName: 'Дженсен',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'INTERCEPTOR',
@@ -15037,7 +15037,7 @@ const CARS: Array<CarType> = [
     name: 'Jetour',
     cyrillicName: 'Джитур',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'DASHING',
@@ -15086,7 +15086,7 @@ const CARS: Array<CarType> = [
     name: 'Jetta',
     cyrillicName: 'Джетта',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'VA3',
@@ -15119,7 +15119,7 @@ const CARS: Array<CarType> = [
     name: 'Jinbei',
     cyrillicName: 'джинбей',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'HAISE',
@@ -15136,7 +15136,7 @@ const CARS: Array<CarType> = [
     name: 'JMC',
     cyrillicName: 'Джей Эм Си',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'BAODIAN',
@@ -15161,7 +15161,7 @@ const CARS: Array<CarType> = [
     name: 'Kaiyi',
     cyrillicName: 'Каи',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'E5',
@@ -15194,7 +15194,7 @@ const CARS: Array<CarType> = [
     name: 'Канонир',
     cyrillicName: 'Канонир',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '2317',
@@ -15211,7 +15211,7 @@ const CARS: Array<CarType> = [
     name: 'Kia',
     cyrillicName: 'Киа',
     popular: true,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'AVELLA',
@@ -15724,7 +15724,7 @@ const CARS: Array<CarType> = [
     name: 'Koenigsegg',
     cyrillicName: 'Кёнигсегг',
     popular: false,
-    country: 'Швеция',
+    color: '', country: 'Швеция',
     models: [
       {
         id: 'AGERA',
@@ -15789,7 +15789,7 @@ const CARS: Array<CarType> = [
     name: 'Комбат',
     cyrillicName: 'Комбат',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'T98',
@@ -15806,7 +15806,7 @@ const CARS: Array<CarType> = [
     name: 'KTM AG',
     cyrillicName: 'КТМ АГ',
     popular: false,
-    country: 'Австрия',
+    color: '', country: 'Австрия',
     models: [
       {
         id: 'XBOW',
@@ -15823,7 +15823,7 @@ const CARS: Array<CarType> = [
     name: 'KYC',
     cyrillicName: 'КУС',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'F3',
@@ -15840,7 +15840,7 @@ const CARS: Array<CarType> = [
     name: 'Lamborghini',
     cyrillicName: 'Ламборгини',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: '350_400_GT',
@@ -16049,7 +16049,7 @@ const CARS: Array<CarType> = [
     name: 'Lancia',
     cyrillicName: 'Лянча',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'A_112',
@@ -16274,7 +16274,7 @@ const CARS: Array<CarType> = [
     name: 'Landwind',
     cyrillicName: 'Лендвинд',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'CV9',
@@ -16331,7 +16331,7 @@ const CARS: Array<CarType> = [
     name: 'Land Rover',
     cyrillicName: 'Ленд Ровер',
     popular: true,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'DEFENDER',
@@ -16428,7 +16428,7 @@ const CARS: Array<CarType> = [
     name: 'Leapmotor',
     cyrillicName: 'Липмотор',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'C01',
@@ -16461,7 +16461,7 @@ const CARS: Array<CarType> = [
     name: 'Lexus',
     cyrillicName: 'Лексус',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: 'CT',
@@ -16646,7 +16646,7 @@ const CARS: Array<CarType> = [
     name: 'Liebao Motor',
     cyrillicName: 'Лиебао мотор',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'LEOPARD',
@@ -16663,7 +16663,7 @@ const CARS: Array<CarType> = [
     name: 'Lifan',
     cyrillicName: 'Лифан',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '650_EV',
@@ -16760,7 +16760,7 @@ const CARS: Array<CarType> = [
     name: 'Ligier',
     cyrillicName: 'Лижье',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'JS_51',
@@ -16777,7 +16777,7 @@ const CARS: Array<CarType> = [
     name: 'Lincoln',
     cyrillicName: 'Линкольн',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'AVIATOR',
@@ -16970,7 +16970,7 @@ const CARS: Array<CarType> = [
     name: 'Livan',
     cyrillicName: 'Ливан',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'X3_PRO',
@@ -16987,7 +16987,7 @@ const CARS: Array<CarType> = [
     name: 'LiXiang',
     cyrillicName: 'Лисян',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'L7',
@@ -17028,7 +17028,7 @@ const CARS: Array<CarType> = [
     name: 'Logem',
     cyrillicName: 'Логем',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'EC30',
@@ -17045,7 +17045,7 @@ const CARS: Array<CarType> = [
     name: 'Lotus',
     cyrillicName: 'Лотус',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '2_ELEVEN',
@@ -17174,7 +17174,7 @@ const CARS: Array<CarType> = [
     name: 'LTI',
     cyrillicName: 'ЛТИ',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'TX',
@@ -17191,7 +17191,7 @@ const CARS: Array<CarType> = [
     name: 'ЛуАЗ',
     cyrillicName: 'ЛУАЗ',
     popular: false,
-    country: 'Украина',
+    color: '', country: 'Украина',
     models: [
       {
         id: '1302',
@@ -17224,7 +17224,7 @@ const CARS: Array<CarType> = [
     name: 'Lucid',
     cyrillicName: 'Люсид',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'AIR',
@@ -17241,7 +17241,7 @@ const CARS: Array<CarType> = [
     name: 'Luxgen',
     cyrillicName: 'Люксген',
     popular: false,
-    country: 'Тайвань',
+    color: '', country: 'Тайвань',
     models: [
       {
         id: 'LUXGEN5',
@@ -17290,7 +17290,7 @@ const CARS: Array<CarType> = [
     name: 'Lynk & Co',
     cyrillicName: 'Линк и ко',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '01',
@@ -17347,7 +17347,7 @@ const CARS: Array<CarType> = [
     name: 'Mahindra',
     cyrillicName: 'Махиндра',
     popular: false,
-    country: 'Индия',
+    color: '', country: 'Индия',
     models: [
       {
         id: 'ARMADA',
@@ -17460,7 +17460,7 @@ const CARS: Array<CarType> = [
     name: 'Marcos',
     cyrillicName: 'Маркос',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'GTS',
@@ -17509,7 +17509,7 @@ const CARS: Array<CarType> = [
     name: 'Marlin',
     cyrillicName: 'Марлин',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '5EXI',
@@ -17534,7 +17534,7 @@ const CARS: Array<CarType> = [
     name: 'Marussia',
     cyrillicName: 'Маруся',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'B1',
@@ -17559,7 +17559,7 @@ const CARS: Array<CarType> = [
     name: 'Maruti',
     cyrillicName: 'Марути',
     popular: false,
-    country: 'Индия',
+    color: '', country: 'Индия',
     models: [
       {
         id: '1000',
@@ -17648,7 +17648,7 @@ const CARS: Array<CarType> = [
     name: 'Maserati',
     cyrillicName: 'Мазерати',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: '228',
@@ -17841,7 +17841,7 @@ const CARS: Array<CarType> = [
     name: 'Matra',
     cyrillicName: 'Матра',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'MURENA',
@@ -17858,7 +17858,7 @@ const CARS: Array<CarType> = [
     name: 'Maxus',
     cyrillicName: 'Максус',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'D60',
@@ -17923,7 +17923,7 @@ const CARS: Array<CarType> = [
     name: 'Maybach',
     cyrillicName: 'Майбах',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '57',
@@ -17956,7 +17956,7 @@ const CARS: Array<CarType> = [
     name: 'Mazda',
     cyrillicName: 'Мазда',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '1000',
@@ -18637,7 +18637,7 @@ const CARS: Array<CarType> = [
     name: 'McLaren',
     cyrillicName: 'МакЛарен',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '540C',
@@ -18766,7 +18766,7 @@ const CARS: Array<CarType> = [
     name: 'Mega',
     cyrillicName: 'Мега',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'CLUB',
@@ -18799,7 +18799,7 @@ const CARS: Array<CarType> = [
     name: 'Mercedes-Benz',
     cyrillicName: 'Мерседес-Бенц',
     popular: true,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'W201',
@@ -19632,7 +19632,7 @@ const CARS: Array<CarType> = [
     name: 'Mercury',
     cyrillicName: 'Меркури',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'CAPRI',
@@ -19777,7 +19777,7 @@ const CARS: Array<CarType> = [
     name: 'Messerschmitt',
     cyrillicName: 'Мессершмитт',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'KR200',
@@ -19794,7 +19794,7 @@ const CARS: Array<CarType> = [
     name: 'Metrocab',
     cyrillicName: 'Метрокэб',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'METROCAB_1',
@@ -19819,7 +19819,7 @@ const CARS: Array<CarType> = [
     name: 'MG',
     cyrillicName: 'Эм-Джи',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '3',
@@ -20028,7 +20028,7 @@ const CARS: Array<CarType> = [
     name: 'Microcar',
     cyrillicName: 'Микрокар',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'F8C',
@@ -20077,7 +20077,7 @@ const CARS: Array<CarType> = [
     name: 'Minelli',
     cyrillicName: 'Минелли',
     popular: false,
-    country: 'Швейцария',
+    color: '', country: 'Швейцария',
     models: [
       {
         id: 'TF_1800',
@@ -20094,7 +20094,7 @@ const CARS: Array<CarType> = [
     name: 'MINI',
     cyrillicName: 'Мини',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'CABRIO',
@@ -20159,7 +20159,7 @@ const CARS: Array<CarType> = [
     name: 'Mitsubishi',
     cyrillicName: 'Митсубиси',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '3000_GT',
@@ -20824,7 +20824,7 @@ const CARS: Array<CarType> = [
     name: 'Mitsuoka',
     cyrillicName: 'Мицуока',
     popular: false,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: 'BUBU_CLASSIC_SSK',
@@ -20961,7 +20961,7 @@ const CARS: Array<CarType> = [
     name: 'Mobilize',
     cyrillicName: 'Мобилайз',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'LIMO',
@@ -20978,7 +20978,7 @@ const CARS: Array<CarType> = [
     name: 'Morgan',
     cyrillicName: 'Морган',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '3_WHEELER',
@@ -21067,7 +21067,7 @@ const CARS: Array<CarType> = [
     name: 'Morris',
     cyrillicName: 'Моррис',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'EIGHT',
@@ -21092,7 +21092,7 @@ const CARS: Array<CarType> = [
     name: 'Москвич',
     cyrillicName: 'Москвич',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '2136',
@@ -21333,7 +21333,7 @@ const CARS: Array<CarType> = [
     name: 'Nash',
     cyrillicName: 'Нэш',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'AMBASSADOR',
@@ -21350,7 +21350,7 @@ const CARS: Array<CarType> = [
     name: 'Nio',
     cyrillicName: 'Нио',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'EC6',
@@ -21415,7 +21415,7 @@ const CARS: Array<CarType> = [
     name: 'Nissan',
     cyrillicName: 'Ниссан',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '100NX',
@@ -22384,7 +22384,7 @@ const CARS: Array<CarType> = [
     name: 'Noble',
     cyrillicName: 'Нобл',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'M12_GTO',
@@ -22417,7 +22417,7 @@ const CARS: Array<CarType> = [
     name: 'Oldsmobile',
     cyrillicName: 'Олдсмобиль',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'ACHIEVA',
@@ -22578,7 +22578,7 @@ const CARS: Array<CarType> = [
     name: 'OMODA',
     cyrillicName: 'Омода',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'C5',
@@ -22603,7 +22603,7 @@ const CARS: Array<CarType> = [
     name: 'Opel',
     cyrillicName: 'Опель',
     popular: true,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'ADAM',
@@ -22996,7 +22996,7 @@ const CARS: Array<CarType> = [
     name: 'ORA',
     cyrillicName: 'Ора',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'BALLET_CAT',
@@ -23045,7 +23045,7 @@ const CARS: Array<CarType> = [
     name: 'Osca',
     cyrillicName: 'Оска',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: '2500_GT',
@@ -23062,7 +23062,7 @@ const CARS: Array<CarType> = [
     name: 'Oshan',
     cyrillicName: 'Ошан',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'X5',
@@ -23103,7 +23103,7 @@ const CARS: Array<CarType> = [
     name: 'Packard',
     cyrillicName: 'Паккард',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '200_250',
@@ -23160,7 +23160,7 @@ const CARS: Array<CarType> = [
     name: 'Pagani',
     cyrillicName: 'Пагани',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'HUAYRA',
@@ -23193,7 +23193,7 @@ const CARS: Array<CarType> = [
     name: 'Panoz',
     cyrillicName: 'Паноз',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'ESPERANTE',
@@ -23218,7 +23218,7 @@ const CARS: Array<CarType> = [
     name: 'Perodua',
     cyrillicName: 'Перодуа',
     popular: false,
-    country: 'Малайзия',
+    color: '', country: 'Малайзия',
     models: [
       {
         id: 'ALZA',
@@ -23291,7 +23291,7 @@ const CARS: Array<CarType> = [
     name: 'Peugeot',
     cyrillicName: 'Пежо',
     popular: true,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: '1007',
@@ -23716,7 +23716,7 @@ const CARS: Array<CarType> = [
     name: 'PGO',
     cyrillicName: 'ПГО',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: 'CEVENNES',
@@ -23749,7 +23749,7 @@ const CARS: Array<CarType> = [
     name: 'Piaggio',
     cyrillicName: 'Пьяджо',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'PORTER',
@@ -23766,7 +23766,7 @@ const CARS: Array<CarType> = [
     name: 'Pierce-Arrow',
     cyrillicName: 'Пирс-Арроу',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'TWELVE',
@@ -23783,7 +23783,7 @@ const CARS: Array<CarType> = [
     name: 'Plymouth',
     cyrillicName: 'Плимут',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'ACCLAIM',
@@ -23944,7 +23944,7 @@ const CARS: Array<CarType> = [
     name: 'Polestar',
     cyrillicName: 'Полестар',
     popular: false,
-    country: 'Швеция',
+    color: '', country: 'Швеция',
     models: [
       {
         id: '1',
@@ -23985,7 +23985,7 @@ const CARS: Array<CarType> = [
     name: 'Pontiac',
     cyrillicName: 'Понтиак',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '6000',
@@ -24218,7 +24218,7 @@ const CARS: Array<CarType> = [
     name: 'Porsche',
     cyrillicName: 'Порше',
     popular: true,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '356',
@@ -24403,7 +24403,7 @@ const CARS: Array<CarType> = [
     name: 'Premier',
     cyrillicName: 'Премьер',
     popular: false,
-    country: 'Индия',
+    color: '', country: 'Индия',
     models: [
       {
         id: '118NE',
@@ -24428,7 +24428,7 @@ const CARS: Array<CarType> = [
     name: 'Спортивные авто и Реплики',
     cyrillicName: 'Спортивные авто и Реплики',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'GT_TOURING',
@@ -24517,7 +24517,7 @@ const CARS: Array<CarType> = [
     name: 'Proton',
     cyrillicName: 'Протон',
     popular: false,
-    country: 'Малайзия',
+    color: '', country: 'Малайзия',
     models: [
       {
         id: 'ARENA',
@@ -24670,7 +24670,7 @@ const CARS: Array<CarType> = [
     name: 'PUCH',
     cyrillicName: 'Пух',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'G_MODELL',
@@ -24695,7 +24695,7 @@ const CARS: Array<CarType> = [
     name: 'Puma',
     cyrillicName: 'Пума',
     popular: false,
-    country: 'Бразилия',
+    color: '', country: 'Бразилия',
     models: [
       {
         id: 'GTB',
@@ -24720,7 +24720,7 @@ const CARS: Array<CarType> = [
     name: 'Qoros',
     cyrillicName: 'Куорос',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '3',
@@ -24745,7 +24745,7 @@ const CARS: Array<CarType> = [
     name: 'Qvale',
     cyrillicName: 'Куали',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'MANGUSTA',
@@ -24762,7 +24762,7 @@ const CARS: Array<CarType> = [
     name: 'RAM',
     cyrillicName: 'Рам',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: '1500',
@@ -24787,7 +24787,7 @@ const CARS: Array<CarType> = [
     name: 'Ravon',
     cyrillicName: 'Равон',
     popular: false,
-    country: 'Узбекистан',
+    color: '', country: 'Узбекистан',
     models: [
       {
         id: 'GENTRA',
@@ -24836,7 +24836,7 @@ const CARS: Array<CarType> = [
     name: 'Reliant',
     cyrillicName: 'Релайент',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'SCIMITAR',
@@ -24853,7 +24853,7 @@ const CARS: Array<CarType> = [
     name: 'Renaissance',
     cyrillicName: 'Ренессанс',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'TROPICA_ROADSTER',
@@ -24870,7 +24870,7 @@ const CARS: Array<CarType> = [
     name: 'Renault',
     cyrillicName: 'Рено',
     popular: true,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: '10',
@@ -25407,7 +25407,7 @@ const CARS: Array<CarType> = [
     name: 'Rezvani',
     cyrillicName: 'резвани',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'BEAST',
@@ -25432,7 +25432,7 @@ const CARS: Array<CarType> = [
     name: 'Rimac',
     cyrillicName: 'Римак',
     popular: false,
-    country: 'Хорватия',
+    color: '', country: 'Хорватия',
     models: [
       {
         id: 'C_TWO',
@@ -25465,7 +25465,7 @@ const CARS: Array<CarType> = [
     name: 'Rinspeed',
     cyrillicName: 'Ринспид',
     popular: false,
-    country: 'Швейцария',
+    color: '', country: 'Швейцария',
     models: [
       {
         id: 'CHOPSTER',
@@ -25482,7 +25482,7 @@ const CARS: Array<CarType> = [
     name: 'Rising Auto',
     cyrillicName: 'Райзинг Авто',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'MARVEL_R',
@@ -25507,7 +25507,7 @@ const CARS: Array<CarType> = [
     name: 'Rivian',
     cyrillicName: 'Ривиан',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'R1S',
@@ -25532,7 +25532,7 @@ const CARS: Array<CarType> = [
     name: 'Roewe',
     cyrillicName: 'роеве',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'CLEVER',
@@ -25653,7 +25653,7 @@ const CARS: Array<CarType> = [
     name: 'Rolls-Royce',
     cyrillicName: 'Роллс-Ройс',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '20_25',
@@ -25798,7 +25798,7 @@ const CARS: Array<CarType> = [
     name: 'Ronart',
     cyrillicName: 'Ронарт',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'LIGHTING',
@@ -25815,7 +25815,7 @@ const CARS: Array<CarType> = [
     name: 'Rover',
     cyrillicName: 'Ровер',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '100',
@@ -25968,7 +25968,7 @@ const CARS: Array<CarType> = [
     name: 'Руссо-Балт',
     cyrillicName: 'Руссо-Балт',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'C24',
@@ -25985,7 +25985,7 @@ const CARS: Array<CarType> = [
     name: 'Saab',
     cyrillicName: 'Сааб',
     popular: false,
-    country: 'Швеция',
+    color: '', country: 'Швеция',
     models: [
       {
         id: '600',
@@ -26106,7 +26106,7 @@ const CARS: Array<CarType> = [
     name: 'Saipa',
     cyrillicName: 'Сайпа',
     popular: false,
-    country: 'Иран',
+    color: '', country: 'Иран',
     models: [
       {
         id: 'QUICK',
@@ -26147,7 +26147,7 @@ const CARS: Array<CarType> = [
     name: 'Saleen',
     cyrillicName: 'Салин',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'S_281',
@@ -26172,7 +26172,7 @@ const CARS: Array<CarType> = [
     name: 'Renault Samsung',
     cyrillicName: 'Рено Самсунг',
     popular: false,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'QM3',
@@ -26245,7 +26245,7 @@ const CARS: Array<CarType> = [
     name: 'Santana',
     cyrillicName: 'Сантана',
     popular: false,
-    country: 'Испания',
+    color: '', country: 'Испания',
     models: [
       {
         id: 'PS_10',
@@ -26262,7 +26262,7 @@ const CARS: Array<CarType> = [
     name: 'Saturn',
     cyrillicName: 'Сатурн',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'ASTRA',
@@ -26367,7 +26367,7 @@ const CARS: Array<CarType> = [
     name: 'Scion',
     cyrillicName: 'Сайон',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'FR_S',
@@ -26440,7 +26440,7 @@ const CARS: Array<CarType> = [
     name: 'Sears',
     cyrillicName: 'Сирс',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'MODEL_J',
@@ -26457,7 +26457,7 @@ const CARS: Array<CarType> = [
     name: 'SEAT',
     cyrillicName: 'Сеат',
     popular: false,
-    country: 'Испания',
+    color: '', country: 'Испания',
     models: [
       {
         id: '133',
@@ -26626,7 +26626,7 @@ const CARS: Array<CarType> = [
     name: 'Seres',
     cyrillicName: 'Серес',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'SF5',
@@ -26643,7 +26643,7 @@ const CARS: Array<CarType> = [
     name: 'Shanghai Maple',
     cyrillicName: 'Шанхай Мапл',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'C31',
@@ -26700,7 +26700,7 @@ const CARS: Array<CarType> = [
     name: 'ShuangHuan',
     cyrillicName: 'Шунган',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'NOBLE',
@@ -26725,7 +26725,7 @@ const CARS: Array<CarType> = [
     name: 'Simca',
     cyrillicName: 'Симка',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: '1300_1500',
@@ -26750,7 +26750,7 @@ const CARS: Array<CarType> = [
     name: 'Skoda',
     cyrillicName: 'Шкода',
     popular: true,
-    country: 'Чехия',
+    color: '', country: 'Чехия',
     models: [
       {
         id: '100_SERIES',
@@ -26959,7 +26959,7 @@ const CARS: Array<CarType> = [
     name: 'Skywell',
     cyrillicName: 'Скайвэлл',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ET5',
@@ -26984,7 +26984,7 @@ const CARS: Array<CarType> = [
     name: 'Smart',
     cyrillicName: 'Смарт',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'NUMBER_1',
@@ -27025,7 +27025,7 @@ const CARS: Array<CarType> = [
     name: 'СМЗ',
     cyrillicName: 'СМЗ',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'S1L',
@@ -27066,7 +27066,7 @@ const CARS: Array<CarType> = [
     name: 'Soueast',
     cyrillicName: 'Соуист',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'A5',
@@ -27099,7 +27099,7 @@ const CARS: Array<CarType> = [
     name: 'Spectre',
     cyrillicName: 'Спектр',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'R42',
@@ -27116,7 +27116,7 @@ const CARS: Array<CarType> = [
     name: 'Spyker',
     cyrillicName: 'Спайкер',
     popular: false,
-    country: 'Дания',
+    color: '', country: 'Дания',
     models: [
       {
         id: 'C12',
@@ -27141,7 +27141,7 @@ const CARS: Array<CarType> = [
     name: 'SsangYong',
     cyrillicName: 'Ссанъён',
     popular: false,
-    country: 'Южная Корея',
+    color: '', country: 'Южная Корея',
     models: [
       {
         id: 'ACTYON',
@@ -27302,7 +27302,7 @@ const CARS: Array<CarType> = [
     name: 'Steyr',
     cyrillicName: 'Штайр',
     popular: false,
-    country: 'Австрия',
+    color: '', country: 'Австрия',
     models: [
       {
         id: '1500',
@@ -27319,7 +27319,7 @@ const CARS: Array<CarType> = [
     name: 'Studebaker',
     cyrillicName: 'Студебейкер',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'GOLDEN_HAWK',
@@ -27336,7 +27336,7 @@ const CARS: Array<CarType> = [
     name: 'Subaru',
     cyrillicName: 'Субару',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '1000',
@@ -27689,7 +27689,7 @@ const CARS: Array<CarType> = [
     name: 'Suzuki',
     cyrillicName: 'Сузуки',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: 'ACROSS',
@@ -28090,7 +28090,7 @@ const CARS: Array<CarType> = [
     name: 'SWM',
     cyrillicName: 'СВМ',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'G01',
@@ -28155,7 +28155,7 @@ const CARS: Array<CarType> = [
     name: 'ТагАЗ',
     cyrillicName: 'ТагАЗ',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'AQUILA',
@@ -28220,7 +28220,7 @@ const CARS: Array<CarType> = [
     name: 'Talbot',
     cyrillicName: 'Толбет',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '1510',
@@ -28285,7 +28285,7 @@ const CARS: Array<CarType> = [
     name: 'Tank',
     cyrillicName: 'Танк',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '300',
@@ -28310,7 +28310,7 @@ const CARS: Array<CarType> = [
     name: 'TATA',
     cyrillicName: 'ТАТА',
     popular: false,
-    country: 'Индия',
+    color: '', country: 'Индия',
     models: [
       {
         id: 'ARIA',
@@ -28407,7 +28407,7 @@ const CARS: Array<CarType> = [
     name: 'Tatra',
     cyrillicName: 'Татра',
     popular: false,
-    country: 'Чехия',
+    color: '', country: 'Чехия',
     models: [
       {
         id: '57',
@@ -28480,7 +28480,7 @@ const CARS: Array<CarType> = [
     name: 'Tazzari',
     cyrillicName: 'Таззари',
     popular: false,
-    country: 'Италия',
+    color: '', country: 'Италия',
     models: [
       {
         id: 'ZERO',
@@ -28497,7 +28497,7 @@ const CARS: Array<CarType> = [
     name: 'Tesla',
     cyrillicName: 'Тесла',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'CYBERTRUCK',
@@ -28554,7 +28554,7 @@ const CARS: Array<CarType> = [
     name: 'Think',
     cyrillicName: 'Синк',
     popular: false,
-    country: 'Норвегия',
+    color: '', country: 'Норвегия',
     models: [
       {
         id: 'CITY',
@@ -28571,7 +28571,7 @@ const CARS: Array<CarType> = [
     name: 'Tianma',
     cyrillicName: 'Тианма',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'CENTURY',
@@ -28596,7 +28596,7 @@ const CARS: Array<CarType> = [
     name: 'Tianye',
     cyrillicName: 'Тианье',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ADMIRAL',
@@ -28613,7 +28613,7 @@ const CARS: Array<CarType> = [
     name: 'Tofas',
     cyrillicName: 'Тофаш',
     popular: false,
-    country: 'Турция',
+    color: '', country: 'Турция',
     models: [
       {
         id: 'KARTAL',
@@ -28662,7 +28662,7 @@ const CARS: Array<CarType> = [
     name: 'Toyota',
     cyrillicName: 'Тойота',
     popular: true,
-    country: 'Япония',
+    color: '', country: 'Япония',
     models: [
       {
         id: '2000GT',
@@ -30095,7 +30095,7 @@ const CARS: Array<CarType> = [
     name: 'Trabant',
     cyrillicName: 'Трабант',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '1_1',
@@ -30136,7 +30136,7 @@ const CARS: Array<CarType> = [
     name: 'Tramontana',
     cyrillicName: 'Трамонтана',
     popular: false,
-    country: 'Испания',
+    color: '', country: 'Испания',
     models: [
       {
         id: 'TRAMONTANA',
@@ -30153,7 +30153,7 @@ const CARS: Array<CarType> = [
     name: 'Triumph',
     cyrillicName: 'Триумф',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'ACCLAIM',
@@ -30226,7 +30226,7 @@ const CARS: Array<CarType> = [
     name: 'GAC Trumpchi',
     cyrillicName: 'Трампчи',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'E9',
@@ -30355,7 +30355,7 @@ const CARS: Array<CarType> = [
     name: 'TVR',
     cyrillicName: 'ТВР',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: '280',
@@ -30484,7 +30484,7 @@ const CARS: Array<CarType> = [
     name: 'УАЗ',
     cyrillicName: 'УАЗ',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '3151',
@@ -30573,7 +30573,7 @@ const CARS: Array<CarType> = [
     name: 'Ultima',
     cyrillicName: 'Ультима',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'CAN_AM',
@@ -30606,7 +30606,7 @@ const CARS: Array<CarType> = [
     name: 'Vauxhall',
     cyrillicName: 'Воксхолл',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'ADAM',
@@ -30807,7 +30807,7 @@ const CARS: Array<CarType> = [
     name: 'LADA (ВАЗ)',
     cyrillicName: 'Лада',
     popular: true,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '1111',
@@ -31096,7 +31096,7 @@ const CARS: Array<CarType> = [
     name: 'Vector',
     cyrillicName: 'Вектор',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'M12',
@@ -31121,7 +31121,7 @@ const CARS: Array<CarType> = [
     name: 'Venturi',
     cyrillicName: 'Вентури',
     popular: false,
-    country: 'Франция',
+    color: '', country: 'Франция',
     models: [
       {
         id: '210',
@@ -31162,7 +31162,7 @@ const CARS: Array<CarType> = [
     name: 'VGV',
     cyrillicName: 'ВГВ',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'U70',
@@ -31195,7 +31195,7 @@ const CARS: Array<CarType> = [
     name: 'VinFast',
     cyrillicName: 'Винфаст',
     popular: false,
-    country: 'Вьетнам',
+    color: '', country: 'Вьетнам',
     models: [
       {
         id: 'LUX_A',
@@ -31252,7 +31252,7 @@ const CARS: Array<CarType> = [
     name: 'Volkswagen',
     cyrillicName: 'Фольксваген',
     popular: true,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '181',
@@ -31941,7 +31941,7 @@ const CARS: Array<CarType> = [
     name: 'Volvo',
     cyrillicName: 'Вольво',
     popular: true,
-    country: 'Швеция',
+    color: '', country: 'Швеция',
     models: [
       {
         id: '120_SERIES',
@@ -32302,7 +32302,7 @@ const CARS: Array<CarType> = [
     name: 'Vortex',
     cyrillicName: 'Вортекс',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: 'CORDA',
@@ -32335,7 +32335,7 @@ const CARS: Array<CarType> = [
     name: 'Voyah',
     cyrillicName: 'Воя',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'DREAM',
@@ -32368,7 +32368,7 @@ const CARS: Array<CarType> = [
     name: 'VUHL',
     cyrillicName: 'Вухл',
     popular: false,
-    country: 'Мексика',
+    color: '', country: 'Мексика',
     models: [
       {
         id: '05',
@@ -32385,7 +32385,7 @@ const CARS: Array<CarType> = [
     name: 'Wanderer',
     cyrillicName: 'Вандерер',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'W23',
@@ -32410,7 +32410,7 @@ const CARS: Array<CarType> = [
     name: 'Wartburg',
     cyrillicName: 'Вартбург',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: '1_3',
@@ -32435,7 +32435,7 @@ const CARS: Array<CarType> = [
     name: 'Weltmeister',
     cyrillicName: 'велтмейстер',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'E5',
@@ -32476,7 +32476,7 @@ const CARS: Array<CarType> = [
     name: 'Westfield',
     cyrillicName: 'Вестфилд',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'SEI_SPORT',
@@ -32501,7 +32501,7 @@ const CARS: Array<CarType> = [
     name: 'WEY',
     cyrillicName: 'Вей',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'COFFEE_01',
@@ -32534,7 +32534,7 @@ const CARS: Array<CarType> = [
     name: 'Wiesmann',
     cyrillicName: 'Вайсман',
     popular: false,
-    country: 'Германия',
+    color: '', country: 'Германия',
     models: [
       {
         id: 'GT',
@@ -32559,7 +32559,7 @@ const CARS: Array<CarType> = [
     name: 'Willys',
     cyrillicName: 'Виллис',
     popular: false,
-    country: 'США',
+    color: '', country: 'США',
     models: [
       {
         id: 'CJ',
@@ -32600,7 +32600,7 @@ const CARS: Array<CarType> = [
     name: 'Wuling',
     cyrillicName: 'Вулинг',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'MINI_EV',
@@ -32625,7 +32625,7 @@ const CARS: Array<CarType> = [
     name: 'W Motors',
     cyrillicName: 'дабл-ю моторс',
     popular: false,
-    country: 'Объединённые Арабские Эмираты',
+    color: '', country: 'Объединённые Арабские Эмираты',
     models: [
       {
         id: 'FENYR_SUPERSPORT',
@@ -32650,7 +32650,7 @@ const CARS: Array<CarType> = [
     name: 'Xin Kai',
     cyrillicName: 'Ксин Кай',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'PICKUP_X3',
@@ -32683,7 +32683,7 @@ const CARS: Array<CarType> = [
     name: 'Xpeng',
     cyrillicName: 'кспенг',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'G3',
@@ -32724,7 +32724,7 @@ const CARS: Array<CarType> = [
     name: 'Yulon',
     cyrillicName: 'Юлон',
     popular: false,
-    country: 'Тайвань',
+    color: '', country: 'Тайвань',
     models: [
       {
         id: 'FEELING',
@@ -32741,7 +32741,7 @@ const CARS: Array<CarType> = [
     name: 'Zastava',
     cyrillicName: 'Застава',
     popular: false,
-    country: 'Сербия',
+    color: '', country: 'Сербия',
     models: [
       {
         id: '10',
@@ -32782,7 +32782,7 @@ const CARS: Array<CarType> = [
     name: 'ЗАЗ',
     cyrillicName: 'ЗАЗ',
     popular: false,
-    country: 'Украина',
+    color: '', country: 'Украина',
     models: [
       {
         id: 'TAVRIA',
@@ -32879,7 +32879,7 @@ const CARS: Array<CarType> = [
     name: 'Zeekr',
     cyrillicName: 'Зикр',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: '001',
@@ -32912,7 +32912,7 @@ const CARS: Array<CarType> = [
     name: 'Zenos',
     cyrillicName: 'Зенос',
     popular: false,
-    country: 'Великобритания',
+    color: '', country: 'Великобритания',
     models: [
       {
         id: 'E10',
@@ -32929,7 +32929,7 @@ const CARS: Array<CarType> = [
     name: 'Zenvo',
     cyrillicName: 'Зенво',
     popular: false,
-    country: 'Дания',
+    color: '', country: 'Дания',
     models: [
       {
         id: 'ST1',
@@ -32954,7 +32954,7 @@ const CARS: Array<CarType> = [
     name: 'Zibar',
     cyrillicName: 'Зибар',
     popular: false,
-    country: 'Израиль',
+    color: '', country: 'Израиль',
     models: [
       {
         id: 'MK2',
@@ -32971,7 +32971,7 @@ const CARS: Array<CarType> = [
     name: 'ЗИЛ',
     cyrillicName: 'ЗИЛ',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '111',
@@ -33012,7 +33012,7 @@ const CARS: Array<CarType> = [
     name: 'ЗиС',
     cyrillicName: 'ЗиС',
     popular: false,
-    country: 'Россия',
+    color: '', country: 'Россия',
     models: [
       {
         id: '101',
@@ -33037,7 +33037,7 @@ const CARS: Array<CarType> = [
     name: 'Zotye',
     cyrillicName: 'Зоти',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'COUPA',
@@ -33102,7 +33102,7 @@ const CARS: Array<CarType> = [
     name: 'ZX',
     cyrillicName: 'ЗХ',
     popular: false,
-    country: 'Китай',
+    color: '', country: 'Китай',
     models: [
       {
         id: 'ADMIRAL',

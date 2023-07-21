@@ -7,13 +7,17 @@ export interface CarModel {
   yearTo: number | null;
 }
 
-export interface CarType {
-  id: string;
-  name: string;
+export interface CarTypeData extends CarType {
   cyrillicName: string;
   popular: boolean;
   country: string;
   models: Array<CarModel>;
+}
+
+export interface CarType {
+  id: string;
+  name: string;
+  color: string;
 }
 
 export enum REQUEST_TYPES {

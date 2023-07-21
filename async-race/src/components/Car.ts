@@ -7,6 +7,7 @@ export default class Car {
   stopBtn: HTMLButtonElement | null;
   editBtn: HTMLButtonElement | null;
   removeBtn: HTMLButtonElement | null;
+  carPict: HTMLElement | null;
 
   constructor(carData: CarType) {
     this.carData = carData;
@@ -15,7 +16,9 @@ export default class Car {
     this.stopBtn = this.element.querySelector('.car__stop-btn');
     this.editBtn = this.element.querySelector('.car__edit-btn');
     this.removeBtn = this.element.querySelector('.car__remove-btn');
+    this.carPict = this.element.querySelector('.car__car');
     this.initiate();
+    console.log(this.carData);
   }
 
   createLayout = () => {
@@ -26,6 +29,12 @@ export default class Car {
     const title = element.querySelector('.car__title');
     if (title) {
       title.textContent = this.carData.name;
+    }
+    this.carPict = element.querySelector('.car__car');
+    if (this.carPict) {
+      console.log(this.carPict.style.backgroundColor);
+
+      this.carPict.style.backgroundColor = this.carData.color;
     }
     return element;
   };
