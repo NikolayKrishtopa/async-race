@@ -10,6 +10,8 @@ export default class Garage extends Section<CarType> {
   generateBtn: HTMLElement | null;
   createBtn: HTMLElement | null;
   form: HTMLFormElement | null;
+  generateCarName: () => string;
+  generateCarColor: () => string;
 
   constructor(
     getItems: (
@@ -18,7 +20,9 @@ export default class Garage extends Section<CarType> {
     generateItem: (item: CarType) => HTMLElement,
     fetchCreateItem: (item: CarType) => Promise<CarType>,
     fetchDeleteItem: (id: string) => Promise<CarType>,
-    fetchEditItem: (id: string, payload: CarType) => Promise<CarType>
+    fetchEditItem: (id: string, payload: CarType) => Promise<CarType>,
+    generateCarName: () => string,
+    generateCarColor: () => string
   ) {
     super(
       getItems,
@@ -27,6 +31,8 @@ export default class Garage extends Section<CarType> {
       fetchDeleteItem,
       fetchEditItem
     );
+    this.generateCarName = generateCarName;
+    this.generateCarColor = generateCarColor;
   }
 
   generateControlPanel = () => {
@@ -54,8 +60,8 @@ export default class Garage extends Section<CarType> {
     for (let i = 0; i < 100; i += 1) {
       const car: CarType = {
         id: '',
-        color: '#cdcdcd',
-        name: `New Car ${i + 1}`,
+        color: this.generateCarColor(),
+        name: this.generateCarName(),
       };
       carsToAdd.push(car);
     }

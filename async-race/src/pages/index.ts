@@ -5,6 +5,8 @@ import carsApi from '../utils/api';
 import { CarType, WinnerType } from '../types/models';
 import Garage from '../components/Garage';
 import Winners from '../components/Winners';
+import generateCarName from '../utils/generateCarName';
+import getRandomColor from '../utils/getRandomColor';
 
 const generateWinnerLayout = (winner: WinnerType) => {
   const element = document.createElement('div');
@@ -39,7 +41,9 @@ const app = new App(
         }).element as HTMLElement,
       carsApi.createCar,
       carsApi.deleteCar,
-      carsApi.editCar
+      carsApi.editCar,
+      generateCarName,
+      getRandomColor
     );
     return garage;
   },
