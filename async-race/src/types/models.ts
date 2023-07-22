@@ -77,6 +77,6 @@ export default interface ISection<T> {
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
   fetchCreateItem: (item: T) => void;
-  fetchDeleteItem: (id: number) => Promise<T>;
-  fetchEditItem: (id: number, payload: T) => Promise<T>;
+  fetchDeleteItem: (id: string) => Promise<T>;
+  fetchEditItem: (id: string, payload: T) => Promise<T>;
 }

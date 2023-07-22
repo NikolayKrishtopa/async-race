@@ -28,14 +28,22 @@ const generateWinnerLayout = (winner: WinnerType) => {
 };
 
 const app = new App(
-  () =>
-    new Garage(
+  () => {
+    const garage = new Garage(
       carsApi.getCars,
-      (car: CarType) => new Car(car).element as HTMLElement,
+      (car: CarType) =>
+        new Car(car, (id: string) => {
+          garage.deleteItem(id);
+
+          return;
+        }).element as HTMLElement,
       carsApi.createCar,
       carsApi.deleteCar,
       carsApi.editCar
-    ),
+    );
+    return garage;
+  },
+
   () =>
     new Winners(
       carsApi.getWinners,

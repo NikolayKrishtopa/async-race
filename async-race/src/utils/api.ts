@@ -37,7 +37,7 @@ const carsApi = {
     return { items, totalQty };
   },
 
-  async getCar(id: number) {
+  async getCar(id: string) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
     return res?.payload;
@@ -52,21 +52,21 @@ const carsApi = {
     return res?.payload;
   },
 
-  async deleteCar(id: number) {
+  async deleteCar(id: string) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.DELETE);
     if (res) return res.payload;
   },
 
-  async editCar(id: number, payload: object) {
+  async editCar(id: string, payload: object) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.PUT, payload);
     return res?.payload;
   },
 
-  async changeEngineStatus(id: number, status: ENGINE_STATUS) {
+  async changeEngineStatus(id: string, status: ENGINE_STATUS) {
     const params = new URLSearchParams({
-      id: id.toString(),
+      id,
       status,
     });
     const endpoint = `${ENDPOINTS.ENGINE}?${params}`;
@@ -74,15 +74,15 @@ const carsApi = {
     return res?.payload;
   },
 
-  async startEngine(id: number) {
+  async startEngine(id: string) {
     return carsApi.changeEngineStatus(id, ENGINE_STATUS.STARTED);
   },
 
-  async stopEngine(id: number) {
+  async stopEngine(id: string) {
     return carsApi.changeEngineStatus(id, ENGINE_STATUS.STOPPED);
   },
 
-  async drive(id: number) {
+  async drive(id: string) {
     return carsApi.changeEngineStatus(id, ENGINE_STATUS.DRIVE);
   },
 
@@ -107,7 +107,7 @@ const carsApi = {
     return { items, totalQty };
   },
 
-  async getWinner(id: number) {
+  async getWinner(id: string) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
     return res?.payload;
@@ -122,13 +122,13 @@ const carsApi = {
     return res?.payload;
   },
 
-  async deleteWinner(id: number) {
+  async deleteWinner(id: string) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.DELETE);
     if (res) return res.payload;
   },
 
-  async editWinner(id: number, payload: WinnerType) {
+  async editWinner(id: string, payload: WinnerType) {
     const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.POST, payload);
     return res?.payload;

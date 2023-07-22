@@ -19,16 +19,16 @@ export class Section<T extends { id: string }> implements ISection<T> {
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
   fetchCreateItem: (item: T) => Promise<T>;
-  fetchDeleteItem: (id: number) => Promise<T>;
-  fetchEditItem: (id: number, payload: T) => Promise<T>;
+  fetchDeleteItem: (id: string) => Promise<T>;
+  fetchEditItem: (id: string, payload: T) => Promise<T>;
   constructor(
     getItems: (
       params: QueryParams
     ) => Promise<{ items: Array<T>; totalQty: string }>,
     generateItem: (item: T) => HTMLElement,
     createItem: (item: T) => Promise<T>,
-    fetchDeleteItem: (id: number) => Promise<T>,
-    fetchEditItem: (id: number, payload: T) => Promise<T>
+    fetchDeleteItem: (id: string) => Promise<T>,
+    fetchEditItem: (id: string, payload: T) => Promise<T>
   ) {
     this.fetchCreateItem = createItem;
     this.fetchDeleteItem = fetchDeleteItem;
@@ -59,11 +59,11 @@ export class Section<T extends { id: string }> implements ISection<T> {
     this.fetchItemsList();
   }
 
-  removeItem = async (id: number) => {
+  deleteItem = async (id: string) => {
     await this.fetchDeleteItem(id);
     this.fetchItemsList();
   };
-  editItem = async (id: number, item: T) => {
+  editItem = async (id: string, item: T) => {
     await this.fetchEditItem(id, item);
     this.fetchItemsList();
   };

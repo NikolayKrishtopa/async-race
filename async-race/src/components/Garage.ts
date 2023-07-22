@@ -17,8 +17,8 @@ export default class Garage extends Section<CarType> {
     ) => Promise<{ items: Array<CarType>; totalQty: string }>,
     generateItem: (item: CarType) => HTMLElement,
     fetchCreateItem: (item: CarType) => Promise<CarType>,
-    fetchDeleteItem: (id: number) => Promise<CarType>,
-    fetchEditItem: (id: number, payload: CarType) => Promise<CarType>
+    fetchDeleteItem: (id: string) => Promise<CarType>,
+    fetchEditItem: (id: string, payload: CarType) => Promise<CarType>
   ) {
     super(
       getItems,
