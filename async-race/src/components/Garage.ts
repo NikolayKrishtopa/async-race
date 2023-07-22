@@ -30,8 +30,6 @@ export default class Garage extends Section<CarType> {
   }
 
   generateControlPanel = () => {
-    console.log('control');
-
     const controlPanel = document.createElement('div');
     controlPanel.innerHTML = `
     <form class="control__edit">
@@ -48,6 +46,23 @@ export default class Garage extends Section<CarType> {
     controlPanel.classList.add('control');
     this.mainContainer.prepend(controlPanel);
     this.searchElements();
+  };
+
+  generateCarsPattern = async () => {
+    const carsToAdd: Array<CarType> = [];
+
+    for (let i = 0; i < 100; i += 1) {
+      const car: CarType = {
+        id: '',
+        color: '#cdcdcd',
+        name: `New Car ${i + 1}`,
+      };
+      carsToAdd.push(car);
+    }
+
+    await Promise.all(carsToAdd.map((c) => this.createItem(c)));
+
+    this.fetchItemsList();
   };
 
   searchElements = () => {
@@ -79,8 +94,6 @@ export default class Garage extends Section<CarType> {
   setListeners = () => {
     super.setListeners();
     this.createBtn?.addEventListener('click', this.submitCreateCar);
-    console.log(this.createBtn);
-
-    console.log('setListeners');
+    this.generateBtn?.addEventListener('click', this.generateCarsPattern);
   };
 }
