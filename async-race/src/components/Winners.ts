@@ -14,4 +14,8 @@ export default class Winners extends Section<WinnerType> {
   ) {
     super(getItems, generateItem, createItem, fetchDeleteItem, fetchEditItem);
   }
+
+  renderLayout = () => {
+    super.renderLayout('Winners');
+  };
 }

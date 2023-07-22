@@ -53,7 +53,7 @@ export interface QueryParams {
 }
 
 export type WinnerType = {
-  id?: number;
+  id: string;
   time: number;
   wins: number;
 };
@@ -76,7 +76,7 @@ export default interface ISection<T> {
   nextPageBtn: HTMLButtonElement | null;
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
-  createItem: (item: T) => Promise<T>;
+  fetchCreateItem: (item: T) => void;
   fetchDeleteItem: (id: number) => Promise<T>;
   fetchEditItem: (id: number, payload: T) => Promise<T>;
 }

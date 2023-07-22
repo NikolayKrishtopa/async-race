@@ -1,6 +1,6 @@
 import ISection, { QueryParams } from '../types/models';
 
-export class Section<T> implements ISection<T> {
+export class Section<T extends { id: string }> implements ISection<T> {
   getItems: (
     params: QueryParams
   ) => Promise<{ items: Array<T>; totalQty: string }>;
@@ -18,7 +18,7 @@ export class Section<T> implements ISection<T> {
   nextPageBtn: HTMLButtonElement | null;
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
-  createItem: (item: T) => Promise<T>;
+  fetchCreateItem: (item: T) => Promise<T>;
   fetchDeleteItem: (id: number) => Promise<T>;
   fetchEditItem: (id: number, payload: T) => Promise<T>;
   constructor(
@@ -30,7 +30,7 @@ export class Section<T> implements ISection<T> {
     fetchDeleteItem: (id: number) => Promise<T>,
     fetchEditItem: (id: number, payload: T) => Promise<T>
   ) {
-    this.createItem = createItem;
+    this.fetchCreateItem = createItem;
     this.fetchDeleteItem = fetchDeleteItem;
     this.fetchEditItem = fetchEditItem;
     this.mainContainer = document.querySelector('.section') as HTMLDivElement;
@@ -39,7 +39,6 @@ export class Section<T> implements ISection<T> {
     this.curPageNumField = null;
     this.pagesQtyField = null;
     this.itemsQtyField = null;
-    this.renderLayout();
     this.getItems = getItems;
     this.items = [];
     this.itemsContainer = null;
@@ -52,11 +51,24 @@ export class Section<T> implements ISection<T> {
       _page: this.curPage,
       _limit: this.itemsPerPage,
     };
-
-    this.initiate();
+    this.fetchItemsList();
   }
 
-  searchElements = () => {
+  async createItem(item: T) {
+    await this.fetchCreateItem(item);
+    this.fetchItemsList();
+  }
+
+  removeItem = async (id: number) => {
+    await this.fetchDeleteItem(id);
+    this.fetchItemsList();
+  };
+  editItem = async (id: number, item: T) => {
+    await this.fetchEditItem(id, item);
+    this.fetchItemsList();
+  };
+
+  searchElements() {
     this.curPageNumField = document.querySelector('.section__page-num');
     this.pagesQtyField = document.querySelector('.section__page-qty');
     this.itemsQtyField = document.querySelector('.section__items-qty');
@@ -67,14 +79,13 @@ export class Section<T> implements ISection<T> {
     this.prevPageBtn = document.querySelector('.section__prev-btn');
     this.nextPageBtn = document.querySelector('.section__next-btn');
     this.itemsContainer = document.querySelector('.section__content');
-  };
+  }
 
-  renderLayout = () => {
-    this.unsetListeners();
+  renderLayout(sectionName = '') {
     this.mainContainer.innerHTML = '';
     this.mainContainer.innerHTML = `
     <h2 class="section__title">
-          <span class="section__name">SECTION NAME</span>(<span class="section__items-qty"></span>)
+          <span class="section__name">${sectionName}</span>(<span class="section__items-qty"></span>)
         </h2>
         <div class="section__row">
           <p class="section__page">
@@ -88,9 +99,7 @@ export class Section<T> implements ISection<T> {
         </div>
         <div class="section__content"></div>
     `;
-    this.searchElements();
-    this.setListeners();
-  };
+  }
 
   updateQueryParams = () => {
     this.queryParams = {
@@ -107,7 +116,7 @@ export class Section<T> implements ISection<T> {
     this.renderPage();
   };
 
-  renderItems = async () => {
+  renderItems = () => {
     if (!this.itemsContainer) return;
     this.itemsContainer.innerHTML = '';
     this.items.forEach((e: T) => {
@@ -127,7 +136,10 @@ export class Section<T> implements ISection<T> {
   };
 
   renderPaginationBtns = () => {
-    if (this.curPage === this.pagesQty) {
+    if (this.pagesQty === 1) {
+      this.prevPageBtn?.classList.add('btn_inactive');
+      this.nextPageBtn?.classList.add('btn_inactive');
+    } else if (this.curPage === this.pagesQty) {
       this.prevPageBtn?.classList.remove('btn_inactive');
       this.nextPageBtn?.classList.add('btn_inactive');
     } else if (this.curPage === 1) {
@@ -140,17 +152,20 @@ export class Section<T> implements ISection<T> {
   };
 
   renderPage = () => {
+    this.unsetListeners();
     this.renderLayout();
+    this.searchElements();
     this.renderItems();
     this.renderState();
     this.renderPaginationBtns();
+    this.setListeners();
   };
 
-  setListeners = () => {
+  setListeners() {
     if (!this.nextPageBtn || !this.prevPageBtn) return;
     this.nextPageBtn.addEventListener('click', this.incPage);
     this.prevPageBtn.addEventListener('click', this.decPage);
-  };
+  }
   unsetListeners = () => {
     if (!this.nextPageBtn || !this.prevPageBtn) return;
     this.nextPageBtn.removeEventListener('click', this.incPage);
@@ -171,10 +186,5 @@ export class Section<T> implements ISection<T> {
       this.updateQueryParams();
       this.fetchItemsList();
     }
-  };
-
-  initiate = () => {
-    this.fetchItemsList();
-    this.setListeners();
   };
 }
