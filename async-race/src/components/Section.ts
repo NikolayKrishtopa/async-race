@@ -1,4 +1,5 @@
 import ISection, { QueryParams } from '../types/models';
+import SELECTORS from '../utils/selectors';
 
 export class Section<T extends { id: string }> implements ISection<T> {
   getItems: (
@@ -70,16 +71,16 @@ export class Section<T extends { id: string }> implements ISection<T> {
   }
 
   searchElements() {
-    this.curPageNumField = document.querySelector('.section__page-num');
-    this.pagesQtyField = document.querySelector('.section__page-qty');
-    this.itemsQtyField = document.querySelector('.section__items-qty');
+    this.curPageNumField = document.querySelector(SELECTORS.PAGE_NUM_FIELD);
+    this.pagesQtyField = document.querySelector(SELECTORS.PAGES_QTY);
+    this.itemsQtyField = document.querySelector(SELECTORS.ITEMS_QTY);
     this.queryParams = {
       _page: this.curPage,
       _limit: this.itemsPerPage,
     };
-    this.prevPageBtn = document.querySelector('.section__prev-btn');
-    this.nextPageBtn = document.querySelector('.section__next-btn');
-    this.itemsContainer = document.querySelector('.section__content');
+    this.prevPageBtn = document.querySelector(SELECTORS.PAGINATION_PREV_BTN);
+    this.nextPageBtn = document.querySelector(SELECTORS.PAGINATION_NEXT_BTN);
+    this.itemsContainer = document.querySelector(SELECTORS.SECTION_CONTENT);
   }
 
   renderLayout(sectionName = '') {
@@ -138,17 +139,17 @@ export class Section<T extends { id: string }> implements ISection<T> {
 
   renderPaginationBtns = () => {
     if (this.pagesQty === 1) {
-      this.prevPageBtn?.classList.add('btn_inactive');
-      this.nextPageBtn?.classList.add('btn_inactive');
+      this.prevPageBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+      this.nextPageBtn?.classList.add(SELECTORS.BTN_INACTIVE);
     } else if (this.curPage === this.pagesQty) {
-      this.prevPageBtn?.classList.remove('btn_inactive');
-      this.nextPageBtn?.classList.add('btn_inactive');
+      this.prevPageBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
+      this.nextPageBtn?.classList.add(SELECTORS.BTN_INACTIVE);
     } else if (this.curPage === 1) {
-      this.prevPageBtn?.classList.add('btn_inactive');
-      this.nextPageBtn?.classList.remove('btn_inactive');
+      this.prevPageBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+      this.nextPageBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
     } else {
-      this.prevPageBtn?.classList.remove('btn_inactive');
-      this.nextPageBtn?.classList.remove('btn_inactive');
+      this.prevPageBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
+      this.nextPageBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
     }
   };
 

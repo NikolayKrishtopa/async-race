@@ -1,4 +1,5 @@
-import { CarType, QueryParams, WinnerType } from '../types/models';
+import { QueryParams, WinnerType } from '../types/models';
+import { APP_SECTIONS } from '../utils/constants';
 
 import { Section } from './Section';
 
@@ -16,6 +17,6 @@ export default class Winners extends Section<WinnerType> {
   }
 
   renderLayout = () => {
-    super.renderLayout('Winners');
+    super.renderLayout(APP_SECTIONS.WINNERS);
   };
 }

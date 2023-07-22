@@ -1,5 +1,6 @@
 import { CarType } from '../types/models';
 import flagImg from '../assets/img/flag_finish_fill.svg';
+import SELECTORS from '../utils/selectors';
 
 export default class Car {
   element: HTMLElement | null;
@@ -22,11 +23,11 @@ export default class Car {
     this.carData = carData;
     this.generateCarImg = generateCarImg;
     this.element = this.createLayout();
-    this.startBtn = this.element.querySelector('.car__start-btn');
-    this.stopBtn = this.element.querySelector('.car__stop-btn');
-    this.editBtn = this.element.querySelector('.car__edit-btn');
-    this.removeBtn = this.element.querySelector('.car__remove-btn');
-    this.carPict = this.element.querySelector('.car__car');
+    this.startBtn = this.element.querySelector(SELECTORS.CAR_START_BTN);
+    this.stopBtn = this.element.querySelector(SELECTORS.CAR_STOP_BTN);
+    this.editBtn = this.element.querySelector(SELECTORS.CAR_EDIT_BTN);
+    this.removeBtn = this.element.querySelector(SELECTORS.CAR_REMOVE_BTN);
+    this.carPict = this.element.querySelector(SELECTORS.CAR_PICTURE);
     this.onRemove = () => onRemove(this.carData.id);
     this.onEdit = () => onEdit(this.carData.id);
     this.initiate();
@@ -34,7 +35,7 @@ export default class Car {
 
   createLayout = () => {
     const element = document.createElement('div');
-    element.classList.add('car');
+    element.classList.add(SELECTORS.CAR);
     element.innerHTML = `
     <div class="car__heading">
           <button class="btn car__edit-btn">edit</button>
@@ -56,11 +57,11 @@ export default class Car {
           </div>
         </div>
     `;
-    const finishImg = element.querySelector('.car__finish-flag');
+    const finishImg = element.querySelector(SELECTORS.FLAG);
     if (finishImg instanceof HTMLImageElement) {
       finishImg.src = flagImg;
     }
-    const title = element.querySelector('.car__title');
+    const title = element.querySelector(SELECTORS.CAR_TITLE);
     if (title) {
       title.textContent = this.carData.name;
     }

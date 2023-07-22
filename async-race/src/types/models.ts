@@ -7,6 +7,11 @@ export interface CarModel {
   yearTo: number | null;
 }
 
+export enum AppModes {
+  GARAGE = 'garage',
+  WINNERS = 'winners',
+}
+
 export interface CarTypeData extends CarType {
   cyrillicName: string;
   popular: boolean;

@@ -1,9 +1,10 @@
-import { CarType, WinnerType } from '../types/models';
+import { CarType, WinnerType, AppModes } from '../types/models';
 import { Section } from './Section';
+import SELECTORS from '../utils/selectors';
 
 class App {
   container: HTMLElement;
-  mode: 'garage' | 'winners';
+  mode: AppModes;
   garageBtn: HTMLButtonElement | null;
   winnersBtn: HTMLButtonElement | null;
   createGarage: () => Section<CarType>;
@@ -16,21 +17,20 @@ class App {
     createGarage: () => Section<CarType>,
     createWinners: () => Section<WinnerType>
   ) {
-    this.container = document.querySelector('.root') as HTMLElement;
-    this.mode = 'garage';
+    this.container = document.querySelector(SELECTORS.ROOT) as HTMLElement;
+    this.mode = AppModes.GARAGE;
     this.garageBtn = null;
     this.winnersBtn = null;
     this.garage = null;
     this.winners = null;
     this.createGarage = createGarage;
     this.createWinners = createWinners;
-    this.content = document.querySelector('.main') as HTMLElement;
     this.initiate();
   }
 
   createHeaderLayout = () => {
-    const header = document.createElement('header');
-    header.classList.add('header');
+    const header = document.createElement(SELECTORS.HEADER);
+    header.classList.add(SELECTORS.HEADER);
     header.innerHTML = `
      <h1 class="header__title">ASYNC RACE</h1>
       <div class="header__btn-wrapper">
@@ -43,30 +43,37 @@ class App {
     this.winnersBtn = document.querySelector(
       '#winnersBtn'
     ) as HTMLButtonElement;
-    this.renderMode();
+  };
+
+  createMainLayout = () => {
+    const main = document.createElement(SELECTORS.MAIN);
+    main.classList.add(SELECTORS.MAIN);
+    main.innerHTML = `
+     <div class="section"></div>
+    `;
+    this.container.append(main);
   };
 
   renderMode = () => {
     if (!this.garageBtn || !this.winnersBtn) return;
-    if (this.mode === 'garage') {
-      this.garageBtn.classList.add('header__link_state_active');
-      this.winnersBtn.classList.remove('header__link_state_active');
-    } else if (this.mode === 'winners') {
-      this.winnersBtn.classList.add('header__link_state_active');
-      this.garageBtn.classList.remove('header__link_state_active');
+    if (this.mode === AppModes.GARAGE) {
+      this.garageBtn.classList.add(SELECTORS.HEADER_LINK_ACTIVE);
+      this.winnersBtn.classList.remove(SELECTORS.HEADER_LINK_ACTIVE);
+    } else if (this.mode === AppModes.WINNERS) {
+      this.winnersBtn.classList.add(SELECTORS.HEADER_LINK_ACTIVE);
+      this.garageBtn.classList.remove(SELECTORS.HEADER_LINK_ACTIVE);
     }
     this.renderContent();
   };
 
   renderContent = () => {
-    // this.content.innerHTML = '';
-    if (this.mode === 'garage') {
+    if (this.mode === AppModes.GARAGE) {
       if (!this.garage) {
         this.garage = this.createGarage();
       } else {
         this.garage.renderPage();
       }
-    } else if (this.mode === 'winners') {
+    } else if (this.mode === AppModes.WINNERS) {
       if (!this.winners) {
         this.winners = this.createWinners();
       } else {
@@ -82,12 +89,18 @@ class App {
 
   setListeners = () => {
     if (!this.garageBtn || !this.winnersBtn) return;
-    this.garageBtn.addEventListener('click', () => this.setMode('garage'));
-    this.winnersBtn.addEventListener('click', () => this.setMode('winners'));
+    this.garageBtn.addEventListener('click', () =>
+      this.setMode(AppModes.GARAGE)
+    );
+    this.winnersBtn.addEventListener('click', () =>
+      this.setMode(AppModes.WINNERS)
+    );
   };
 
   createLayout = () => {
     this.createHeaderLayout();
+    this.createMainLayout();
+    this.renderMode();
   };
 
   initiate = () => {

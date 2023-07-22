@@ -1,4 +1,6 @@
 import { CarType, QueryParams } from '../types/models';
+import { APP_SECTIONS, GARAGE_SUBMIT_BTN_TEXT } from '../utils/constants';
+import SELECTORS from '../utils/selectors';
 
 import { Section } from './Section';
 
@@ -47,14 +49,14 @@ export default class Garage extends Section<CarType> {
     if (!this.submitBtn) return;
     switch (!this.carToEdit) {
       case false:
-        this.submitBtn.textContent = 'update';
-        this.OptionalBtns?.classList.add('hidden');
-        this.cancelBtn?.classList.remove('hidden');
+        this.submitBtn.textContent = GARAGE_SUBMIT_BTN_TEXT.EDIT;
+        this.OptionalBtns?.classList.add(SELECTORS.HIDDEN);
+        this.cancelBtn?.classList.remove(SELECTORS.HIDDEN);
         break;
       case true:
-        this.submitBtn.textContent = 'create';
-        this.OptionalBtns?.classList.remove('hidden');
-        this.cancelBtn?.classList.add('hidden');
+        this.submitBtn.textContent = GARAGE_SUBMIT_BTN_TEXT.CREATE;
+        this.OptionalBtns?.classList.remove(SELECTORS.HIDDEN);
+        this.cancelBtn?.classList.add(SELECTORS.HIDDEN);
         break;
       default:
         break;
@@ -82,7 +84,7 @@ export default class Garage extends Section<CarType> {
           <button class="btn control__generate-btn">generate cars</button>
         </div>
     `;
-    controlPanel.classList.add('control');
+    controlPanel.classList.add(SELECTORS.CONTROL);
     this.mainContainer.prepend(controlPanel);
     this.searchElements();
   };
@@ -106,18 +108,18 @@ export default class Garage extends Section<CarType> {
 
   searchElements = () => {
     super.searchElements();
-    this.raceBtn = document.querySelector('.control__race-btn');
-    this.resetBtn = document.querySelector('.control__reset-btn');
-    this.generateBtn = document.querySelector('.control__generate-btn');
-    this.submitBtn = document.querySelector('.control__create-btn');
-    this.cancelBtn = document.querySelector('.control__cancel-btn');
-    this.colorInput = document.querySelector('.control__input_type_car-color');
-    this.nameInput = document.querySelector('.control__input_type_car-name');
-    this.OptionalBtns = document.querySelector('.control__btns');
+    this.raceBtn = document.querySelector(SELECTORS.CONTROL_RACE_BTN);
+    this.resetBtn = document.querySelector(SELECTORS.CONTROL_RESET_BTN);
+    this.generateBtn = document.querySelector(SELECTORS.CONTROL_GENERATE_BTN);
+    this.submitBtn = document.querySelector(SELECTORS.CONTROL_CREATE_BTN);
+    this.cancelBtn = document.querySelector(SELECTORS.CONTROL_CANCEL_BTN);
+    this.colorInput = document.querySelector(SELECTORS.CONTROL_COLOR_INPUT);
+    this.nameInput = document.querySelector(SELECTORS.CONTROL_NAME_INPUT);
+    this.OptionalBtns = document.querySelector(SELECTORS.CONTROL_OPTIONAL_BTNS);
   };
 
   renderLayout = () => {
-    super.renderLayout('Garage');
+    super.renderLayout(APP_SECTIONS.GARAGE);
     this.generateControlPanel();
   };
 
