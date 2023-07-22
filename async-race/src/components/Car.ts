@@ -10,8 +10,13 @@ export default class Car {
   removeBtn: HTMLButtonElement | null;
   carPict: HTMLElement | null;
   onRemove: () => void;
+  onEdit: () => void;
 
-  constructor(carData: CarType, onRemove: (id: string) => void) {
+  constructor(
+    carData: CarType,
+    onRemove: (id: string) => void,
+    onEdit: (id: string) => void
+  ) {
     this.carData = carData;
     this.element = this.createLayout();
     this.startBtn = this.element.querySelector('.car__start-btn');
@@ -20,6 +25,7 @@ export default class Car {
     this.removeBtn = this.element.querySelector('.car__remove-btn');
     this.carPict = this.element.querySelector('.car__car');
     this.onRemove = () => onRemove(this.carData.id);
+    this.onEdit = () => onEdit(this.carData.id);
     this.initiate();
   }
 
@@ -65,7 +71,7 @@ export default class Car {
   setListeners = () => {
     this.startBtn?.addEventListener('click', this.start);
     this.stopBtn?.addEventListener('click', this.stop);
-    this.editBtn?.addEventListener('click', this.edit);
+    this.editBtn?.addEventListener('click', this.onEdit);
     this.removeBtn?.addEventListener('click', this.onRemove);
   };
 

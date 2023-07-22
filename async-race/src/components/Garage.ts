@@ -8,10 +8,13 @@ export default class Garage extends Section<CarType> {
   raceBtn: HTMLElement | null;
   resetBtn: HTMLElement | null;
   generateBtn: HTMLElement | null;
-  createBtn: HTMLElement | null;
+  submitBtn: HTMLElement | null;
+  cancelBtn: HTMLElement | null;
   form: HTMLFormElement | null;
   generateCarName: () => string;
   generateCarColor: () => string;
+  carToEdit: string | null;
+  OptionalBtns: HTMLDivElement | null;
 
   constructor(
     getItems: (
@@ -35,13 +38,43 @@ export default class Garage extends Section<CarType> {
     this.generateCarColor = generateCarColor;
   }
 
+  renderState = () => {
+    super.renderState();
+    this.renderControlPanelState();
+  };
+
+  renderControlPanelState = () => {
+    if (!this.submitBtn) return;
+    switch (!this.carToEdit) {
+      case false:
+        this.submitBtn.textContent = 'update';
+        this.OptionalBtns?.classList.add('hidden');
+        this.cancelBtn?.classList.remove('hidden');
+        break;
+      case true:
+        this.submitBtn.textContent = 'create';
+        this.OptionalBtns?.classList.remove('hidden');
+        this.cancelBtn?.classList.add('hidden');
+        break;
+      default:
+        break;
+    }
+  };
+
+  editCar = (id: typeof this.carToEdit) => {
+    this.carToEdit = id;
+    this.renderState();
+  };
+
   generateControlPanel = () => {
     const controlPanel = document.createElement('div');
     controlPanel.innerHTML = `
     <form class="control__edit">
           <input type="text" class="control__input control__input_type_car-name" />
           <input type="color" class="control__input control__input_type_car-color" />
-          <button type="button" class="btn control__create-btn">create</button>
+          <button type="button" class="btn control__create-btn"></button>
+          <button type="button" class="btn hidden control__cancel-btn">Cancel</button>
+
         </form>
         <div class="control__btns">
           <button class="btn control__race-btn">race</button>
@@ -76,9 +109,11 @@ export default class Garage extends Section<CarType> {
     this.raceBtn = document.querySelector('.control__race-btn');
     this.resetBtn = document.querySelector('.control__reset-btn');
     this.generateBtn = document.querySelector('.control__generate-btn');
-    this.createBtn = document.querySelector('.control__create-btn');
+    this.submitBtn = document.querySelector('.control__create-btn');
+    this.cancelBtn = document.querySelector('.control__cancel-btn');
     this.colorInput = document.querySelector('.control__input_type_car-color');
     this.nameInput = document.querySelector('.control__input_type_car-name');
+    this.OptionalBtns = document.querySelector('.control__btns');
   };
 
   renderLayout = () => {
@@ -94,12 +129,23 @@ export default class Garage extends Section<CarType> {
       name: this.nameInput.value,
       color: this.colorInput.value,
     };
-    super.createItem(NewCarData);
+    if (this.carToEdit) {
+      super.editItem(this.carToEdit, NewCarData);
+      this.cancelEditMode();
+    } else {
+      super.createItem(NewCarData);
+    }
+  };
+
+  cancelEditMode = () => {
+    this.carToEdit = null;
+    this.renderControlPanelState();
   };
 
   setListeners = () => {
     super.setListeners();
-    this.createBtn?.addEventListener('click', this.submitCreateCar);
+    this.submitBtn?.addEventListener('click', this.submitCreateCar);
     this.generateBtn?.addEventListener('click', this.generateCarsPattern);
+    this.cancelBtn?.addEventListener('click', this.cancelEditMode);
   };
 }

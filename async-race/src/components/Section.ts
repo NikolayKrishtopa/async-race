@@ -63,10 +63,11 @@ export class Section<T extends { id: string }> implements ISection<T> {
     await this.fetchDeleteItem(id);
     this.fetchItemsList();
   };
-  editItem = async (id: string, item: T) => {
+
+  async editItem(id: string, item: T) {
     await this.fetchEditItem(id, item);
     this.fetchItemsList();
-  };
+  }
 
   searchElements() {
     this.curPageNumField = document.querySelector('.section__page-num');
@@ -126,14 +127,14 @@ export class Section<T extends { id: string }> implements ISection<T> {
     });
   };
 
-  renderState = () => {
+  renderState() {
     if (!this.curPageNumField || !this.pagesQtyField || !this.itemsQtyField)
       return;
     this.curPageNumField.textContent = this.curPage.toString();
     this.pagesQtyField.textContent = this.pagesQty.toString();
     this.itemsQtyField.textContent = this.totalItemsQty.toString();
     this.renderPaginationBtns;
-  };
+  }
 
   renderPaginationBtns = () => {
     if (this.pagesQty === 1) {

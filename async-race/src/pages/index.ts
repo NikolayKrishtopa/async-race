@@ -34,11 +34,15 @@ const app = new App(
     const garage = new Garage(
       carsApi.getCars,
       (car: CarType) =>
-        new Car(car, (id: string) => {
-          garage.deleteItem(id);
-
-          return;
-        }).element as HTMLElement,
+        new Car(
+          car,
+          (id: string) => {
+            garage.deleteItem(id);
+          },
+          (id: string) => {
+            garage.editCar(id);
+          }
+        ).element as HTMLElement,
       carsApi.createCar,
       carsApi.deleteCar,
       carsApi.editCar,
