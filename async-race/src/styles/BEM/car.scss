@@ -1,0 +1,49 @@
+.car {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 3px dashed white;
+  gap: 20px;
+
+  &__heading {
+    display: flex;
+    gap: 10px;
+  }
+  &__title {
+    font-size: 1rem;
+  }
+  &__main {
+    display: flex;
+    gap: 10px;
+  }
+  &__nav {
+    display: flex;
+    gap: 5px;
+  }
+  &__btn {
+    @include clickable;
+    width: 32px;
+    height: 32px;
+    font-size: 1.5rem;
+    color: green;
+    border: 2px solid green;
+    border-radius: 3px;
+  }
+  &__track {
+    width: 100%;
+    position: relative;
+  }
+
+  &__car {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-left: -10px;
+    margin-bottom: -30px;
+  }
+  &__finish-flag {
+    transform: scale(2);
+    position: absolute;
+    right: 150px;
+    bottom: 25px;
+  }
+}

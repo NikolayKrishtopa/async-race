@@ -1,0 +1,7 @@
+.btn {
+  @include button;
+  &_inactive {
+    pointer-events: none;
+    background-color: rgb(186, 186, 186);
+  }
+}

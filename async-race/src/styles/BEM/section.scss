@@ -1,0 +1,22 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__title {
+    font-size: 2rem;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  &__row {
+    display: flex;
+    gap: 20px;
+  }
+  &__page {
+    font-size: 1.5rem;
+  }
+}

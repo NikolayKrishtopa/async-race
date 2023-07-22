@@ -70,7 +70,7 @@ export default class Garage extends Section<CarType> {
     const controlPanel = document.createElement('div');
     controlPanel.innerHTML = `
     <form class="control__edit">
-          <input type="text" class="control__input control__input_type_car-name" />
+          <input type="text" class="control__input control__input_type_text control__input_type_car-name" />
           <input type="color" class="control__input control__input_type_car-color" />
           <button type="button" class="btn control__create-btn"></button>
           <button type="button" class="btn hidden control__cancel-btn">Cancel</button>

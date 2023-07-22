@@ -1,0 +1,10 @@
+.root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $page-bkgnd;
+  color: white;
+  padding: 0 50px;
+}
