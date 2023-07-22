@@ -7,6 +7,7 @@ import Garage from '../components/Garage';
 import Winners from '../components/Winners';
 import generateCarName from '../utils/generateCarName';
 import getRandomColor from '../utils/getRandomColor';
+import getSvg from '../utils/getSvg';
 
 const generateWinnerLayout = (winner: WinnerType) => {
   const element = document.createElement('div');
@@ -41,7 +42,8 @@ const app = new App(
           },
           (id: string) => {
             garage.editCar(id);
-          }
+          },
+          getSvg
         ).element as HTMLElement,
       carsApi.createCar,
       carsApi.deleteCar,

@@ -11,13 +11,16 @@ export default class Car {
   carPict: HTMLElement | null;
   onRemove: () => void;
   onEdit: () => void;
+  generateCarImg: (color: string) => string;
 
   constructor(
     carData: CarType,
     onRemove: (id: string) => void,
-    onEdit: (id: string) => void
+    onEdit: (id: string) => void,
+    generateCarImg: (color: string) => string
   ) {
     this.carData = carData;
+    this.generateCarImg = generateCarImg;
     this.element = this.createLayout();
     this.startBtn = this.element.querySelector('.car__start-btn');
     this.stopBtn = this.element.querySelector('.car__stop-btn');
@@ -44,7 +47,7 @@ export default class Car {
             <button class="car__btn car__stop-btn">B</button>
           </div>
           <div class="car__track">
-            <div class="car__car"></div>
+            ${this.generateCarImg(this.carData.color)}
             <img
               src="./assets/img/flag_finish_fill.svg"
               alt="finish flag"
@@ -53,17 +56,13 @@ export default class Car {
           </div>
         </div>
     `;
-    const img = element.querySelector('.car__finish-flag');
-    if (img instanceof HTMLImageElement) {
-      img.src = flagImg;
+    const finishImg = element.querySelector('.car__finish-flag');
+    if (finishImg instanceof HTMLImageElement) {
+      finishImg.src = flagImg;
     }
     const title = element.querySelector('.car__title');
     if (title) {
       title.textContent = this.carData.name;
-    }
-    this.carPict = element.querySelector('.car__car');
-    if (this.carPict) {
-      this.carPict.style.backgroundColor = this.carData.color;
     }
     return element;
   };
