@@ -4,7 +4,9 @@
   gap: 10px;
   &__text {
     font-size: 1rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &_clickable {
       @include clickable;
     }

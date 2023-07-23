@@ -7,7 +7,7 @@ import {
   REQUEST_TYPES,
   SortBy,
   WinnerType,
-  EngineStatus,
+  TripStatus,
 } from '../types/models';
 
 const carsApi = {
@@ -72,7 +72,7 @@ const carsApi = {
     });
     const endpoint = `${ENDPOINTS.ENGINE}?${params}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.PATCH);
-    return res?.payload as EngineStatus;
+    return res?.payload as TripStatus;
   },
 
   async startEngine(id: string) {

@@ -19,6 +19,7 @@ export default class Garage extends Section<CarType, Car> {
   generateCarColor: () => string;
   carToEdit: string | null;
   OptionalBtns: HTMLDivElement | null;
+  status: 'race' | 'park' | 'finished';
 
   constructor(
     getItems: (
@@ -41,12 +42,14 @@ export default class Garage extends Section<CarType, Car> {
     this.generateCarName = generateCarName;
     this.generateCarColor = generateCarColor;
     this.itemsPerPage = APP_ADJUSTMENT.ITEMS_PER_PAGE_CARS;
+    this.status = 'park';
     this.renderPage();
   }
 
   renderState = () => {
     super.renderState();
     this.renderControlPanelState();
+    this.renderRaceStatus();
   };
 
   renderControlPanelState = () => {
@@ -54,12 +57,12 @@ export default class Garage extends Section<CarType, Car> {
     switch (!this.carToEdit) {
       case false:
         this.submitBtn.textContent = GARAGE_SUBMIT_BTN_TEXT.EDIT;
-        this.OptionalBtns?.classList.add(SELECTORS.HIDDEN);
+        this.OptionalBtns?.classList.add(SELECTORS.TRANSPARENT);
         this.cancelBtn?.classList.remove(SELECTORS.HIDDEN);
         break;
       case true:
         this.submitBtn.textContent = GARAGE_SUBMIT_BTN_TEXT.CREATE;
-        this.OptionalBtns?.classList.remove(SELECTORS.HIDDEN);
+        this.OptionalBtns?.classList.remove(SELECTORS.TRANSPARENT);
         this.cancelBtn?.classList.add(SELECTORS.HIDDEN);
         break;
       default:
@@ -144,16 +147,54 @@ export default class Garage extends Section<CarType, Car> {
   };
 
   cancelEditMode = () => {
+    this.items
+      .find((e) => {
+        if (!this.carToEdit) return;
+        return e.carData.id === this.carToEdit;
+      })
+      ?.stopHighLight();
     this.carToEdit = null;
     this.renderControlPanelState();
   };
 
+  renderRaceStatus = () => {
+    switch (this.status) {
+      case 'race':
+        this.raceBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+        this.resetBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+        break;
+      case 'park':
+        this.raceBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
+        this.resetBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+        break;
+      case 'finished':
+        this.raceBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+        this.resetBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
+        break;
+      default:
+        break;
+    }
+  };
+
   race = () => {
     this.items.forEach((e) => e.start());
+    this.status = 'race';
+    this.renderRaceStatus();
   };
 
   reset = () => {
-    this.items.forEach((e) => e.reset());
+    Promise.allSettled(this.items.map((e) => e.reset())).then(() => {
+      this.status = 'park';
+      this.renderRaceStatus();
+    });
+  };
+
+  registerWinner = async (id: string, time: number) => {
+    if (this.status !== 'race') return;
+    console.log(time);
+
+    this.status = 'finished';
+    this.renderRaceStatus();
   };
 
   setListeners = () => {

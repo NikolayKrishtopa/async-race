@@ -1,9 +1,12 @@
 .car {
+  padding: 15px 0 0 15px;
   display: flex;
   flex-direction: column;
   border-bottom: 3px dashed white;
   gap: 20px;
-
+  &_state_edited {
+    background-color: rgba(95, 91, 91, 0.5);
+  }
   &__heading {
     display: flex;
     gap: 10px;
@@ -27,6 +30,15 @@
     color: green;
     border: 2px solid green;
     border-radius: 3px;
+    &_style_red {
+      color: rgb(159, 39, 9);
+      border-color: rgb(159, 39, 9);
+    }
+    &_state_inactive {
+      color: rgb(80, 75, 74);
+      border-color: rgb(80, 75, 74);
+      pointer-events: none;
+    }
   }
   &__track {
     width: 100%;

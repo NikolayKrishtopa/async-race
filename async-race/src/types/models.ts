@@ -85,7 +85,7 @@ export default interface ISection<T, U> {
   fetchEditItem: (id: string, payload: T) => Promise<T>;
 }
 
-export type EngineStatus = {
+export type TripStatus = {
   velocity?: number;
   distance?: number;
   success?: true;

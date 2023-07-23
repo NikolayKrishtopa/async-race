@@ -22,6 +22,7 @@ const SELECTORS = {
   CONTROL_OPTIONAL_BTNS: '.control__btns',
   CAR_START_BTN: '.car__start-btn',
   CAR_STOP_BTN: '.car__stop-btn',
+  CAR_BTN_INACTIVE: 'car__btn_state_inactive',
   CAR_EDIT_BTN: '.car__edit-btn',
   CAR_REMOVE_BTN: '.car__remove-btn',
   CAR_PICTURE: '.car__car',
@@ -36,6 +37,8 @@ const SELECTORS = {
   WINNER_WINS: '.winner__text_type_wins',
   WINNER_BEST_TIME: '.winner__text_type_best-time',
   WINNER_CAR_NAME: '.winner__text_type_name',
+  CAR_EDIT: 'car_state_edited',
+  TRANSPARENT: 'transparent',
 };
 
 export default SELECTORS;

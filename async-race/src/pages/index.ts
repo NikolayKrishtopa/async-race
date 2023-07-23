@@ -12,7 +12,7 @@ import Winner from '../components/Winner';
 
 const app = new App(
   () => {
-    const garage = new Garage(
+    const garage: Garage = new Garage(
       carsApi.getCars,
       (car: CarType) =>
         new Car(
@@ -26,7 +26,8 @@ const app = new App(
           getSvg,
           carsApi.startEngine,
           carsApi.stopEngine,
-          carsApi.drive
+          carsApi.drive,
+          garage.registerWinner
         ),
       carsApi.createCar,
       carsApi.deleteCar,

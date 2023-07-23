@@ -1,4 +1,4 @@
-import { CarType, EngineStatus } from '../types/models';
+import { CarType, TripStatus } from '../types/models';
 import flagImg from '../assets/img/flag_finish_fill.svg';
 import SELECTORS from '../utils/selectors';
 import APP_ADJUSTMENT from '../utils/AppAdjust';
@@ -14,21 +14,25 @@ export default class Car {
   onRemove: () => void;
   onEdit: () => void;
   generateCarImg: (color: string, claassName: string) => string;
-  startEngine: (id: string) => Promise<EngineStatus>;
-  stopEngine: (id: string) => Promise<EngineStatus>;
-  drive: (id: string) => Promise<EngineStatus>;
+  startEngine: (id: string) => Promise<TripStatus>;
+  stopEngine: (id: string) => Promise<TripStatus>;
+  drive: (id: string) => Promise<TripStatus>;
   track: HTMLDivElement | null;
   interval: NodeJS.Timer;
+  registerResult: (id: string, time: number) => void;
+  status: 'park' | 'drive';
 
   constructor(
     carData: CarType,
     onRemove: (id: string) => void,
     onEdit: (id: string) => void,
     generateCarImg: (color: string, className: string) => string,
-    startEngine: (id: string) => Promise<EngineStatus>,
-    stopEngine: (id: string) => Promise<EngineStatus>,
-    drive: (id: string) => Promise<EngineStatus>
+    startEngine: (id: string) => Promise<TripStatus>,
+    stopEngine: (id: string) => Promise<TripStatus>,
+    drive: (id: string) => Promise<TripStatus>,
+    registerResult: (id: string, time: number) => void
   ) {
+    this.registerResult = registerResult;
     this.startEngine = startEngine;
     this.stopEngine = stopEngine;
     this.drive = drive;
@@ -42,7 +46,11 @@ export default class Car {
     this.carPict = this.element.querySelector(SELECTORS.CAR_PICTURE);
     this.track = this.element.querySelector(SELECTORS.CAR_TRACK);
     this.onRemove = () => onRemove(this.carData.id);
-    this.onEdit = () => onEdit(this.carData.id);
+    this.status = 'park';
+    this.onEdit = () => {
+      onEdit(this.carData.id);
+      this.highLight();
+    };
     this.initiate();
   }
 
@@ -58,7 +66,7 @@ export default class Car {
         <div class="car__main">
           <div class="car__nav">
             <button class="car__btn car__start-btn">A</button>
-            <button class="car__btn car__stop-btn">B</button>
+            <button class="car__btn car__btn_style_red car__stop-btn">B</button>
           </div>
           <div class="car__track">
             ${this.generateCarImg(
@@ -92,28 +100,37 @@ export default class Car {
   };
 
   start = async () => {
+    this.status = 'drive';
+    this.renderRaceStatus();
     const velocity = (await this.startEngine(this.carData.id)).velocity;
     console.log(velocity);
 
     if (!velocity) return;
     const time = APP_ADJUSTMENT.BASIC_RACE_TIME / velocity;
     this.animate(time);
+    const finishTimeout = setTimeout(
+      () => this.registerResult(this.carData.id, time),
+      time
+    );
     const status = await this.drive(this.carData.id);
-    console.log(status);
-
-    if (!status) this.stop();
+    if (!status) {
+      this.stop();
+      clearTimeout(finishTimeout);
+    }
   };
   stop = () => {
     if (!this.carPict) return;
     clearInterval(this.interval);
   };
-  reset = () => {
+  reset = async () => {
     if (!this.carPict) return;
-    this.stop();
-    this.carPict.style.transform = `none`;
-  };
-  edit = () => {
-    console.log(`edit ${this.carData.name}`);
+    const res = await this.stopEngine(this.carData.id);
+    if (res.velocity === 0) {
+      this.status = 'park';
+      this.stop();
+      this.carPict.style.transform = `none`;
+      this.renderRaceStatus();
+    }
   };
 
   animate = (duration: number) => {
@@ -130,7 +147,31 @@ export default class Car {
     }, 16);
   };
 
+  highLight = () => {
+    this.element?.classList.add(SELECTORS.CAR_EDIT);
+  };
+
+  stopHighLight = () => {
+    this.element?.classList.remove(SELECTORS.CAR_EDIT);
+  };
+
+  renderRaceStatus = () => {
+    switch (this.status) {
+      case 'park':
+        this.startBtn?.classList.remove(SELECTORS.CAR_BTN_INACTIVE);
+        this.stopBtn?.classList.add(SELECTORS.CAR_BTN_INACTIVE);
+        break;
+      case 'drive':
+        this.startBtn?.classList.add(SELECTORS.CAR_BTN_INACTIVE);
+        this.stopBtn?.classList.remove(SELECTORS.CAR_BTN_INACTIVE);
+        break;
+      default:
+        break;
+    }
+  };
+
   initiate = () => {
     this.setListeners();
+    this.renderRaceStatus();
   };
 }
