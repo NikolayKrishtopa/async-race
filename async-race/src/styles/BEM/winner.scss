@@ -1,7 +1,13 @@
 .winner {
-  display: flex;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(5, 70px);
+  gap: 10px;
   &__text {
     font-size: 1rem;
+    text-align: center;
+  }
+  &__car-icon {
+    max-height: 40px;
+    max-width: 70px;
   }
 }

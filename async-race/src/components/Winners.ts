@@ -20,9 +20,8 @@ export default class Winners extends Section<WinnerType, Winner> {
 
   renderHeading = () => {
     const heading = document.createElement('div');
-    heading.classList.add(SELECTORS.WINNER);
+    heading.classList.add(SELECTORS.WINNERS_HEADING);
     heading.innerHTML = `
-    <p class="winner__text winner__text_type_number"></p>
         <p class="winner__text winner__text_type_name">Number</p>
         <p class="winner__text winner__text_type_wins">Car</p>
         <p class="winner__text winner__text_type_best-time">Name</p>
@@ -34,6 +33,7 @@ export default class Winners extends Section<WinnerType, Winner> {
 
   renderLayout = () => {
     super.renderLayout(APP_SECTIONS.WINNERS);
+    this.itemsContainer?.classList.add('section__content_type_winner');
   };
   renderItems = () => {
     super.renderItems();

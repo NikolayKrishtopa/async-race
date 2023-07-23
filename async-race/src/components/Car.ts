@@ -12,13 +12,13 @@ export default class Car {
   carPict: HTMLElement | null;
   onRemove: () => void;
   onEdit: () => void;
-  generateCarImg: (color: string) => string;
+  generateCarImg: (color: string, claassName: string) => string;
 
   constructor(
     carData: CarType,
     onRemove: (id: string) => void,
     onEdit: (id: string) => void,
-    generateCarImg: (color: string) => string
+    generateCarImg: (color: string, className: string) => string
   ) {
     this.carData = carData;
     this.generateCarImg = generateCarImg;
@@ -48,7 +48,10 @@ export default class Car {
             <button class="car__btn car__stop-btn">B</button>
           </div>
           <div class="car__track">
-            ${this.generateCarImg(this.carData.color)}
+            ${this.generateCarImg(
+              this.carData.color,
+              SELECTORS.CAR_PICTURE_CLASS
+            )}
             <img
               src="./assets/img/flag_finish_fill.svg"
               alt="finish flag"

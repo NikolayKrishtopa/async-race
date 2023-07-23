@@ -40,7 +40,7 @@ const carsApi = {
   async getCar(id: string) {
     const endpoint = `${ENDPOINTS.GARAGE}/${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
-    return res?.payload;
+    return res?.payload as CarType;
   },
 
   async createCar(payload: object) {

@@ -37,7 +37,7 @@ const app = new App(
   () =>
     new Winners(
       carsApi.getWinners,
-      (winner: WinnerType) => new Winner(winner, getSvg),
+      (winner: WinnerType) => new Winner(winner, getSvg, carsApi.getCar),
       carsApi.createWinner,
       carsApi.deleteWinner,
       carsApi.editWinner

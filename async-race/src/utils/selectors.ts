@@ -25,10 +25,16 @@ const SELECTORS = {
   CAR_EDIT_BTN: '.car__edit-btn',
   CAR_REMOVE_BTN: '.car__remove-btn',
   CAR_PICTURE: '.car__car',
+  CAR_PICTURE_CLASS: 'car__car',
   CAR: 'car',
   FLAG: '.car__finish-flag',
   CAR_TITLE: '.car__title',
   WINNER: 'winner',
+  WINNERS_HEADING: 'section__list-heading',
+  WINNER_NUMBER: '.winner__text_type_number',
+  WINNER_WINS: '.winner__text_type_wins',
+  WINNER_BEST_TIME: '.winner__text_type_best-time',
+  WINNER_CAR_NAME: '.winner__text_type_name',
 };
 
 export default SELECTORS;
