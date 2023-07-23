@@ -1,11 +1,20 @@
-import { QueryParams, WinnerType } from '../types/models';
+import { OrderType, QueryParams, SortBy, WinnerType } from '../types/models';
 import { APP_SECTIONS } from '../utils/constants';
 import SELECTORS from '../utils/selectors';
 import Winner from './Winner';
+import arrowImg from '../assets/img/up_arrow.svg';
 
 import { Section } from './Section';
+import APP_ADJUSTMENT from '../utils/AppAdjust';
 
 export default class Winners extends Section<WinnerType, Winner> {
+  sortPerTimeBtn: HTMLButtonElement | null;
+  sortPerWinBtn: HTMLButtonElement | null;
+  sortBy: SortBy;
+  order: OrderType;
+  sortbyWinsIcon: HTMLImageElement | null;
+  sortbyTimeIcon: HTMLImageElement | null;
+
   constructor(
     getItems: (
       params: QueryParams | QueryParams
@@ -16,27 +25,110 @@ export default class Winners extends Section<WinnerType, Winner> {
     fetchEditItem: (id: string, payload: WinnerType) => Promise<WinnerType>
   ) {
     super(getItems, generateItem, createItem, fetchDeleteItem, fetchEditItem);
+    this.itemsPerPage = APP_ADJUSTMENT.ITEMS_PER_PAGE_WINNERS;
+    this.sortBy = SortBy.wins;
+    this.order = OrderType.descending;
+    this.renderPage();
   }
 
   renderHeading = () => {
     const heading = document.createElement('div');
     heading.classList.add(SELECTORS.WINNERS_HEADING);
     heading.innerHTML = `
-        <p class="winner__text winner__text_type_name">Number</p>
-        <p class="winner__text winner__text_type_wins">Car</p>
-        <p class="winner__text winner__text_type_best-time">Name</p>
-        <p class="winner__text winner__text_type_best-time">Wins</p>
-        <p class="winner__text winner__text_type_best-time">Best time</p>
+        <p class="winner__text">Number</p>
+        <p class="winner__text">Car</p>
+        <p class="winner__text">Name</p>
+        <div class="winner__heading-item">
+          <p class="winner__text winner__text_clickable" id="sortByWins">Wins</p>
+          <img src=${arrowImg} class="winner__sort-icon winner__sort-icon_type_wins"/>
+        </div>
+        <div class="winner__heading-item">
+          <p class="winner__text winner__text_clickable" id="sortByTime">Best time</p>
+          <img src=${arrowImg} class="winner__sort-icon winner__sort-icon_type_time"/>
+        </div>
     `;
     if (this.itemsContainer) this.itemsContainer.prepend(heading);
+  };
+
+  findAndInitializeUxElements = () => {
+    this.sortPerTimeBtn = document.querySelector('#sortByTime');
+    this.sortPerWinBtn = document.querySelector('#sortByWins');
+    this.sortbyWinsIcon = document.querySelector(
+      '.winner__sort-icon_type_wins'
+    );
+    this.sortbyTimeIcon = document.querySelector(
+      '.winner__sort-icon_type_time'
+    );
   };
 
   renderLayout = () => {
     super.renderLayout(APP_SECTIONS.WINNERS);
     this.itemsContainer?.classList.add('section__content_type_winner');
+    this.renderSortState();
   };
+
+  changeSort = (sortBy: SortBy) => {
+    if (this.queryParams._sort === sortBy) {
+      if (this.queryParams._order === OrderType.ascending) {
+        this.order = OrderType.descending;
+        this.updateQueryParams();
+      } else {
+        this.order = OrderType.ascending;
+        this.updateQueryParams();
+      }
+    } else {
+      this.sortBy = sortBy;
+      this.order = OrderType.descending;
+      this.updateQueryParams();
+    }
+    this.fetchItemsList();
+    this.renderSortState();
+  };
+
+  updateQueryParams = () => {
+    super.updateQueryParams();
+    this.queryParams._sort = this.sortBy;
+    this.queryParams._order = this.order;
+  };
+
+  setListeners = () => {
+    this.sortPerTimeBtn?.addEventListener('click', () =>
+      this.changeSort(SortBy.time)
+    );
+    this.sortPerWinBtn?.addEventListener('click', () =>
+      this.changeSort(SortBy.wins)
+    );
+  };
+
+  renderSortState = () => {
+    if (this.sortBy === SortBy.time) {
+      this.sortbyWinsIcon?.classList.add('winner__sort-icon_state_hidden');
+      this.sortbyTimeIcon?.classList.remove('winner__sort-icon_state_hidden');
+      if (this.order === OrderType.ascending) {
+        console.log(this.sortbyTimeIcon);
+
+        this.sortbyTimeIcon?.classList.remove(
+          'winner__sort-icon_state_rotated'
+        );
+      } else if (this.order === OrderType.descending) {
+        this.sortbyTimeIcon?.classList.add('winner__sort-icon_state_rotated');
+      }
+    } else if (this.sortBy === SortBy.wins) {
+      this.sortbyWinsIcon?.classList.remove('winner__sort-icon_state_hidden');
+      this.sortbyTimeIcon?.classList.add('winner__sort-icon_state_hidden');
+      if (this.order === OrderType.ascending) {
+        this.sortbyWinsIcon?.classList.remove(
+          'winner__sort-icon_state_rotated'
+        );
+      } else if (this.order === OrderType.descending) {
+        this.sortbyWinsIcon?.classList.add('winner__sort-icon_state_rotated');
+      }
+    }
+  };
+
   renderItems = () => {
     super.renderItems();
     this.renderHeading();
+    this.findAndInitializeUxElements();
   };
 }

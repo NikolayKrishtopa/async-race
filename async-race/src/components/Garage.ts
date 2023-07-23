@@ -1,4 +1,5 @@
 import { CarType, QueryParams } from '../types/models';
+import APP_ADJUSTMENT from '../utils/AppAdjust';
 import { APP_SECTIONS, GARAGE_SUBMIT_BTN_TEXT } from '../utils/constants';
 import SELECTORS from '../utils/selectors';
 import Car from './Car';
@@ -39,6 +40,8 @@ export default class Garage extends Section<CarType, Car> {
     );
     this.generateCarName = generateCarName;
     this.generateCarColor = generateCarColor;
+    this.itemsPerPage = APP_ADJUSTMENT.ITEMS_PER_PAGE_CARS;
+    this.renderPage();
   }
 
   renderState = () => {

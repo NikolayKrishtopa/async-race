@@ -78,10 +78,6 @@ export class Section<
     this.curPageNumField = document.querySelector(SELECTORS.PAGE_NUM_FIELD);
     this.pagesQtyField = document.querySelector(SELECTORS.PAGES_QTY);
     this.itemsQtyField = document.querySelector(SELECTORS.ITEMS_QTY);
-    this.queryParams = {
-      _page: this.curPage,
-      _limit: this.itemsPerPage,
-    };
     this.prevPageBtn = document.querySelector(SELECTORS.PAGINATION_PREV_BTN);
     this.nextPageBtn = document.querySelector(SELECTORS.PAGINATION_NEXT_BTN);
     this.itemsContainer = document.querySelector(SELECTORS.SECTION_CONTENT);
@@ -107,12 +103,12 @@ export class Section<
     `;
   }
 
-  updateQueryParams = () => {
+  updateQueryParams() {
     this.queryParams = {
       _page: this.curPage,
       _limit: this.itemsPerPage,
     };
-  };
+  }
 
   fetchItemsList = async () => {
     const res = await this.getItems(this.queryParams);
@@ -120,7 +116,6 @@ export class Section<
     this.totalItemsQty = Number(res.totalQty);
     this.pagesQty = Math.ceil(this.totalItemsQty / this.itemsPerPage);
     this.renderPage();
-    console.log(this.items);
   };
 
   renderItems() {

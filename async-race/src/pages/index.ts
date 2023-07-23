@@ -23,7 +23,10 @@ const app = new App(
           (id: string) => {
             garage.editCar(id);
           },
-          getSvg
+          getSvg,
+          carsApi.startEngine,
+          carsApi.stopEngine,
+          carsApi.drive
         ),
       carsApi.createCar,
       carsApi.deleteCar,

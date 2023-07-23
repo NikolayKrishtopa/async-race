@@ -26,6 +26,7 @@ const SELECTORS = {
   CAR_REMOVE_BTN: '.car__remove-btn',
   CAR_PICTURE: '.car__car',
   CAR_PICTURE_CLASS: 'car__car',
+  CAR_TRACK: '.car__track',
   CAR: 'car',
   FLAG: '.car__finish-flag',
   CAR_TITLE: '.car__title',

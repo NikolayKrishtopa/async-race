@@ -1,0 +1,6 @@
+const APP_ADJUSTMENT = {
+  ITEMS_PER_PAGE_CARS: 7,
+  ITEMS_PER_PAGE_WINNERS: 10,
+};
+
+export default APP_ADJUSTMENT;

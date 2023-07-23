@@ -1,4 +1,4 @@
-import { CarType } from '../types/models';
+import { CarType, EngineStatus } from '../types/models';
 import flagImg from '../assets/img/flag_finish_fill.svg';
 import SELECTORS from '../utils/selectors';
 
@@ -13,13 +13,24 @@ export default class Car {
   onRemove: () => void;
   onEdit: () => void;
   generateCarImg: (color: string, claassName: string) => string;
+  startEngine: (id: string) => Promise<EngineStatus>;
+  stopEngine: (id: string) => Promise<EngineStatus>;
+  drive: (id: string) => Promise<EngineStatus>;
+  track: HTMLDivElement | null;
+  interval: NodeJS.Timer;
 
   constructor(
     carData: CarType,
     onRemove: (id: string) => void,
     onEdit: (id: string) => void,
-    generateCarImg: (color: string, className: string) => string
+    generateCarImg: (color: string, className: string) => string,
+    startEngine: (id: string) => Promise<EngineStatus>,
+    stopEngine: (id: string) => Promise<EngineStatus>,
+    drive: (id: string) => Promise<EngineStatus>
   ) {
+    this.startEngine = startEngine;
+    this.stopEngine = stopEngine;
+    this.drive = drive;
     this.carData = carData;
     this.generateCarImg = generateCarImg;
     this.element = this.createLayout();
@@ -28,6 +39,7 @@ export default class Car {
     this.editBtn = this.element.querySelector(SELECTORS.CAR_EDIT_BTN);
     this.removeBtn = this.element.querySelector(SELECTORS.CAR_REMOVE_BTN);
     this.carPict = this.element.querySelector(SELECTORS.CAR_PICTURE);
+    this.track = this.element.querySelector(SELECTORS.CAR_TRACK);
     this.onRemove = () => onRemove(this.carData.id);
     this.onEdit = () => onEdit(this.carData.id);
     this.initiate();
@@ -78,14 +90,34 @@ export default class Car {
     this.removeBtn?.addEventListener('click', this.onRemove);
   };
 
-  start = () => {
-    console.log(`start ${this.carData.name}`);
+  start = async () => {
+    this.animate(5000);
   };
   stop = () => {
-    console.log(`stop ${this.carData.name}`);
+    if (!this.carPict) return;
+    clearInterval(this.interval);
+  };
+  reset = () => {
+    if (!this.carPict) return;
+    this.stop();
+    this.carPict.style.transform = `none`;
   };
   edit = () => {
     console.log(`edit ${this.carData.name}`);
+  };
+
+  animate = (duration: number) => {
+    if (!this.track || !this.carPict) return;
+    const length = this.track.clientWidth - this.carPict.clientWidth;
+    let passed = 0;
+    this.interval = setInterval(() => {
+      passed += (length * 16) / duration;
+      if (!this.carPict) return;
+      this.carPict.style.transform = `translateX(${passed}px)`;
+      if (passed >= length) {
+        clearInterval(this.interval);
+      }
+    }, 16);
   };
 
   initiate = () => {

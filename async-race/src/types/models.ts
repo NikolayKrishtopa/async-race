@@ -40,7 +40,6 @@ export enum ENGINE_STATUS {
 }
 
 export enum SortBy {
-  id = 'id',
   wins = 'wins',
   time = 'time',
 }
@@ -85,3 +84,9 @@ export default interface ISection<T, U> {
   fetchDeleteItem: (id: string) => Promise<T>;
   fetchEditItem: (id: string, payload: T) => Promise<T>;
 }
+
+export type EngineStatus = {
+  velocity?: number;
+  distance?: number;
+  success?: true;
+};
