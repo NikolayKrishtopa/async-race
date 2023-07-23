@@ -19,7 +19,7 @@ export class Section<
   curPage: number;
   pagesQty: number;
   totalItemsQty: number;
-  items: Array<T>;
+  items: Array<U>;
   nextPageBtn: HTMLButtonElement | null;
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
@@ -116,7 +116,7 @@ export class Section<
 
   fetchItemsList = async () => {
     const res = await this.getItems(this.queryParams);
-    this.items = res.items;
+    this.items = res.items.map((item) => this.generateItem(item));
     this.totalItemsQty = Number(res.totalQty);
     this.pagesQty = Math.ceil(this.totalItemsQty / this.itemsPerPage);
     this.renderPage();
@@ -126,10 +126,9 @@ export class Section<
   renderItems() {
     if (!this.itemsContainer) return;
     this.itemsContainer.innerHTML = '';
-    this.items.forEach((e: T) => {
-      const item = this.generateItem(e);
-      if (!this.itemsContainer || !item.element) return;
-      this.itemsContainer.append(item.element);
+    this.items.forEach((e: U) => {
+      if (!this.itemsContainer || !e.element) return;
+      this.itemsContainer.append(e.element);
     });
   }
 

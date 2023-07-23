@@ -77,7 +77,7 @@ export default interface ISection<T, U> {
   curPage: number;
   pagesQty: number;
   totalItemsQty: number;
-  items: Array<T>;
+  items: Array<U>;
   nextPageBtn: HTMLButtonElement | null;
   prevPageBtn: HTMLButtonElement | null;
   mainContainer: HTMLDivElement;
