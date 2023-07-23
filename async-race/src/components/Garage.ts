@@ -148,10 +148,20 @@ export default class Garage extends Section<CarType, Car> {
     this.renderControlPanelState();
   };
 
+  race = () => {
+    this.items.forEach((e) => e.start());
+  };
+
+  reset = () => {
+    this.items.forEach((e) => e.reset());
+  };
+
   setListeners = () => {
     super.setListeners();
     this.submitBtn?.addEventListener('click', this.submitCreateCar);
     this.generateBtn?.addEventListener('click', this.generateCarsPattern);
     this.cancelBtn?.addEventListener('click', this.cancelEditMode);
+    this.raceBtn?.addEventListener('click', this.race);
+    this.resetBtn?.addEventListener('click', this.reset);
   };
 }

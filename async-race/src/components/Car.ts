@@ -1,6 +1,7 @@
 import { CarType, EngineStatus } from '../types/models';
 import flagImg from '../assets/img/flag_finish_fill.svg';
 import SELECTORS from '../utils/selectors';
+import APP_ADJUSTMENT from '../utils/AppAdjust';
 
 export default class Car {
   element: HTMLElement | null;
@@ -85,13 +86,22 @@ export default class Car {
 
   setListeners = () => {
     this.startBtn?.addEventListener('click', this.start);
-    this.stopBtn?.addEventListener('click', this.stop);
+    this.stopBtn?.addEventListener('click', this.reset);
     this.editBtn?.addEventListener('click', this.onEdit);
     this.removeBtn?.addEventListener('click', this.onRemove);
   };
 
   start = async () => {
-    this.animate(5000);
+    const velocity = (await this.startEngine(this.carData.id)).velocity;
+    console.log(velocity);
+
+    if (!velocity) return;
+    const time = APP_ADJUSTMENT.BASIC_RACE_TIME / velocity;
+    this.animate(time);
+    const status = await this.drive(this.carData.id);
+    console.log(status);
+
+    if (!status) this.stop();
   };
   stop = () => {
     if (!this.carPict) return;
