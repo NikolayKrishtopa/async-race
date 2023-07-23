@@ -109,9 +109,9 @@ const carsApi = {
   },
 
   async getWinner(id: string) {
-    const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
+    const endpoint = `${ENDPOINTS.WINNERS}/${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.GET);
-    return res?.payload;
+    return res?.payload as WinnerType;
   },
 
   async createWinner(payload: WinnerType) {
@@ -120,19 +120,19 @@ const carsApi = {
       REQUEST_TYPES.POST,
       payload
     );
-    return res?.payload;
+    return res?.payload as WinnerType;
   },
 
   async deleteWinner(id: string) {
-    const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
+    const endpoint = `${ENDPOINTS.WINNERS}/${id}`;
     const res = await carsApi.helper(endpoint, REQUEST_TYPES.DELETE);
-    if (res) return res.payload;
+    return res?.payload as WinnerType;
   },
 
   async editWinner(id: string, payload: WinnerType) {
-    const endpoint = `${ENDPOINTS.WINNERS}?${id}`;
-    const res = await carsApi.helper(endpoint, REQUEST_TYPES.POST, payload);
-    return res?.payload;
+    const endpoint = `${ENDPOINTS.WINNERS}/${id}`;
+    const res = await carsApi.helper(endpoint, REQUEST_TYPES.PATCH, payload);
+    return res?.payload as WinnerType;
   },
 };
 

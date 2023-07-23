@@ -1,4 +1,4 @@
-import { CarType, QueryParams } from '../types/models';
+import { CarType, QueryParams, WinnerType } from '../types/models';
 import APP_ADJUSTMENT from '../utils/AppAdjust';
 import { APP_SECTIONS, GARAGE_SUBMIT_BTN_TEXT } from '../utils/constants';
 import SELECTORS from '../utils/selectors';
@@ -20,6 +20,10 @@ export default class Garage extends Section<CarType, Car> {
   carToEdit: string | null;
   OptionalBtns: HTMLDivElement | null;
   status: 'race' | 'park' | 'finished';
+  createWinner: (winner: WinnerType) => Promise<WinnerType>;
+  updateWinner: (id: string, winner: WinnerType) => Promise<WinnerType>;
+  deleteWinner: (id: string) => Promise<WinnerType>;
+  getWinner: (id: string) => Promise<WinnerType>;
 
   constructor(
     getItems: (
@@ -30,7 +34,11 @@ export default class Garage extends Section<CarType, Car> {
     fetchDeleteItem: (id: string) => Promise<CarType>,
     fetchEditItem: (id: string, payload: CarType) => Promise<CarType>,
     generateCarName: () => string,
-    generateCarColor: () => string
+    generateCarColor: () => string,
+    createWinner: (winner: WinnerType) => Promise<WinnerType>,
+    updateWinner: (id: string, winner: WinnerType) => Promise<WinnerType>,
+    deleteWinner: (id: string) => Promise<WinnerType>,
+    getWinner: (id: string) => Promise<WinnerType>
   ) {
     super(
       getItems,
@@ -43,6 +51,10 @@ export default class Garage extends Section<CarType, Car> {
     this.generateCarColor = generateCarColor;
     this.itemsPerPage = APP_ADJUSTMENT.ITEMS_PER_PAGE_CARS;
     this.status = 'park';
+    this.createWinner = createWinner;
+    this.updateWinner = updateWinner;
+    this.deleteWinner = deleteWinner;
+    this.getWinner = getWinner;
     this.renderPage();
   }
 
@@ -82,7 +94,7 @@ export default class Garage extends Section<CarType, Car> {
           <input type="text" class="control__input control__input_type_text control__input_type_car-name" />
           <input type="color" class="control__input control__input_type_car-color" />
           <button type="button" class="btn control__create-btn"></button>
-          <button type="button" class="btn hidden control__cancel-btn">Cancel</button>
+          <button type="button" class="btn btn_style_red hidden control__cancel-btn">Cancel</button>
 
         </form>
         <div class="control__btns">
@@ -192,9 +204,20 @@ export default class Garage extends Section<CarType, Car> {
   registerWinner = async (id: string, time: number) => {
     if (this.status !== 'race') return;
     console.log(time);
-
     this.status = 'finished';
     this.renderRaceStatus();
+    const match = await this.getWinner(id);
+    console.log(match);
+
+    if (match.id) {
+      this.updateWinner(id, {
+        id,
+        time: Math.min(Number(time.toFixed(2)), match.time),
+        wins: match.wins + 1,
+      });
+    } else {
+      this.createWinner({ id, time: Number(time.toFixed(2)), wins: 1 });
+    }
   };
 
   setListeners = () => {

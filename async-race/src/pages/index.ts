@@ -33,7 +33,11 @@ const app = new App(
       carsApi.deleteCar,
       carsApi.editCar,
       generateCarName,
-      getRandomColor
+      getRandomColor,
+      carsApi.createWinner,
+      carsApi.editWinner,
+      carsApi.deleteWinner,
+      carsApi.getWinner
     );
     return garage;
   },

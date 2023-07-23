@@ -4,4 +4,16 @@
     pointer-events: none;
     background-color: rgb(186, 186, 186);
   }
+  &_style_red {
+    background-color: rgb(245, 126, 126);
+    color: rgb(62, 9, 111);
+  }
+  &_style_yellow {
+    color: rgb(62, 9, 111);
+    background-color: rgb(234, 240, 144);
+  }
+  &_style_blue {
+    background-color: rgb(128, 124, 236);
+    color: rgb(62, 9, 111);
+  }
 }

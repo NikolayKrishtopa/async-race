@@ -79,7 +79,7 @@ class App {
       if (!this.winners) {
         this.winners = this.createWinners();
       } else {
-        this.winners.renderPage();
+        this.winners.fetchItemsList();
       }
     }
   };

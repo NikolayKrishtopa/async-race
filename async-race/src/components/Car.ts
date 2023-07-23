@@ -59,8 +59,8 @@ export default class Car {
     element.classList.add(SELECTORS.CAR);
     element.innerHTML = `
     <div class="car__heading">
-          <button class="btn car__edit-btn">edit</button>
-          <button class="btn car__remove-btn">remove</button>
+          <button class="btn btn_style_blue car__edit-btn">edit</button>
+          <button class="btn btn_style_red car__remove-btn">remove</button>
           <h3 class="car__title">Tesla model s</h3>
         </div>
         <div class="car__main">
@@ -103,8 +103,6 @@ export default class Car {
     this.status = 'drive';
     this.renderRaceStatus();
     const velocity = (await this.startEngine(this.carData.id)).velocity;
-    console.log(velocity);
-
     if (!velocity) return;
     const time = APP_ADJUSTMENT.BASIC_RACE_TIME / velocity;
     this.animate(time);
@@ -149,10 +147,20 @@ export default class Car {
 
   highLight = () => {
     this.element?.classList.add(SELECTORS.CAR_EDIT);
+    this.editBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+    if (this.startBtn && this.stopBtn) {
+      this.startBtn.classList.add(SELECTORS.CAR_BTN_INACTIVE);
+      this.stopBtn.classList.add(SELECTORS.CAR_BTN_INACTIVE);
+    }
   };
 
   stopHighLight = () => {
     this.element?.classList.remove(SELECTORS.CAR_EDIT);
+    this.editBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
+    if (this.startBtn && this.stopBtn) {
+      this.startBtn.classList.remove(SELECTORS.CAR_BTN_INACTIVE);
+      this.stopBtn.classList.remove(SELECTORS.CAR_BTN_INACTIVE);
+    }
   };
 
   renderRaceStatus = () => {
