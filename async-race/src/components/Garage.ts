@@ -58,6 +58,11 @@ export default class Garage extends Section<CarType, Car> {
     this.renderPage();
   }
 
+  deleteItem = async (id: string) => {
+    super.deleteItem(id);
+    this.deleteWinner(id);
+  };
+
   renderState = () => {
     super.renderState();
     this.renderControlPanelState();
