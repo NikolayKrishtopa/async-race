@@ -1,10 +1,11 @@
 import { CarType, QueryParams } from '../types/models';
 import { APP_SECTIONS, GARAGE_SUBMIT_BTN_TEXT } from '../utils/constants';
 import SELECTORS from '../utils/selectors';
+import Car from './Car';
 
 import { Section } from './Section';
 
-export default class Garage extends Section<CarType> {
+export default class Garage extends Section<CarType, Car> {
   colorInput: HTMLInputElement | null;
   nameInput: HTMLInputElement | null;
   raceBtn: HTMLElement | null;
@@ -22,7 +23,7 @@ export default class Garage extends Section<CarType> {
     getItems: (
       params: QueryParams | QueryParams
     ) => Promise<{ items: Array<CarType>; totalQty: string }>,
-    generateItem: (item: CarType) => HTMLElement,
+    generateItem: (item: CarType) => Car,
     fetchCreateItem: (item: CarType) => Promise<CarType>,
     fetchDeleteItem: (id: string) => Promise<CarType>,
     fetchEditItem: (id: string, payload: CarType) => Promise<CarType>,

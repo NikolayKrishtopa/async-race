@@ -63,11 +63,11 @@ export type WinnerType = {
   wins: number;
 };
 
-export default interface ISection<T> {
+export default interface ISection<T, U> {
   getItems: (
     params: QueryParams
   ) => Promise<{ items: Array<T>; totalQty: string }>;
-  generateItem: (item: T) => HTMLElement;
+  generateItem: (item: T) => U;
   itemsContainer: HTMLDivElement | null;
   queryParams: QueryParams;
   itemsPerPage: number;

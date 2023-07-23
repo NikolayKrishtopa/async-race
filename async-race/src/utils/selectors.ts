@@ -28,6 +28,7 @@ const SELECTORS = {
   CAR: 'car',
   FLAG: '.car__finish-flag',
   CAR_TITLE: '.car__title',
+  WINNER: 'winner',
 };
 
 export default SELECTORS;

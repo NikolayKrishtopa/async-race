@@ -1,21 +1,23 @@
 import { CarType, WinnerType, AppModes } from '../types/models';
 import { Section } from './Section';
 import SELECTORS from '../utils/selectors';
+import Car from './Car';
+import Winner from './Winner';
 
 class App {
   container: HTMLElement;
   mode: AppModes;
   garageBtn: HTMLButtonElement | null;
   winnersBtn: HTMLButtonElement | null;
-  createGarage: () => Section<CarType>;
-  createWinners: () => Section<WinnerType>;
+  createGarage: () => Section<CarType, Car>;
+  createWinners: () => Section<WinnerType, Winner>;
   content: HTMLElement;
-  garage: Section<CarType> | null;
-  winners: Section<WinnerType> | null;
+  garage: Section<CarType, Car> | null;
+  winners: Section<WinnerType, Winner> | null;
 
   constructor(
-    createGarage: () => Section<CarType>,
-    createWinners: () => Section<WinnerType>
+    createGarage: () => Section<CarType, Car>,
+    createWinners: () => Section<WinnerType, Winner>
   ) {
     this.container = document.querySelector(SELECTORS.ROOT) as HTMLElement;
     this.mode = AppModes.GARAGE;

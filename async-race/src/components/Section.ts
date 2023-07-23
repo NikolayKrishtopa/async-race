@@ -1,11 +1,15 @@
 import ISection, { QueryParams } from '../types/models';
 import SELECTORS from '../utils/selectors';
 
-export class Section<T extends { id: string }> implements ISection<T> {
+export class Section<
+  T extends { id: string },
+  U extends { element: HTMLElement | null }
+> implements ISection<T, U>
+{
   getItems: (
     params: QueryParams
   ) => Promise<{ items: Array<T>; totalQty: string }>;
-  generateItem: (item: T) => HTMLElement;
+  generateItem: (item: T) => U;
   itemsContainer: HTMLDivElement | null;
   queryParams: QueryParams;
   itemsPerPage: number;
@@ -26,7 +30,7 @@ export class Section<T extends { id: string }> implements ISection<T> {
     getItems: (
       params: QueryParams
     ) => Promise<{ items: Array<T>; totalQty: string }>,
-    generateItem: (item: T) => HTMLElement,
+    generateItem: (item: T) => U,
     createItem: (item: T) => Promise<T>,
     fetchDeleteItem: (id: string) => Promise<T>,
     fetchEditItem: (id: string, payload: T) => Promise<T>
@@ -60,10 +64,10 @@ export class Section<T extends { id: string }> implements ISection<T> {
     this.fetchItemsList();
   }
 
-  deleteItem = async (id: string) => {
+  async deleteItem(id: string) {
     await this.fetchDeleteItem(id);
     this.fetchItemsList();
-  };
+  }
 
   async editItem(id: string, item: T) {
     await this.fetchEditItem(id, item);
@@ -116,17 +120,18 @@ export class Section<T extends { id: string }> implements ISection<T> {
     this.totalItemsQty = Number(res.totalQty);
     this.pagesQty = Math.ceil(this.totalItemsQty / this.itemsPerPage);
     this.renderPage();
+    console.log(this.items);
   };
 
-  renderItems = () => {
+  renderItems() {
     if (!this.itemsContainer) return;
     this.itemsContainer.innerHTML = '';
     this.items.forEach((e: T) => {
       const item = this.generateItem(e);
-      if (!this.itemsContainer) return;
-      this.itemsContainer.append(item);
+      if (!this.itemsContainer || !item.element) return;
+      this.itemsContainer.append(item.element);
     });
-  };
+  }
 
   renderState() {
     if (!this.curPageNumField || !this.pagesQtyField || !this.itemsQtyField)
