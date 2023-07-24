@@ -7,7 +7,7 @@
   &__edit {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
   }
   &__input {
     margin: 0;
@@ -18,11 +18,19 @@
       font-size: 1rem;
       background-color: white;
     }
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      height: 20px;
+      max-width: 200px;
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+      height: 20px;
+      max-width: 100px;
+    }
   }
 
   &__btns {
     display: flex;
     width: 100%;
-    gap: 5px;
+    gap: 10px;
   }
 }

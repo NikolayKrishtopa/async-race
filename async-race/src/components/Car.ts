@@ -107,7 +107,7 @@ export default class Car {
     const time = APP_ADJUSTMENT.BASIC_RACE_TIME / velocity;
     this.animate(time);
     const finishTimeout = setTimeout(
-      () => this.registerResult(this.carData, time),
+      () => this.registerResult(this.carData, time / 1000),
       time
     );
     const status = await this.drive(this.carData.id);

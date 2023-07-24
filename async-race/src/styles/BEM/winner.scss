@@ -1,9 +1,8 @@
 .winner {
   display: grid;
-  grid-template-columns: repeat(5, 100px);
-  gap: 10px;
+  grid-template-columns: repeat(5, 150px);
   &__text {
-    font-size: 1rem;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,5 +29,11 @@
     &_state_rotated {
       transform: rotate(180deg);
     }
+  }
+  @media screen and (max-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(5, 100px);
+  }
+  @media screen and (max-width: $breakpoint-mobile) {
+    grid-template-columns: repeat(5, 60px);
   }
 }

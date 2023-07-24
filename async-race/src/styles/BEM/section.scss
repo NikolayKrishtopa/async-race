@@ -9,7 +9,7 @@
     height: 32px;
   }
   &__title {
-    font-size: 2rem;
+    font-size: 2em;
   }
 
   &__content {
@@ -26,13 +26,24 @@
     gap: 20px;
   }
   &__page {
-    font-size: 1.5rem;
+    font-size: 1.5em;
   }
   &__list-heading {
     padding: 5px 0;
     background-color: $heading-bknd;
     display: grid;
-    grid-template-columns: repeat(5, 100px);
-    gap: 10px;
+    grid-template-columns: repeat(5, 150px);
+    @media screen and (max-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(5, 100px);
+    }
+    @media screen and (max-width: $breakpoint-mobile) {
+      grid-template-columns: repeat(5, 60px);
+    }
+  }
+  @media screen and (max-width: $breakpoint-tablet) {
+    gap: 20px;
+  }
+  @media screen and (max-width: $breakpoint-mobile-big) {
+    gap: 15px;
   }
 }

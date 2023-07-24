@@ -6,16 +6,19 @@
   padding: 30px 0;
 
   &__title {
-    font-size: 2.5rem;
+    font-size: 2.5em;
   }
   &__btn-wrapper {
     display: flex;
     gap: 20px;
+    @media screen and (max-width: $breakpoint-mobile-big) {
+      gap: 10px;
+    }
   }
   &__link {
     @include clickable;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     &_state_active {
       color: $gold-accent;
       text-decoration: underline;

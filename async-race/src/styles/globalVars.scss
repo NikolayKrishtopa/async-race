@@ -18,9 +18,9 @@ $font-content: 'Arial', serif;
 $max-width: 1200px;
 
 $breakpoint-extra-big: 1200px;
-$breakpoint-tablet: 800px;
 $breakpoint-extra-m: 1000px;
-$breakpoint-mobile-big: 650px;
+$breakpoint-tablet: 800px;
+$breakpoint-mobile-big: 600px;
 $breakpoint-mobile: 480px;
 
 $transition-duration: 0.5s;
@@ -41,7 +41,7 @@ $transition-duration: 0.5s;
   padding: 5px 10px;
   background-color: yellowgreen;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 1.3em;
   color: blueviolet;
   text-transform: uppercase;
 }
