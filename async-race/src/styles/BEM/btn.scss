@@ -3,6 +3,7 @@
   &_inactive {
     pointer-events: none;
     background-color: rgb(186, 186, 186);
+    opacity: 60%;
   }
   &_style_red {
     background-color: rgb(245, 126, 126);
@@ -15,5 +16,8 @@
   &_style_blue {
     background-color: rgb(128, 124, 236);
     color: rgb(62, 9, 111);
+  }
+  &_style_transparent {
+    background-color: transparent;
   }
 }

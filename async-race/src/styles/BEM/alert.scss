@@ -1,0 +1,23 @@
+.alert {
+  display: none;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  &__msg {
+    color: gold;
+    font-size: 3rem;
+    max-width: 40%;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    opacity: 80%;
+  }
+  &_state_active {
+    display: flex;
+  }
+}

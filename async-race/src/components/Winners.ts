@@ -51,14 +51,10 @@ export default class Winners extends Section<WinnerType, Winner> {
   };
 
   findAndInitializeUxElements = () => {
-    this.sortPerTimeBtn = document.querySelector('#sortByTime');
-    this.sortPerWinBtn = document.querySelector('#sortByWins');
-    this.sortbyWinsIcon = document.querySelector(
-      '.winner__sort-icon_type_wins'
-    );
-    this.sortbyTimeIcon = document.querySelector(
-      '.winner__sort-icon_type_time'
-    );
+    this.sortPerTimeBtn = document.querySelector(SELECTORS.SORT_BY_TIME_BTN);
+    this.sortPerWinBtn = document.querySelector(SELECTORS.SORT_BY_WINS_BTN);
+    this.sortbyWinsIcon = document.querySelector(SELECTORS.SORT_BY_TIME_ICON);
+    this.sortbyTimeIcon = document.querySelector(SELECTORS.SORT_BY_TIME_ICON);
   };
 
   renderLayout = () => {

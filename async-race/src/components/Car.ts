@@ -19,7 +19,7 @@ export default class Car {
   drive: (id: string) => Promise<TripStatus>;
   track: HTMLDivElement | null;
   interval: NodeJS.Timer;
-  registerResult: (id: string, time: number) => void;
+  registerResult: (item: CarType, time: number) => void;
   status: 'park' | 'drive';
 
   constructor(
@@ -30,7 +30,7 @@ export default class Car {
     startEngine: (id: string) => Promise<TripStatus>,
     stopEngine: (id: string) => Promise<TripStatus>,
     drive: (id: string) => Promise<TripStatus>,
-    registerResult: (id: string, time: number) => void
+    registerResult: (item: CarType, time: number) => void
   ) {
     this.registerResult = registerResult;
     this.startEngine = startEngine;
@@ -107,7 +107,7 @@ export default class Car {
     const time = APP_ADJUSTMENT.BASIC_RACE_TIME / velocity;
     this.animate(time);
     const finishTimeout = setTimeout(
-      () => this.registerResult(this.carData.id, time),
+      () => this.registerResult(this.carData, time),
       time
     );
     const status = await this.drive(this.carData.id);
@@ -147,6 +147,7 @@ export default class Car {
 
   highLight = () => {
     this.element?.classList.add(SELECTORS.CAR_EDIT);
+    this.editBtn?.classList.remove(SELECTORS.BTN_BLUE);
     this.editBtn?.classList.add(SELECTORS.BTN_INACTIVE);
     if (this.startBtn && this.stopBtn) {
       this.startBtn.classList.add(SELECTORS.CAR_BTN_INACTIVE);
@@ -157,6 +158,7 @@ export default class Car {
   stopHighLight = () => {
     this.element?.classList.remove(SELECTORS.CAR_EDIT);
     this.editBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
+    this.editBtn?.classList.add(SELECTORS.BTN_BLUE);
     if (this.startBtn && this.stopBtn) {
       this.startBtn.classList.remove(SELECTORS.CAR_BTN_INACTIVE);
       this.stopBtn.classList.remove(SELECTORS.CAR_BTN_INACTIVE);

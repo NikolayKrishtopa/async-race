@@ -10,6 +10,7 @@ const SELECTORS = {
   PAGINATION_NEXT_BTN: '.section__next-btn',
   SECTION_CONTENT: '.section__content',
   BTN_INACTIVE: 'btn_inactive',
+  BTN_BLUE: 'btn_style_blue',
   HIDDEN: 'hidden',
   CONTROL: 'control',
   CONTROL_RACE_BTN: '.control__race-btn',
@@ -39,6 +40,13 @@ const SELECTORS = {
   WINNER_CAR_NAME: '.winner__text_type_name',
   CAR_EDIT: 'car_state_edited',
   TRANSPARENT: 'transparent',
+  SORT_BY_TIME_BTN: '#sortByTime',
+  SORT_BY_WINS_BTN: '#sortByWins',
+  SORT_BY_TIME_ICON: '.winner__sort-icon_type_wins',
+  SORT_BY_WIN_ICON: '.winner__sort-icon_type_time',
+  ALERT: '.alert',
+  ALERT_MSG: '.alert__msg',
+  ALERT_ACTIVE: 'alert_state_active',
 };
 
 export default SELECTORS;

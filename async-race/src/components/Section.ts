@@ -1,5 +1,7 @@
 import ISection, { QueryParams } from '../types/models';
 import SELECTORS from '../utils/selectors';
+import nextPageIcon from '../assets/img/pagination_right.svg';
+import prevPageIcon from '../assets/img/pagination_left.svg';
 
 export class Section<
   T extends { id: string },
@@ -26,6 +28,9 @@ export class Section<
   fetchCreateItem: (item: T) => Promise<T>;
   fetchDeleteItem: (id: string) => Promise<T>;
   fetchEditItem: (id: string, payload: T) => Promise<T>;
+  alert: HTMLDivElement | null;
+  alertMsg: HTMLParagraphElement | null;
+
   constructor(
     getItems: (
       params: QueryParams
@@ -81,6 +86,8 @@ export class Section<
     this.prevPageBtn = document.querySelector(SELECTORS.PAGINATION_PREV_BTN);
     this.nextPageBtn = document.querySelector(SELECTORS.PAGINATION_NEXT_BTN);
     this.itemsContainer = document.querySelector(SELECTORS.SECTION_CONTENT);
+    this.alert = document.querySelector(SELECTORS.ALERT);
+    this.alertMsg = document.querySelector(SELECTORS.ALERT_MSG);
   }
 
   renderLayout(sectionName = '') {
@@ -95,11 +102,18 @@ export class Section<
             <span class="section__page-qty"></span>
           </p>
           <div class="section__pagination">
-            <button class="btn section__prev-btn">prev</button>
-            <button class="btn section__next-btn">next</button>
+            <button class="btn btn_style_transparent section__prev-btn">
+              <img class="section__pagination-icon" src=${prevPageIcon} />
+            </button>
+            <button class="btn btn_style_transparent section__next-btn">
+              <img class="section__pagination-icon" src=${nextPageIcon} />  
+            </button>
           </div>
         </div>
         <div class="section__content"></div>
+        <div class="alert">
+          <p class="alert__msg"></p>
+        </div>
     `;
   }
 
@@ -150,6 +164,21 @@ export class Section<
       this.prevPageBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
       this.nextPageBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
     }
+  };
+
+  showAlert = (msg: string) => {
+    console.log(this.alert);
+    console.log(this.alertMsg);
+
+    if (!this.alert || !this.alertMsg) return;
+    this.alertMsg.textContent = msg;
+    this.alert.classList.add(SELECTORS.ALERT_ACTIVE);
+  };
+
+  hideAlert = () => {
+    if (!this.alert || !this.alertMsg) return;
+    this.alertMsg.textContent = '';
+    this.alert.classList.remove(SELECTORS.ALERT_ACTIVE);
   };
 
   renderPage = () => {

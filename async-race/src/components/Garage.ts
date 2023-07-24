@@ -88,6 +88,11 @@ export default class Garage extends Section<CarType, Car> {
   };
 
   editCar = (id: typeof this.carToEdit) => {
+    if (this.nameInput && this.colorInput) {
+      const carToEdit = this.items.find((e) => e.carData.id === id)?.carData;
+      this.nameInput.value = carToEdit?.name || '';
+      this.colorInput.value = carToEdit?.color || '';
+    }
     this.carToEdit = id;
     this.renderState();
   };
@@ -171,6 +176,10 @@ export default class Garage extends Section<CarType, Car> {
       })
       ?.stopHighLight();
     this.carToEdit = null;
+    if (this.nameInput && this.colorInput) {
+      this.nameInput.value = '';
+      this.colorInput.value = '';
+    }
     this.renderControlPanelState();
   };
 
@@ -179,10 +188,12 @@ export default class Garage extends Section<CarType, Car> {
       case 'race':
         this.raceBtn?.classList.add(SELECTORS.BTN_INACTIVE);
         this.resetBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+        this.hideAlert();
         break;
       case 'park':
         this.raceBtn?.classList.remove(SELECTORS.BTN_INACTIVE);
         this.resetBtn?.classList.add(SELECTORS.BTN_INACTIVE);
+        this.hideAlert();
         break;
       case 'finished':
         this.raceBtn?.classList.add(SELECTORS.BTN_INACTIVE);
@@ -206,22 +217,24 @@ export default class Garage extends Section<CarType, Car> {
     });
   };
 
-  registerWinner = async (id: string, time: number) => {
+  registerWinner = async (item: CarType, time: number) => {
     if (this.status !== 'race') return;
-    console.log(time);
     this.status = 'finished';
     this.renderRaceStatus();
-    const match = await this.getWinner(id);
-    console.log(match);
-
+    this.showAlert(`${item.name} wins with result ${time.toFixed(2)} secons`);
+    const match = await this.getWinner(item.id);
     if (match.id) {
-      this.updateWinner(id, {
-        id,
+      this.updateWinner(item.id, {
+        id: item.id,
         time: Math.min(Number(time.toFixed(2)), match.time),
         wins: match.wins + 1,
       });
     } else {
-      this.createWinner({ id, time: Number(time.toFixed(2)), wins: 1 });
+      this.createWinner({
+        id: item.id,
+        time: Number(time.toFixed(2)),
+        wins: 1,
+      });
     }
   };
 
