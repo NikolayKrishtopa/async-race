@@ -91,6 +91,8 @@ export class Section<
   }
 
   renderLayout(sectionName = '') {
+    console.log('renderLayout');
+
     this.mainContainer.innerHTML = '';
     this.mainContainer.innerHTML = `
     <h2 class="section__title">
@@ -124,13 +126,13 @@ export class Section<
     };
   }
 
-  fetchItemsList = async () => {
+  async fetchItemsList() {
     const res = await this.getItems(this.queryParams);
     this.items = res.items.map((item) => this.generateItem(item));
     this.totalItemsQty = Number(res.totalQty);
     this.pagesQty = Math.ceil(this.totalItemsQty / this.itemsPerPage);
     this.renderPage();
-  };
+  }
 
   renderItems() {
     if (!this.itemsContainer) return;

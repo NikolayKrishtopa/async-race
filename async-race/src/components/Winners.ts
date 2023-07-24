@@ -40,11 +40,11 @@ export default class Winners extends Section<WinnerType, Winner> {
         <p class="winner__text">Name</p>
         <div class="winner__heading-item">
           <p class="winner__text winner__text_clickable" id="sortByWins">Wins</p>
-          <img src=${arrowImg} class="winner__sort-icon winner__sort-icon_type_wins"/>
+          <img src=${arrowImg} class="winner__sort-icon winner__sort-icon_type_wins winner__sort-icon_state_hidden"/>
         </div>
         <div class="winner__heading-item">
           <p class="winner__text winner__text_clickable" id="sortByTime">Best time</p>
-          <img src=${arrowImg} class="winner__sort-icon winner__sort-icon_type_time"/>
+          <img src=${arrowImg} class="winner__sort-icon winner__sort-icon_type_time winner__sort-icon_state_hidden"/>
         </div>
     `;
     if (this.itemsContainer) this.itemsContainer.prepend(heading);
@@ -53,7 +53,7 @@ export default class Winners extends Section<WinnerType, Winner> {
   findAndInitializeUxElements = () => {
     this.sortPerTimeBtn = document.querySelector(SELECTORS.SORT_BY_TIME_BTN);
     this.sortPerWinBtn = document.querySelector(SELECTORS.SORT_BY_WINS_BTN);
-    this.sortbyWinsIcon = document.querySelector(SELECTORS.SORT_BY_TIME_ICON);
+    this.sortbyWinsIcon = document.querySelector(SELECTORS.SORT_BY_WINS_ICON);
     this.sortbyTimeIcon = document.querySelector(SELECTORS.SORT_BY_TIME_ICON);
   };
 
@@ -78,7 +78,6 @@ export default class Winners extends Section<WinnerType, Winner> {
       this.updateQueryParams();
     }
     this.fetchItemsList();
-    this.renderSortState();
   };
 
   updateQueryParams = () => {
@@ -98,28 +97,34 @@ export default class Winners extends Section<WinnerType, Winner> {
 
   renderSortState = () => {
     if (this.sortBy === SortBy.time) {
-      this.sortbyWinsIcon?.classList.add('winner__sort-icon_state_hidden');
-      this.sortbyTimeIcon?.classList.remove('winner__sort-icon_state_hidden');
+      this.sortbyWinsIcon?.classList.add(SELECTORS.WINNER_SORT_ICON_HIDDEN);
+      this.sortbyTimeIcon?.classList.remove(SELECTORS.WINNER_SORT_ICON_HIDDEN);
       if (this.order === OrderType.ascending) {
-        console.log(this.sortbyTimeIcon);
-
         this.sortbyTimeIcon?.classList.remove(
-          'winner__sort-icon_state_rotated'
+          SELECTORS.WINNER_SORT_ICON_ROTATED
         );
       } else if (this.order === OrderType.descending) {
-        this.sortbyTimeIcon?.classList.add('winner__sort-icon_state_rotated');
+        this.sortbyTimeIcon?.classList.add(SELECTORS.WINNER_SORT_ICON_ROTATED);
       }
     } else if (this.sortBy === SortBy.wins) {
-      this.sortbyWinsIcon?.classList.remove('winner__sort-icon_state_hidden');
-      this.sortbyTimeIcon?.classList.add('winner__sort-icon_state_hidden');
+      this.sortbyWinsIcon?.classList.remove(SELECTORS.WINNER_SORT_ICON_HIDDEN);
+      this.sortbyTimeIcon?.classList.add(SELECTORS.WINNER_SORT_ICON_HIDDEN);
       if (this.order === OrderType.ascending) {
         this.sortbyWinsIcon?.classList.remove(
-          'winner__sort-icon_state_rotated'
+          SELECTORS.WINNER_SORT_ICON_ROTATED
         );
       } else if (this.order === OrderType.descending) {
-        this.sortbyWinsIcon?.classList.add('winner__sort-icon_state_rotated');
+        this.sortbyWinsIcon?.classList.add(SELECTORS.WINNER_SORT_ICON_ROTATED);
       }
+    } else {
+      this.sortbyWinsIcon?.classList.add(SELECTORS.WINNER_SORT_ICON_HIDDEN);
+      this.sortbyTimeIcon?.classList.add(SELECTORS.WINNER_SORT_ICON_HIDDEN);
     }
+  };
+
+  fetchItemsList = async () => {
+    await super.fetchItemsList();
+    this.renderSortState();
   };
 
   renderItems = () => {
