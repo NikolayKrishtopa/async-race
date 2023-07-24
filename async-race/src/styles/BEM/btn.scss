@@ -2,19 +2,19 @@
   @include button;
   &_inactive {
     pointer-events: none;
-    background-color: rgb(186, 186, 186);
+    background-color: $fade;
     opacity: 60%;
   }
   &_style_red {
-    background-color: rgb(245, 126, 126);
+    background-color: $red-accent;
     color: rgb(62, 9, 111);
   }
   &_style_yellow {
     color: rgb(62, 9, 111);
-    background-color: rgb(234, 240, 144);
+    background-color: $yellow-accent;
   }
   &_style_blue {
-    background-color: rgb(128, 124, 236);
+    background-color: $blue-accent;
     color: rgb(62, 9, 111);
   }
   &_style_transparent {

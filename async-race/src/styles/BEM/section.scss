@@ -30,7 +30,7 @@
   }
   &__list-heading {
     padding: 5px 0;
-    background-color: rgb(30, 120, 229);
+    background-color: $heading-bknd;
     display: grid;
     grid-template-columns: repeat(5, 100px);
     gap: 10px;

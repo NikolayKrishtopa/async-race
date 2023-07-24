@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 2px solid yellow;
+  border-bottom: 2px solid $gold-accent;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -17,7 +17,7 @@
     color: white;
     font-size: 1.5rem;
     &_state_active {
-      color: gold;
+      color: $gold-accent;
       text-decoration: underline;
     }
   }
