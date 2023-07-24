@@ -13,6 +13,7 @@ const presets = [
       useBuiltIns: 'entry',
     },
   ],
+  ['airbnb'],
 ];
 
 module.exports = { presets };
