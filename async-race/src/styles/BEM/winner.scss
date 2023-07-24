@@ -20,6 +20,11 @@
     align-items: center;
     justify-content: center;
   }
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &__sort-icon {
     width: 24px;
     height: 24px;

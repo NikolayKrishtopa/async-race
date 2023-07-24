@@ -2,7 +2,7 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 
   &__edit {
     display: flex;
@@ -31,6 +31,6 @@
   &__btns {
     display: flex;
     width: 100%;
-    gap: 10px;
+    gap: 15px;
   }
 }

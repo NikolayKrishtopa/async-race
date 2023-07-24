@@ -29,13 +29,14 @@ export default class Winners extends Section<WinnerType, Winner> {
     this.sortBy = SortBy.wins;
     this.order = OrderType.descending;
     this.renderPage();
+    this.renderSortState();
   }
 
   renderHeading = () => {
     const heading = document.createElement('div');
     heading.classList.add(SELECTORS.WINNERS_HEADING);
     heading.innerHTML = `
-        <p class="winner__text">Number</p>
+        <p class="winner__text">Car id</p>
         <p class="winner__text">Car</p>
         <p class="winner__text">Name</p>
         <div class="winner__heading-item">
@@ -60,6 +61,11 @@ export default class Winners extends Section<WinnerType, Winner> {
   renderLayout = () => {
     super.renderLayout(APP_SECTIONS.WINNERS);
     this.itemsContainer?.classList.add('section__content_type_winner');
+    this.renderSortState();
+  };
+
+  renderPage = () => {
+    super.renderPage();
     this.renderSortState();
   };
 

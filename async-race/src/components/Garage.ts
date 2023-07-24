@@ -24,6 +24,8 @@ export default class Garage extends Section<CarType, Car> {
   updateWinner: (id: string, winner: WinnerType) => Promise<WinnerType>;
   deleteWinner: (id: string) => Promise<WinnerType>;
   getWinner: (id: string) => Promise<WinnerType>;
+  nameInputCurValue: string;
+  colorInputCurValue: string;
 
   constructor(
     getItems: (
@@ -67,6 +69,7 @@ export default class Garage extends Section<CarType, Car> {
     super.renderState();
     this.renderControlPanelState();
     this.renderRaceStatus();
+    this.renderInputsCurState();
   };
 
   renderControlPanelState = () => {
@@ -85,6 +88,12 @@ export default class Garage extends Section<CarType, Car> {
       default:
         break;
     }
+  };
+
+  renderInputsCurState = () => {
+    if (!this.nameInput || !this.colorInput) return;
+    this.nameInput.value = this.nameInputCurValue || '';
+    this.colorInput.value = this.colorInputCurValue || '';
   };
 
   editCar = (id: typeof this.carToEdit) => {
@@ -166,6 +175,9 @@ export default class Garage extends Section<CarType, Car> {
     } else {
       super.createItem(NewCarData);
     }
+    this.nameInputCurValue = '';
+    this.colorInputCurValue = '';
+    this.renderInputsCurState;
   };
 
   cancelEditMode = () => {
@@ -221,7 +233,7 @@ export default class Garage extends Section<CarType, Car> {
     if (this.status !== 'race') return;
     this.status = 'finished';
     this.renderRaceStatus();
-    this.showAlert(`${item.name} wins with result ${time.toFixed(2)} secons`);
+    this.showAlert(`${item.name} wins with result ${time.toFixed(2)} seconds`);
     const match = await this.getWinner(item.id);
     if (match.id) {
       this.updateWinner(item.id, {
@@ -245,5 +257,17 @@ export default class Garage extends Section<CarType, Car> {
     this.cancelBtn?.addEventListener('click', this.cancelEditMode);
     this.raceBtn?.addEventListener('click', this.race);
     this.resetBtn?.addEventListener('click', this.reset);
+    if (this.colorInput instanceof HTMLInputElement) {
+      this.colorInput.addEventListener('input', (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        this.colorInputCurValue = target.value;
+      });
+    }
+    if (this.nameInput instanceof HTMLInputElement) {
+      this.nameInput.addEventListener('input', (e: Event) => {
+        const target = e.target as HTMLInputElement;
+        this.nameInputCurValue = target.value;
+      });
+    }
   };
 }

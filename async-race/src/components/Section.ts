@@ -30,6 +30,7 @@ export class Section<
   fetchEditItem: (id: string, payload: T) => Promise<T>;
   alert: HTMLDivElement | null;
   alertMsg: HTMLParagraphElement | null;
+  alertMessageText: string;
 
   constructor(
     getItems: (
@@ -40,6 +41,7 @@ export class Section<
     fetchDeleteItem: (id: string) => Promise<T>,
     fetchEditItem: (id: string, payload: T) => Promise<T>
   ) {
+    this.alertMessageText = '';
     this.fetchCreateItem = createItem;
     this.fetchDeleteItem = fetchDeleteItem;
     this.fetchEditItem = fetchEditItem;
@@ -169,21 +171,23 @@ export class Section<
   };
 
   showAlert = (msg: string) => {
-    console.log(this.alert);
-    console.log(this.alertMsg);
+    this.alertMessageText = msg;
+    this.renderAlertState();
+  };
 
-    if (!this.alert || !this.alertMsg) return;
-    this.alertMsg.textContent = msg;
-    this.alert.classList.add(SELECTORS.ALERT_ACTIVE);
+  renderAlertState = () => {
+    if (this.alert && this.alertMsg) {
+      this.alertMsg.textContent = this.alertMessageText;
+      this.alert.classList.add(SELECTORS.ALERT_ACTIVE);
+    }
   };
 
   hideAlert = () => {
-    if (!this.alert || !this.alertMsg) return;
-    this.alertMsg.textContent = '';
-    this.alert.classList.remove(SELECTORS.ALERT_ACTIVE);
+    this.alertMessageText = '';
+    this.renderAlertState();
   };
 
-  renderPage = () => {
+  renderPage() {
     this.unsetListeners();
     this.renderLayout();
     this.searchElements();
@@ -191,7 +195,8 @@ export class Section<
     this.renderState();
     this.renderPaginationBtns();
     this.setListeners();
-  };
+    this.renderAlertState();
+  }
 
   setListeners() {
     if (!this.nextPageBtn || !this.prevPageBtn) return;
