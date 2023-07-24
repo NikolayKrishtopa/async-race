@@ -28,6 +28,14 @@ export default class Winners extends Section<WinnerType, Winner> {
     this.itemsPerPage = APP_ADJUSTMENT.ITEMS_PER_PAGE_WINNERS;
     this.sortBy = SortBy.wins;
     this.order = OrderType.descending;
+    this.queryParams = {
+      _page: this.curPage,
+      _limit: this.itemsPerPage,
+      _sort: this.sortBy,
+      _order: this.order,
+    };
+    this.fetchItemsList();
+
     this.renderPage();
     this.renderSortState();
   }
@@ -88,11 +96,13 @@ export default class Winners extends Section<WinnerType, Winner> {
 
   updateQueryParams = () => {
     super.updateQueryParams();
+    this.queryParams._limit = this.itemsPerPage;
     this.queryParams._sort = this.sortBy;
     this.queryParams._order = this.order;
   };
 
   setListeners = () => {
+    super.setListeners();
     this.sortPerTimeBtn?.addEventListener('click', () =>
       this.changeSort(SortBy.time)
     );
@@ -129,6 +139,8 @@ export default class Winners extends Section<WinnerType, Winner> {
   };
 
   fetchItemsList = async () => {
+    console.log(this.itemsPerPage);
+
     await super.fetchItemsList();
     this.renderSortState();
   };
